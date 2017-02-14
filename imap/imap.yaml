@@ -1,0 +1,27 @@
+---
+type_path: imap
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: IMAP Server
+description: 
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: imap
+service_handle_field: fqdn
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'

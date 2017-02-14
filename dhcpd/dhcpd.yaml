@@ -1,0 +1,174 @@
+---
+type_path: dhcpd
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: DHCP server
+description: DHCP server
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: dhcpd
+service_handle_field: subnet
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators:
+  dhcpd_settings:
+    name: dhcpd_settings
+    label: DHCPD Settings
+    description: Configure DHCP Server settings
+    no_save: 
+    params:
+      domain_name:
+        name: domain_name
+        value: Engines_System(defaul_domain)
+        label: Default Domain
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: domain.tld
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      subnet:
+        name: subnet
+        value: ''
+        label: Subnet
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: 'x.x.x.x/y '
+        placeholder: ''
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      start:
+        name: start
+        value: ''
+        label: DHCP Range Start
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: x.x.x.x
+        placeholder: x.x.x.x
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      end:
+        name: end
+        value: 
+        label: end
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: 'username '
+        placeholder: x.x.x.x
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      default_lease:
+        name: default_lease
+        value: '6000'
+        label: Default Lease Time
+        field_type: text
+        select_collection: ''
+        tooltip: " "
+        hint: in secs
+        placeholder: ''
+        comment: " "
+        regex_validator: "[0-9]."
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      default_gateway:
+        name: default_gateway
+        value: Engines_System(gateway)
+        label: Default Gateway
+        field_type: text
+        select_collection: ''
+        tooltip: " "
+        hint: ip or host
+        placeholder: x.x.x.x
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dns_server2:
+        name: dns_server2
+        value: Engines_System(dns2)
+        label: DNS Server 2
+        field_type: text
+        select_collection: ''
+        tooltip: " "
+        hint: ip
+        placeholder: x.x.x.x
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dns_server1:
+        name: dns_server1
+        value: Engines_System(engines_ip)
+        label: DNS Server 1
+        field_type: text
+        select_collection: ''
+        tooltip: " "
+        hint: ip
+        placeholder: x.x.x.x
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      netmask:
+        name: netmask
+        value: ''
+        label: netask
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: 'x.x.x.x/y '
+        placeholder: ''
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

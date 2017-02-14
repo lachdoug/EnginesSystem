@@ -1,0 +1,90 @@
+---
+type_path: cron
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: Cron
+description: Scheduales tasks
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: cron
+service_handle_field: title
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  action_type:
+    name: action_type
+    value: 
+    label: Cron type web or command
+    field_type: select
+    select_collection: '["command", "web"]'
+    tooltip: " "
+    hint: ''
+    placeholder: 'a label '
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  cron_job:
+    name: cron_job
+    value: ''
+    label: Cron line
+    field_type: text_field
+    select_collection: ''
+    tooltip: ''
+    hint: the command
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  title:
+    name: title
+    value: 
+    label: Cron line title
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: 'a label '
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  when:
+    name: when
+    value: ''
+    label: Cron when specification
+    field_type: ''
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

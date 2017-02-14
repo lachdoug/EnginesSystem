@@ -1,0 +1,42 @@
+---
+type_path: wwwstats
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: WWW Statistics
+description: ''
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: wwwstats
+service_handle_field: fqdn
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  fqdn:
+    name: fqdn
+    value: " "
+    label: fqdn
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: host.domain_name
+    placeholder: " "
+    comment: full hostname and domainname
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

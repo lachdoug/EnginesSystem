@@ -1,0 +1,105 @@
+---
+type_path: filesystem/remote/nfs
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+author: Engines
+title: NFS access to external Volumes
+description: Provides NFS Access for File Storage
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: nfs
+service_handle_field: name
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  host:
+    name: host
+    value: 
+    label: host
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: 
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  password:
+    name: password
+    value: 
+    label: Account Password
+    field_type: password
+    select_collection: ''
+    tooltip: 
+    hint: " "
+    placeholder: " "
+    comment: 
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  username:
+    name: username
+    value: 
+    label: Account login
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: 
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  button:
+    name: button
+    value: 
+    label: button test
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: 
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  volume:
+    name: volume
+    value: " "
+    label: volume
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

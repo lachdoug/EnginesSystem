@@ -1,0 +1,148 @@
+---
+type_path: smtp
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: Smtp Relay
+description: Outbound SMTP relay
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: smtp
+service_handle_field: ''
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators:
+  smarthost:
+    name: smarthost
+    label: Smart host settings
+    description: Configure Smarthost settings
+    no_save: 
+    params:
+      smart_host_port:
+        name: smart_host_port
+        value: '25'
+        label: Smart host port
+        field_type: text_field
+        select_collection: ''
+        tooltip: ''
+        hint: '25 or 587 '
+        placeholder: 'port number '
+        comment: ''
+        regex_validator: "[0-9]*"
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      smart_hostname:
+        name: smart_hostname
+        value: ''
+        label: Smart host Name
+        field_type: text_field
+        select_collection: ''
+        tooltip: ''
+        hint: 'smtp-host.domain.com '
+        placeholder: 'host name or address '
+        comment: ''
+        regex_validator: ".*"
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      auth_type:
+        name: auth_type
+        value: none
+        label: Authenication with Smart host
+        field_type: select_single
+        select_collection: '["none", "plaintext", "md5"]'
+        tooltip: " "
+        hint: engine
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      smart_host_user:
+        name: smart_host_user
+        value: 
+        label: Username for Smart host authentication
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: 'username '
+        placeholder: user@somedomain.com
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      smart_host_passwd:
+        name: smart_host_passwd
+        value: 
+        label: Password for Smart host authentication
+        field_type: password
+        select_collection: ''
+        tooltip: " "
+        hint: password
+        placeholder: password
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  default_domain:
+    name: default_domain
+    label: Default Domain
+    description: Default Domain
+    no_save: 
+    params:
+      deliver_local:
+        name: deliver_local
+        value: 'false'
+        label: Deliver Locally
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      domain_name:
+        name: domain_name
+        value: 
+        label: Default Domain
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: default domain name
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

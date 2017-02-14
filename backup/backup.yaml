@@ -1,0 +1,384 @@
+---
+type_path: backup
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+- filesystem/local/filesystem
+- database/sql/mysql
+- database/sql/pgsql
+- database/nosql/mongo/
+author: Engines
+title: Backup
+description: Backup tasks
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: backup
+service_handle_field: backup_name
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  src_type:
+    name: src_type
+    value: engine
+    label: 
+    field_type: hidden
+    select_collection: ''
+    tooltip: 
+    hint: 
+    placeholder: 
+    comment: 
+    regex_validator: 
+    regex_invalid_message: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  email:
+    name: email
+    value: ''
+    label: Notification Email
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: " "
+    comment: " "
+    regex_validator: ".[@].*"
+    regex_invalid_message: Please enter a valid email address
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  sources:
+    name: sources
+    value: _Engines_Builder(engine_persistent_services)
+    label: ''
+    field_type: hidden
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dest_pass:
+    name: dest_pass
+    value: ''
+    label: password
+    field_type: password
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong  try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dest_user:
+    name: dest_user
+    value: ''
+    label: user_name
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dest_folder:
+    name: dest_folder
+    value: ''
+    label: destination folder
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dest_proto:
+    name: dest_proto
+    value: 
+    label: Backup Destination Type
+    field_type: select
+    select_collection: '["ftp", "local", "smbfs", "nfs", "s3"]'
+    tooltip: " "
+    hint: ''
+    placeholder: 'a label '
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dest_address:
+    name: dest_address
+    value: ''
+    label: destination
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: ''
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  backup_name:
+    name: backup_name
+    value: ''
+    label: Backup Name
+    field_type: text_field
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+  backup_type:
+    name: backup_type
+    value: full
+    label: ''
+    field_type: hidden
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+type_consumer_params: {}
+configurators:
+  backup_notification_email:
+    name: backup_notification_email
+    label: email
+    description: Backup notification email
+    no_save: 
+    params:
+      backup_email:
+        name: backup_email
+        value: 
+        label: Backup System email notifcations
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: 'email address '
+        comment: " "
+        regex_validator: ".*[@]"
+        regex_invalid_message: muse be an email
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  system_backup:
+    name: system_backup
+    label: System Backup
+    description: Configure System Backup settings
+    no_save: 
+    params:
+      include_logs:
+        name: include_logs
+        value: 
+        label: Backup Logs
+        field_type: select
+        select_collection: "[true, false]"
+        tooltip: " "
+        hint: ''
+        placeholder: 'a label '
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      include_files:
+        name: include_files
+        value: 
+        label: Backup File Systems
+        field_type: select
+        select_collection: "[true, false]"
+        tooltip: " "
+        hint: ''
+        placeholder: 'a label '
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      include_services:
+        name: include_services
+        value: ''
+        label: Backup Services
+        field_type: select
+        select_collection: "[true, false]"
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: File system and logs backed up seperately
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      include_system:
+        name: include_system
+        value: 
+        label: Backup System
+        field_type: select
+        select_collection: "[true, false]"
+        tooltip: " "
+        hint: ''
+        placeholder: 'a label '
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      frequency:
+        name: frequency
+        value: 
+        label: Backup Frequency
+        field_type: select
+        select_collection: '["nightly", "weekly", "monthly"]'
+        tooltip: " "
+        hint: ''
+        placeholder: 'a label '
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  default_destination:
+    name: default_destination
+    label: Default Backup settings
+    description: Configure Default Backup settings
+    no_save: 
+    params:
+      dest_pass:
+        name: dest_pass
+        value: " "
+        label: password
+        field_type: password
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dest_user:
+        name: dest_user
+        value: " "
+        label: user_name
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dest_folder:
+        name: dest_folder
+        value: " "
+        label: destination folder
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dest_address:
+        name: dest_address
+        value: " "
+        label: destination
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dest_proto:
+        name: dest_proto
+        value: 
+        label: Backup Destination Type
+        field_type: select
+        select_collection: '["ftp", "local", "smbfs", "nfs", "s3"]'
+        tooltip: " "
+        hint: ''
+        placeholder: 'a label '
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

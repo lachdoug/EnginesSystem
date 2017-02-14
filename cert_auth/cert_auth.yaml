@@ -1,0 +1,258 @@
+---
+type_path: cert_auth
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: Cert Auth
+description: Certificate management
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: cert_auth
+service_handle_field: cert_name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  country:
+    name: country
+    value: ''
+    label: Country
+    field_type: text_field
+    select_collection: ''
+    tooltip: 2 Character Country Code
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".2"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  state:
+    name: state
+    value: ''
+    label: State
+    field_type: text_field
+    select_collection: ''
+    tooltip: State
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  organisation:
+    name: organisation
+    value: ''
+    label: organisation
+    field_type: text_field
+    select_collection: ''
+    tooltip: Organisation
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  city:
+    name: city
+    value: ''
+    label: city
+    field_type: text_field
+    select_collection: ''
+    tooltip: City/Location
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  person:
+    name: person
+    value: ''
+    label: person
+    field_type: text_field
+    select_collection: ''
+    tooltip: person/OU
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  cert_name:
+    name: cert_name
+    value: ''
+    label: cert name name
+    field_type: text_field
+    select_collection: ''
+    tooltip: Cert name usually domainname
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  domainname:
+    name: domainname
+    value: ''
+    label: domainname
+    field_type: text_field
+    select_collection: ''
+    tooltip: domainname or CN
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators:
+  system_ca:
+    name: system_ca
+    label: Root Certificate Authority
+    description: Public Cert for key used to signed all Certificates issued by the
+      engines host
+    no_save: true
+    params:
+      cert_name:
+        name: cert_name
+        value: ''
+        label: cert name name
+        field_type: text_field
+        select_collection: ''
+        tooltip: Cert name usually domainname
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      domainname:
+        name: domainname
+        value: ''
+        label: domainname
+        field_type: text_field
+        select_collection: ''
+        tooltip: domainname or CN
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      person:
+        name: person
+        value: ''
+        label: person
+        field_type: text_field
+        select_collection: ''
+        tooltip: person/OU
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      organisation:
+        name: organisation
+        value: ''
+        label: organisation
+        field_type: text_field
+        select_collection: ''
+        tooltip: Organisation
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      city:
+        name: city
+        value: ''
+        label: city
+        field_type: text_field
+        select_collection: ''
+        tooltip: City/Location
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      state:
+        name: state
+        value: ''
+        label: State
+        field_type: text_field
+        select_collection: ''
+        tooltip: State
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      country:
+        name: country
+        value: ''
+        label: Country
+        field_type: text_field
+        select_collection: ''
+        tooltip: 2 Character Country Code
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".2"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'

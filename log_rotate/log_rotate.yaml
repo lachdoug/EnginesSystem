@@ -1,0 +1,144 @@
+---
+type_path: log_rotate
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: 
+title: log rotation
+description: rotates the logs and keeps compressed backups
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: log_rotate
+service_handle_field: log_name
+dedicated: false
+persistent: true
+immutable: true
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  log_name:
+    name: log_name
+    value: ''
+    label: Log Name
+    field_type: text
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  log_file_path:
+    name: log_file_path
+    value: ''
+    label: Log file
+    field_type: ''
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  cycle:
+    name: cycle
+    value: weekly
+    label: Cycle
+    field_type: 'collection '
+    select_collection: daily weekly monthly
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  rotate:
+    name: rotate
+    value: '12'
+    label: Rotations to keep
+    field_type: ''
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators:
+  defaults:
+    name: defaults
+    label: ''
+    description: ''
+    no_save: false
+    params:
+      cycle:
+        name: cycle
+        value: weekly
+        label: Cycle
+        field_type: collection
+        select_collection: daily,weekly,monthly
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      compress:
+        name: compress
+        value: 'true'
+        label: Compress
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      rotate:
+        name: rotate
+        value: '12'
+        label: Rotations to keep
+        field_type: int
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

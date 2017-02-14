@@ -1,0 +1,107 @@
+---
+type_path: system
+publisher_namespace: EnginesSystem
+accepts: []
+author: 
+title: Engines System Service
+description: ''
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: system
+service_handle_field: ''
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators:
+  hostname:
+    name: hostname
+    label: Set hostname
+    description: sets the system hostname
+    no_save: false
+    params:
+      hostname:
+        name: hostname
+        value: ''
+        label: hostname
+        field_type: text
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      domain_name:
+        name: domain_name
+        value: ''
+        label: domain_name
+        field_type: text
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  console_pass:
+    name: console_pass
+    label: set console pass
+    description: ''
+    no_save: true
+    params:
+      console_password:
+        name: console_password
+        value: ''
+        label: console_password
+        field_type: text
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  ssh_master_key:
+    name: ssh_master_key
+    label: ssh_master_key
+    description: sets the public key for access to engines user account on the base
+      system
+    no_save: false
+    params:
+      ssh_master_key:
+        name: ssh_master_key
+        value: ''
+        label: SSH public key
+        field_type: text_area
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

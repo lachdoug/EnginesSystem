@@ -1,0 +1,144 @@
+---
+type_path: nginx
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: Nginx
+description: Presents engines to the outside world
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: nginx
+service_handle_field: fqdn
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  engine_count:
+    name: engine_count
+    value: '1'
+    label: Engine Count
+    field_type: text_field
+    select_collection: ''
+    tooltip: '1'
+    hint: Count of Engines to server 1-9
+    placeholder: " "
+    comment: " "
+    regex_validator: "[0-9]"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  public:
+    name: public
+    value: '1'
+    label: public
+    field_type: boolean
+    select_collection: ''
+    tooltip: " "
+    hint: Publish beyond Lan
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  internal_dir:
+    name: internal_dir
+    value: "/"
+    label: internal_dir
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: internal_dir as in map /www.domain.com/ to /www.domain.com/internal_dir
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  fqdn:
+    name: fqdn
+    value: 
+    label: site_fqdn
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: site_fqdn
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  port:
+    name: port
+    value: _Engines_Builder(web_port)
+    label: engine web port
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: engine
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  proto:
+    name: proto
+    value: 
+    label: Protocols to support
+    field_type: select_single
+    select_collection: '["https", "http", "http_https"]'
+    tooltip: " "
+    hint: engine
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators:
+  default_site:
+    name: default_site
+    label: Default site
+    description: Default site
+    no_save: 
+    params:
+      default_site_url:
+        name: default_site_url
+        value: mgmt._Engines_System(default_domain):10443
+        label: Default Web Site
+        field_type: text_field
+        select_collection: ''
+        tooltip: 'not http(s)://....../ just x.y.c '
+        hint: ''
+        placeholder: 'not http(s)://....../ just x.y.c '
+        comment: ''
+        regex_validator: ".*[.].*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

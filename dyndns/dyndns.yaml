@@ -1,0 +1,94 @@
+---
+type_path: dyndns
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: Dynamic dns
+description: Set IP address for Hosts on Dynamic addresses
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: dyndns
+service_handle_field: hostname
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators:
+  dyndns_settings:
+    name: dyndns_settings
+    label: settings
+    description: Configure Dynamic Dns settings
+    no_save: 
+    params:
+      domain_name:
+        name: domain_name
+        value: ''
+        label: Domain name
+        field_type: text_field
+        select_collection: ''
+        tooltip: Domain name
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      provider:
+        name: provider
+        value: dyndns2
+        label: Provider
+        field_type: select
+        select_collection: '["dyn-dns", "no-ip"]'
+        tooltip: dyndns2
+        hint: " "
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      password:
+        name: password
+        value: 
+        label: DynDns User password
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: ''
+        placeholder: password
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      login:
+        name: login
+        value: 
+        label: DynDns User Name
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: username
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants: {}

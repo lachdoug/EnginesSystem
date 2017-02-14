@@ -1,0 +1,121 @@
+---
+type_path: filesystem/service/ftp
+publisher_namespace: EnginesSystem
+accepts:
+- Volume
+author: Engines
+title: FTP Access Service
+description: Provides FTP access to Persistant File Storage
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: ftp
+service_handle_field: username
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  folder:
+    name: folder
+    value: "/"
+    label: folder
+    field_type: text_field
+    select_collection: ''
+    tooltip: 'Folder with in volume '
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  volume:
+    name: volume
+    value: _Engines_Environment(volume_name)
+    label: volume
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  username:
+    name: username
+    value: _Engines_Builder(engine_name)
+    label: User Name
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  password:
+    name: password
+    value: _Engines_System(random(8))
+    label: password
+    field_type: password_with_confirmation
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  rw_access:
+    name: rw_access
+    value: '0'
+    label: RW Access
+    field_type: select_single
+    select_collection: "[true, false]"
+    tooltip: Allow ftp service to write files
+    hint: true|false
+    placeholder: true|false
+    comment: Write access includes the ability to delete
+    regex_validator: true|false
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+  ftp_gid:
+    name: ftp_gid
+    value: _Engines_Builder(data_gid)
+    label: ftp_gid
+    field_type: text_field
+    select_collection: ''
+    tooltip: auto set
+    hint: a number
+    placeholder: true|false
+    comment: 'group access '
+    regex_validator: "[0-9]."
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

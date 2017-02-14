@@ -1,0 +1,259 @@
+---
+type_path: email
+publisher_namespace: EnginesSystem
+accepts: []
+author: Engines
+title: Email
+description: Email server
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: email
+service_handle_field: name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  email_address:
+    name: email_address
+    value: ''
+    label: Email Address
+    field_type: text_field
+    select_collection: ''
+    tooltip: Email Address name
+    hint: " "
+    placeholder: " "
+    comment: 
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators:
+  email_admin_secret:
+    name: email_admin_secret
+    label: Admin Secret
+    description: System Email Admin Accounts
+    no_save: true
+    params:
+      email_admin_secret:
+        name: email_admin_secret
+        value: ''
+        label: Email System Config password
+        field_type: text_field
+        select_collection: ''
+        tooltip: Not saved
+        hint: ''
+        placeholder: 'Not saved '
+        comment: ''
+        regex_validator: ".*"
+        regex_invalid_message: wrong go back and try again
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  default_domain:
+    name: default_domain
+    label: Default Domain
+    description: Default Domain
+    no_save: 
+    params:
+      default_domain:
+        name: default_domain
+        value: 
+        label: Default Domain
+        field_type: text_field
+        select_collection: ''
+        tooltip: " "
+        hint: default domain name
+        placeholder: " "
+        comment: " "
+        regex_validator: ".*"
+        regex_invalid_message: 
+        mandatory: true
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  anti_spam_rbls:
+    name: anti_spam_rbls
+    label: Anti Spam lookup list
+    description: Used to block known spammers
+    no_save: false
+    params:
+      zen_spamhaus_org:
+        name: zen_spamhaus_org
+        value: 'false'
+        label: zen.spamhaus.org
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dnsbl_sorbs_net:
+        name: dnsbl_sorbs_net
+        value: 'false'
+        label: dnsbl.sorbs.net
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dsn_rfc-ignorant_org:
+        name: dsn_rfc-ignorant_org
+        value: 'false'
+        label: dsn.rfc-ignorant.org
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      cbl_abuseat_org:
+        name: cbl_abuseat_org
+        value: 'false'
+        label: cbl.abuseat.org
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      dnsbl_njabl_org:
+        name: dnsbl_njabl_org
+        value: 'false'
+        label: dnsbl.njabl.org
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      bl_spamcop_net:
+        name: bl_spamcop_net
+        value: 'false'
+        label: bl.spamcop.net
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+  grey_listing:
+    name: grey_listing
+    label: Grey Listing
+    description: ''
+    no_save: false
+    params:
+      enable_grey_listing:
+        name: enable_grey_listing
+        value: 'false'
+        label: Enable
+        field_type: boolean
+        select_collection: ''
+        tooltip: ''
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      grey_list_delay:
+        name: grey_list_delay
+        value: '120'
+        label: delay
+        field_type: ''
+        select_collection: ''
+        tooltip: Delay between first contact and accepting email in seconds
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      whitelist_clients:
+        name: whitelist_clients
+        value: ''
+        label: 'White Listed Clients '
+        field_type: text_area
+        select_collection: ''
+        tooltip: List of Addresses or hostnames
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+      whitelist_addresses:
+        name: whitelist_addresses
+        value: ''
+        label: White Listed Adresses
+        field_type: text_area
+        select_collection: ''
+        tooltip: List of email adresses
+        hint: ''
+        placeholder: ''
+        comment: ''
+        regex_validator: ''
+        regex_invalid_message: ''
+        mandatory: false
+        ask_at_build_time: false
+        build_time_only: false
+        immutable: false
+service_actionators: {}
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'

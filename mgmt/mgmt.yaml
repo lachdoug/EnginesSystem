@@ -1,0 +1,24 @@
+---
+type_path: mgmt
+publisher_namespace: EnginesSystem
+accepts: []
+author: 
+title: Management GUI
+description: ''
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: mgmt
+service_handle_field: ''
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params: {}
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

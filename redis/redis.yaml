@@ -1,0 +1,41 @@
+---
+type_path: redis
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+author: 
+title: redis
+description: ''
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: redis
+service_handle_field: redis-host
+dedicated: true
+persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  redis-host:
+    name: redis-host
+    value: " _Engines_Builder(engine_name)-redis.engines.internal"
+    label: ''
+    field_type: ''
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

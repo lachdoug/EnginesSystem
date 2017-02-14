@@ -1,0 +1,131 @@
+---
+type_path: filesystem/local/filesystem
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: Volume service
+description: Provides Persistant File Storage
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: volmanager
+service_handle_field: service_name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: true
+target_environment_variables:
+  VOLDIR:
+    environment_name: VOLDIR
+    variable_name: engine_path
+  volume_name:
+    environment_name: volume_name
+    variable_name: service_name
+consumer_params:
+  service_name:
+    name: service_name
+    value: _Engines_Builder(engine_name)
+    label: service tag name
+    field_type: text_field
+    select_collection: ''
+    tooltip: service tag name
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+  volume_src:
+    name: volume_src
+    value: ''
+    label: volume src path
+    field_type: text_field
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  engine_path:
+    name: engine_path
+    value: " "
+    label: engine_path
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  permissions:
+    name: permissions
+    value: rw
+    label: permissions
+    field_type: select_single
+    select_collection: '["rw", "ro"]'
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  user:
+    name: user
+    value: _Engines_Builder(data_uid)
+    label: user
+    field_type: text_field
+    select_collection: ''
+    tooltip: service tag name
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+  group:
+    name: group
+    value: _Engines_Builder(data_gid)
+    label: group
+    field_type: text_field
+    select_collection: ''
+    tooltip: service tag name
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'

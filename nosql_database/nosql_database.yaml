@@ -1,0 +1,106 @@
+---
+type_path: nosql_database
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: Mongo NoSQL  Database
+description: 'Mongo NoSQL Database '
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: mongo_server
+service_handle_field: database_name
+dedicated: false
+persistent: false
+immutable: true
+attach_post_build: false
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  dbpassword:
+    name: dbpassword
+    value: " "
+    label: DB Password
+    field_type: password_with_confirmation
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  dbusername:
+    name: dbusername
+    value: " "
+    label: DB User Name
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  database_name:
+    name: database_name
+    value: " "
+    label: Database name
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  database_host:
+    name: database_host
+    value: " "
+    label: database_host
+    field_type: text_field
+    select_collection: ''
+    tooltip: Local or the ip address/hostname of the database server
+    hint: " "
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: wrong go back and try again
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+  root_access:
+    name: root_access
+    value: 'false'
+    label: root_access
+    field_type: boolean
+    select_collection: ''
+    tooltip: ''
+    hint: ''
+    placeholder: ''
+    comment: ''
+    regex_validator: ''
+    regex_invalid_message: ''
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}

@@ -1,0 +1,42 @@
+---
+type_path: avahi
+publisher_namespace: EnginesSystem
+accepts:
+- ManagedEngine
+- ManagedService
+author: Engines
+title: Zero Conf
+description: Resolves engines .local names to engines IP address
+major: 0
+minor: 0
+release_level: Alpha
+patch: 0
+service_container: avahi
+service_handle_field: hostname
+dedicated: false
+persistent: false
+immutable: true
+attach_post_build: true
+attach_requires_restart: false
+target_environment_variables: 
+consumer_params:
+  hostname:
+    name: hostname
+    value: " "
+    label: hostname
+    field_type: text_field
+    select_collection: ''
+    tooltip: " "
+    hint: hostname
+    placeholder: " "
+    comment: " "
+    regex_validator: ".*"
+    regex_invalid_message: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+type_consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}
