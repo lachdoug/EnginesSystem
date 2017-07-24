@@ -1,257 +1,347 @@
 ---
-type_path: cert_auth
 publisher_namespace: EnginesSystem
-accepts: []
-author: Engines
-title: Cert Auth
-description: Certificate management
-major: 0
+type_path: cert_auth
+accepts:
+- ManagedEngine
+- ManagesService
+title: 
+description: 
+major: 1
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: cert_auth
 service_handle_field: cert_name
-dedicated: false
+dedicated: 
 persistent: true
-immutable: false
+immutable: 
 attach_post_build: true
-attach_requires_restart: false
+attach_requires_restart: 
+soft_service: 
 target_environment_variables: 
 consumer_params:
   country:
     name: country
-    value: ''
-    label: Country
-    field_type: text_field
-    select_collection: ''
-    tooltip: 2 Character Country Code
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".2"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Country code
+      comment: 
+      hint: two letter code
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: "[a-zA-Z][a-zA-Z]"
+        message: 
   state:
     name: state
-    value: ''
-    label: State
-    field_type: text_field
-    select_collection: ''
-    tooltip: State
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  organisation:
-    name: organisation
-    value: ''
-    label: organisation
-    field_type: text_field
-    select_collection: ''
-    tooltip: Organisation
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: State
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
+  " organisation ":
+    name: " organisation "
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: 
+    input:
+      label: 'Organization '
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
   city:
     name: city
-    value: ''
-    label: city
-    field_type: text_field
-    select_collection: ''
-    tooltip: City/Location
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: City
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
   person:
     name: person
-    value: ''
-    label: person
-    field_type: text_field
-    select_collection: ''
-    tooltip: person/OU
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Person
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
   cert_name:
     name: cert_name
-    value: ''
-    label: cert name name
-    field_type: text_field
-    select_collection: ''
-    tooltip: Cert name usually domainname
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Certificate Name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
   domainname:
     name: domainname
-    value: ''
-    label: domainname
-    field_type: text_field
-    select_collection: ''
-    tooltip: domainname or CN
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    value: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Domain Name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
+  hostname:
+    name: hostname
+    value: 
+    mandatory: 
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Host name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
+  alt_names:
+    name: alt_names
+    value: 
+    mandatory: 
+    ask_at_build_time: 
+    build_time_only: 
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: Alt names
+      comment: alternative names space seperated
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: 
+      validation:
+        pattern: 
+        message: 
+type_consumer_params: type_consumer_params.form_data.map{ |v| { v[:name].to_sym =>
+  v } }.inject(:merge)
 configurators:
   system_ca:
     name: system_ca
     label: Root Certificate Authority
-    description: Public Cert for key used to signed all Certificates issued by the
-      engines host
-    no_save: true
-    params:
-      cert_name:
-        name: cert_name
-        value: ''
-        label: cert name name
-        field_type: text_field
-        select_collection: ''
-        tooltip: Cert name usually domainname
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      domainname:
-        name: domainname
-        value: ''
-        label: domainname
-        field_type: text_field
-        select_collection: ''
-        tooltip: domainname or CN
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      person:
-        name: person
-        value: ''
-        label: person
-        field_type: text_field
-        select_collection: ''
-        tooltip: person/OU
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      organisation:
-        name: organisation
-        value: ''
-        label: organisation
-        field_type: text_field
-        select_collection: ''
-        tooltip: Organisation
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      city:
-        name: city
-        value: ''
-        label: city
-        field_type: text_field
-        select_collection: ''
-        tooltip: City/Location
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      state:
-        name: state
-        value: ''
-        label: State
-        field_type: text_field
-        select_collection: ''
-        tooltip: State
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      country:
-        name: country
-        value: ''
-        label: Country
-        field_type: text_field
-        select_collection: ''
-        tooltip: 2 Character Country Code
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".2"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
+    description: 'Public Cert for key used to signed all Certificates issued by the
+      engines host '
+    enable_logging: 
+    script:
+      language: sh
+      content: "#!/bin/bash\r\n\r\nif test -f /home/certs/store/private/ca/keys/system_CA.key\r\n\tthen\t\r\n\t#
+        echo \"CA Exists\"\r\n\t# exit 127\r\n    cp /home/certs/store/public/ca/certs/system_CA.pem
+        \ /home/certs/store/public/ca/certs/system_CA.pem.bak\r\n    # rm /home/certs/store/public/ca/certs/system_CA.pem\r\n
+        \   cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key.bak\r\n
+        \   #rm /home/certs/store/private/ca/keys/system_CA.key \r\nfi\r\n\r\n. /home/engines/functions/params_to_env.sh\r\nPARAMS_FILE=/home/configurators/saved/ca_setup\r\nparms_to_file_and_env\r\n\r\ncp
+        /home/configurators/saved/ca_setup /home/configurators/saved/ca_params\r\n\r\necho
+        $country >/home/configurators/saved/ca_setup\r\necho $state >>/home/configurators/saved/ca_setup\r\necho
+        $city >>/home/configurators/saved/ca_setup\r\necho $person >>/home/configurators/saved/ca_setup\r\necho
+        $organisation >>/home/configurators/saved/ca_setup\r\ncp /home/configurators/saved/ca_setup
+        /home/configurators/saved/cn_defaults\r\necho $domainname CA  >>/home/configurators/saved/ca_setup\r\necho
+        \"\" >>/home/configurators/saved/ca_setup\r\necho \"\" >>/home/configurators/saved/ca_setup\r\nmkdir
+        -p /home/certs/store/public/ca/keys/\r\nmkdir -p /home/certs/store/public/ca/certs\r\nmkdir
+        -p /home/certs/store/private/ca/keys/\r\nchmod og-rwx  /home/certs/store/private/ca/keys/\r\n
+        \r\nopenssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048\r\nopenssl
+        req -x509 -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key
+        -days 1024 -sha256 -out /home/certs/store/public/ca/certs/system_CA.pem <
+        /home/configurators/saved/ca_setup\r\n        \r\n"
+    variables:
+    - name: cert_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Certificate Name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: domainname
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Domain Name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: person
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Person
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: organisation
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Organization
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: city
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: City
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: state
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: State
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: 
+          message: 
+    - name: country
+      value: 
+      mandatory: 
+      input:
+        label: 
+        type: string
+        title: Country 2 letter code
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: 
+        validation:
+          pattern: "[a-zA-Z][a-zA-Z]"
+          message: Country 2 letter code 2 letters only
+service_actionators: 
 constants:
   backup_support:
     name: backup_support
