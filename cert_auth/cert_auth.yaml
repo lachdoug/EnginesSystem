@@ -8,7 +8,7 @@ title:
 description: 
 major: 1
 minor: 0
-release_level: beta
+release_level: rc
 patch: 0
 service_container: cert_auth
 service_handle_field: cert_name
