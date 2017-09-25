@@ -11,3 +11,27 @@ service_handle_field: na
 persistent: true
 type_consumer_params: type_consumer_params.form_data.map{ |v| { v[:name].to_sym =>
   v } }.inject(:merge)
+service_actionators:
+  add_user:
+    name: add_user
+    label: Add User
+    return_type: plain_text
+    variables:
+    - name: first_name
+      mandatory: true
+      input:
+        label: First Name
+        type: string
+    - name: last_name
+      mandatory: true
+      input:
+        label: Last Name
+        type: string
+    - name: nitialsi
+      input:
+        label: Initials
+        type: string
+  list_users:
+    name: list_users
+    label: List Users
+    return_type: json
