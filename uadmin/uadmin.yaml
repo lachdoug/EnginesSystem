@@ -35,3 +35,14 @@ service_actionators:
     name: list_users
     label: List Users
     return_type: json
+  del_user:
+    name: del_user
+    label: Delete User
+    return_type: plain_text
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        label: User Name
+        type: string
+        comment: first_initialLast_Name as in jdoe
