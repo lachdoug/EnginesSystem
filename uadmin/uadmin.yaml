@@ -1,0 +1,13 @@
+---
+publisher_namespace: EnginesSystem
+type_path: uadmin
+title: uadmin
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: uadmin
+service_handle_field: na
+persistent: true
+type_consumer_params: type_consumer_params.form_data.map{ |v| { v[:name].to_sym =>
+  v } }.inject(:merge)
