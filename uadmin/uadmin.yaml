@@ -46,3 +46,12 @@ service_actionators:
         label: User Name
         type: string
         comment: first_initialLast_Name as in jdoe
+  user_details:
+    name: user_details
+    label: User details
+    return_type: none
+    variables:
+    - name: uid
+      input:
+        label: Username
+        type: string
