@@ -9,8 +9,6 @@ patch: 0
 service_container: uadmin
 service_handle_field: na
 persistent: true
-type_consumer_params: type_consumer_params.form_data.map{ |v| { v[:name].to_sym =>
-  v } }.inject(:merge)
 service_actionators:
   add_user:
     name: add_user
@@ -54,4 +52,13 @@ service_actionators:
     - name: uid
       input:
         label: Username
+        type: string
+  add_email_to_user:
+    name: add_email_to_user
+    label: Add Email Address to user
+    return_type: plain_text
+    variables:
+    - name: email_address
+      input:
+        label: Email Address
         type: string
