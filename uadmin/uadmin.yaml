@@ -10,12 +10,34 @@ service_container: uadmin
 service_handle_field: na
 persistent: true
 service_actionators:
+  add_email_to_user:
+    name: add_email_to_user
+    label: Add Email Address to user
+    return_type: json
+    variables:
+    - name: email_address
+      input:
+        label: Email Address
+        type: string
+  add_user_to_group:
+    name: add_user_to_group
+    label: Add User to Group
+    return_type: json
+    variables:
+    - name: uid
+      input:
+        label: User id
+        type: string
+    - name: group
+      input:
+        label: Group Name
+        type: string
   add_user:
     name: add_user
     label: Add User
-    return_type: plain_text
+    return_type: json
     variables:
-    - name: first_name
+    - name: given_name
       mandatory: true
       input:
         label: First Name
@@ -25,18 +47,24 @@ service_actionators:
       input:
         label: Last Name
         type: string
-    - name: nitialsi
+    - name: middle_name
       input:
-        label: Initials
+        label: Middle name(s)
         type: string
-  list_users:
-    name: list_users
-    label: List Users
-    return_type: json
+    - name: password
+      mandatory: true
+      input:
+        type: password_with_confirmation
+    - name: email_user
+      value: 'true'
+      mandatory: true
+      input:
+        type: boolean
+        title: Email Support
   del_user:
     name: del_user
     label: Delete User
-    return_type: plain_text
+    return_type: json
     variables:
     - name: uid
       mandatory: true
@@ -44,6 +72,70 @@ service_actionators:
         label: User Name
         type: string
         comment: first_initialLast_Name as in jdoe
+  list_group_members:
+    name: list_group_members
+    label: Groups Member
+    return_type: json
+    variables:
+    - name: group_name
+      input:
+        label: Group Name
+        type: string
+  list_groups:
+    name: list_groups
+    label: List Groups
+    return_type: json
+  list_user_email_adresses:
+    name: list_user_email_adresses
+    label: List Email address for user
+    return_type: json
+    variables:
+    - name: uid
+      input:
+        label: User Name
+        type: string
+  list_users:
+    name: list_users
+    label: List Users
+    return_type: json
+  mod_user:
+    name: mod_user
+    label: Modify User
+    return_type: json
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        type: string
+        title: User Id
+  rm_email_address_from_user:
+    name: rm_email_address_from_user
+    label: Remove email address from User
+    return_type: none
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        type: string
+        title: User ID
+    - name: email_address
+      input:
+        type: string
+        title: Email Address
+  rm_user_from_group:
+    name: rm_user_from_group
+    label: Remove User From Group
+    return_type: json
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        type: string
+        title: User ID
+    - name: group_name
+      input:
+        type: string
+        title: Group Name
   user_details:
     name: user_details
     label: User details
@@ -52,13 +144,4 @@ service_actionators:
     - name: uid
       input:
         label: Username
-        type: string
-  add_email_to_user:
-    name: add_email_to_user
-    label: Add Email Address to user
-    return_type: plain_text
-    variables:
-    - name: email_address
-      input:
-        label: Email Address
         type: string
