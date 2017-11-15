@@ -39,3 +39,12 @@ configurators:
       mandatory: true
       input:
         type: string
+service_actionators:
+  list_hosts:
+    name: list_hosts
+    label: List host
+    return_type: json
+  list_servces:
+    name: list_servces
+    label: 'List Services '
+    return_type: none
