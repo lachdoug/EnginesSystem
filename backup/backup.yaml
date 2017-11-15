@@ -1,384 +1,305 @@
 ---
-type_path: backup
 publisher_namespace: EnginesSystem
+type_path: backup
 accepts:
 - ManagedEngine
 - ManagedService
 - filesystem/local/filesystem
 - database/sql/mysql
 - database/sql/pgsql
-- database/nosql/mongo/
-author: Engines
-title: Backup
-description: Backup tasks
+- database/nosql/mongo
+title: Backup System
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: backup
 service_handle_field: backup_name
-dedicated: false
-persistent: false
-immutable: false
 attach_post_build: true
-attach_requires_restart: false
-target_environment_variables: 
 consumer_params:
   src_type:
     name: src_type
     value: engine
-    label: 
-    field_type: hidden
-    select_collection: ''
-    tooltip: 
-    hint: 
-    placeholder: 
-    comment: 
-    regex_validator: 
-    regex_invalid_message: 
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  email:
-    name: email
-    value: ''
-    label: Notification Email
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: " "
-    comment: " "
-    regex_validator: ".[@].*"
-    regex_invalid_message: Please enter a valid email address
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    input:
+      type: hidden
   sources:
     name: sources
-    value: _Engines_Builder(engine_persistent_services)
-    label: ''
-    field_type: hidden
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  dest_pass:
-    name: dest_pass
-    value: ''
-    label: password
-    field_type: password
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong  try again
+    value: " _Engines_Builder(engine_persistent_services)"
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  dest_user:
-    name: dest_user
-    value: ''
-    label: user_name
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  dest_folder:
-    name: dest_folder
-    value: ''
-    label: destination folder
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    input:
+      type: hidden
+  email:
+    name: email
+    ask_at_build_time: true
+    input:
+      label: email
+      type: email
+      title: Notification email
+      validation:
+        pattern: ".[@].*"
+        message: 'Please enter a valid email address   '
   dest_proto:
     name: dest_proto
-    value: 
-    label: Backup Destination Type
-    field_type: select
-    select_collection: '["ftp", "local", "smbfs", "nfs", "s3"]'
-    tooltip: " "
-    hint: ''
-    placeholder: 'a label '
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  dest_address:
-    name: dest_address
-    value: ''
-    label: destination
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  backup_name:
-    name: backup_name
-    value: ''
-    label: Backup Name
-    field_type: text_field
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
     mandatory: true
     ask_at_build_time: true
-    build_time_only: false
+    input:
+      label: dest_proto
+      type: select
+      title: Destination Protocol
+      collection:
+        items:
+          ftp: ftp
+          local: local
+          smbfs: smbfs
+          s3: s3
+        include_blank: true
+  dest_user:
+    name: dest_user
+    input:
+      label: dest_user
+      type: string
+      title: Destination username
+  dest_pass:
+    name: dest_pass
+    mandatory: true
+    input:
+      label: password
+      type: password
+      title: Destination password
+      validation:
+        pattern: ".*"
+        message: Please enter password
+  dest_address:
+    name: dest_address
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      type: string
+      title: 'Destination address '
+      comment: FQDN or ip address
+  dest_folder:
+    name: dest_folder
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      label: dest_folder
+      type: string
+      title: Destination Folder
+  backup_name:
+    name: backup_name
+    mandatory: true
+    ask_at_build_time: true
     immutable: true
+    input:
+      type: string
+      title: Backup Name
+      comment: Unique for distination/folder
   backup_type:
     name: backup_type
-    value: full
-    label: ''
-    field_type: hidden
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
+    mandatory: true
+    ask_at_build_time: true
     immutable: true
-type_consumer_params: {}
+    input:
+      label: backup_type
+      type: select
+      title: Backup Type
+      collection:
+        items:
+          full: Full
+          incre: Incremental
 configurators:
   backup_notification_email:
     name: backup_notification_email
-    label: email
-    description: Backup notification email
-    no_save: 
-    params:
-      backup_email:
-        name: backup_email
-        value: 
-        label: Backup System email notifcations
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: 'email address '
-        comment: " "
-        regex_validator: ".*[@]"
-        regex_invalid_message: muse be an email
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
+    description: 'Backup notification email '
+    enable_logging: true
+    variables:
+    - name: backup_email
+      input:
+        label: 'backup_email '
+        type: email
+        title: Ntoifcation Email
   system_backup:
     name: system_backup
-    label: System Backup
-    description: Configure System Backup settings
-    no_save: 
-    params:
-      include_logs:
-        name: include_logs
-        value: 
-        label: Backup Logs
-        field_type: select
-        select_collection: "[true, false]"
-        tooltip: " "
-        hint: ''
-        placeholder: 'a label '
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      include_files:
-        name: include_files
-        value: 
-        label: Backup File Systems
-        field_type: select
-        select_collection: "[true, false]"
-        tooltip: " "
-        hint: ''
-        placeholder: 'a label '
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      include_services:
-        name: include_services
-        value: ''
-        label: Backup Services
-        field_type: select
-        select_collection: "[true, false]"
-        tooltip: ''
-        hint: ''
-        placeholder: ''
-        comment: File system and logs backed up seperately
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      include_system:
-        name: include_system
-        value: 
-        label: Backup System
-        field_type: select
-        select_collection: "[true, false]"
-        tooltip: " "
-        hint: ''
-        placeholder: 'a label '
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      frequency:
-        name: frequency
-        value: 
+    label: System Backup setup
+    enable_logging: true
+    variables:
+    - name: include_logs
+      value: 'true'
+      input:
+        type: boolean
+    - name: include_files
+      value: 'true'
+      input:
+        type: boolean
+        title: Include files
+    - name: include_services
+      value: 'true'
+      input:
+        type: boolean
+        title: Backup services
+    - name: include_system
+      value: 'true'
+      input:
+        type: boolean
+        title: Include system
+    - name: frequency
+      input:
         label: Backup Frequency
-        field_type: select
-        select_collection: '["nightly", "weekly", "monthly"]'
-        tooltip: " "
-        hint: ''
-        placeholder: 'a label '
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
+        type: select
+        collection:
+          items:
+            nightly: Nightly
+            weekly: monthly
   default_destination:
     name: default_destination
     label: Default Backup settings
-    description: Configure Default Backup settings
-    no_save: 
-    params:
-      dest_pass:
-        name: dest_pass
-        value: " "
-        label: password
-        field_type: password
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dest_user:
-        name: dest_user
-        value: " "
-        label: user_name
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dest_folder:
-        name: dest_folder
-        value: " "
-        label: destination folder
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dest_address:
-        name: dest_address
-        value: " "
-        label: destination
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dest_proto:
-        name: dest_proto
-        value: 
-        label: Backup Destination Type
-        field_type: select
-        select_collection: '["ftp", "local", "smbfs", "nfs", "s3"]'
-        tooltip: " "
-        hint: ''
-        placeholder: 'a label '
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
-constants: {}
+    enable_logging: true
+    variables:
+    - name: dest_pass
+      input:
+        label: Destination password
+        type: password_with_confirmation
+    - name: dest_proto
+      mandatory: true
+      input:
+        type: select
+        title: 'Backup destination type '
+        collection:
+          items:
+            ftp: ftp
+            local: local
+            s3: AWS S3 bucket
+            smbfs: smbfs
+    - name: dest_address
+      mandatory: true
+      input:
+        label: Destinaton address fqdn | ip address
+        type: string
+    - name: dest_user
+      mandatory: true
+      input:
+        label: Destination username
+        type: string
+    - name: dest_folder
+      mandatory: true
+      input:
+        type: string
+        title: Destination folder
+service_actionators:
+  download_public_key:
+    name: download_public_key
+    label: Dowload public key
+    return_type: file
+    return_file_name: backup_key.pub
+  download_private_key:
+    name: download_private_key
+    label: Download private key
+    return_type: file
+    return_file_name: backup_key.priv
+    enable_logging: true
+  show_backup_password:
+    name: show_backup_password
+    label: Show Backup Password
+    return_type: json
+    enable_logging: true
+  restore:
+    name: restore
+    label: Restore
+    return_type: plain_text
+    enable_logging: true
+    variables:
+    - name: type
+      mandatory: true
+      input:
+        label: 'Restore type '
+        type: select
+        collection:
+          items:
+            all: All
+            system: System
+            registry: Registry
+            service: Service
+            app: Application
+            volume: Volume
+    - name: before
+      input:
+        label: Before Date
+        type: date
+    - name: source
+      input:
+        label: Source
+        type: string
+        hint: service | app name
+    - name: section
+      input:
+        label: Section
+        type: string
+        hint: 'Restore just a dir or db or .. or table '
+  set_backup_credentials:
+    name: set_backup_credentials
+    label: Credentials for Restore
+    return_type: plain_text
+    enable_logging: true
+    variables:
+    - name: backup_password
+      mandatory: true
+      input:
+        type: password_with_confirmation
+        title: Password
+    - name: pub_key
+      mandatory: true
+      input:
+        type: text
+        title: Public Key
+    - name: priv_key
+      mandatory: true
+      input:
+        type: text
+        title: Private Key
+  set_key_id:
+    name: set_key_id
+    label: Set key id
+    return_type: plain_text
+    enable_logging: true
+    variables:
+    - name: disabled
+      input:
+        type: boolean
+    - name: key_id
+      input:
+        type: string
+        title: Key ID
+  run_backup:
+    name: run_backup
+    label: Run Backup
+    return_type: plain_text
+    enable_logging: true
+    variables:
+    - name: backup_name
+      input:
+        label: Leave blank for complete
+        type: string
+        title: Back Up Name
+  list_backups:
+    name: list_backups
+    label: List Backups
+    return_type: json
+    enable_logging: true
+  status:
+    name: status
+    label: Status
+    return_type: json
+  backup_logs:
+    name: backup_logs
+    label: Backup logs
+    return_type: json
+    variables:
+    - name: 'backup_name '
+      input:
+        label: Backup Name
+        type: string
+        comment: name from backup list
+    - name: date
+      input:
+        type: date
+        title: Date
