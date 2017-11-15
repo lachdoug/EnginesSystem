@@ -186,8 +186,8 @@ service_actionators:
     label: System CA
     return_type: file
     return_file_name: enginesCA.crt
-  se_default:
-    name: se_default
+  set_default:
+    name: set_default
     label: Set Default
     return_type: plain_text
     enable_logging: true
@@ -220,6 +220,7 @@ service_actionators:
     return_type: json
     variables:
     - name: country
+      mandatory: true
       input:
         label: Country 2 letter code
         type: string
