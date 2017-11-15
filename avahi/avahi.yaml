@@ -1,42 +1,41 @@
 ---
-type_path: avahi
 publisher_namespace: EnginesSystem
+type_path: avahi
 accepts:
 - ManagedEngine
-- ManagedService
-author: Engines
-title: Zero Conf
-description: Resolves engines .local names to engines IP address
+- ManagesService
+title: avahi
+description: Provides zeroconf support
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: avahi
 service_handle_field: hostname
-dedicated: false
-persistent: false
-immutable: true
 attach_post_build: true
-attach_requires_restart: false
-target_environment_variables: 
+soft_service: true
 consumer_params:
   hostname:
     name: hostname
-    value: " "
-    label: hostname
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: hostname
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
+    value: " _Engines_Builder(engine_name)"
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+    input:
+      type: string
+  name:
+    name: name
+    value: " _Engines_Builder(engine_name)"
+    mandatory: true
+    immutable: true
+    input:
+      type: string
+configurators:
+  'default_mdns_domain ':
+    name: 'default_mdns_domain '
+    label: 'default_mdns_domain '
+    variables:
+    - name: 'default_mdns_domain '
+      value: engines.local
+      mandatory: true
+      input:
+        type: string
