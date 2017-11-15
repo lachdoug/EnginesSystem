@@ -1,90 +1,35 @@
 ---
-type_path: auth
 publisher_namespace: EnginesSystem
-accepts: []
-author: Engines
+type_path: auth
+accepts:
+- ManagedEngine
+- ManagesService
 title: Auth
-description: Credential management
+description: Kerberos for engines
 major: 0
 minor: 0
-release_level: Alpha
+release_level: rc
 patch: 0
 service_container: auth
-service_handle_field: engine
-dedicated: false
+service_handle_field: kerberos
 persistent: true
-immutable: false
-attach_post_build: false
-attach_requires_restart: false
-target_environment_variables: 
+target_environment_variables:
+  kerberos:
+    variable_name: kerberos
+    environment_variable_name: K_KEY
 consumer_params:
-  service:
-    name: service
-    value: ''
-    label: service
-    field_type: text_field
-    select_collection: ''
-    tooltip: service
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+  kerberos:
+    name: kerberos
+    value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  command:
-    name: command
-    value: ''
-    label: command
-    field_type: text_field
-    select_collection: ''
-    tooltip: service
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  pubkey:
-    name: pubkey
-    value: _Engines_System(pubkey)
-    label: pubkey
-    field_type: text_field
-    select_collection: ''
-    tooltip: pubkey
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  engine:
-    name: engine
-    value: _Builder(engine_name)
-    label: User name
-    field_type: text_field
-    select_collection: ''
-    tooltip: User name
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
+    ask_at_build_time: true
+    immutable: true
+    input:
+      type: string
+      title: Key Name
+      validation:
+        pattern: "^[a-zA-Z]+$"
+        message: letters only
 constants:
   backup_support:
     name: backup_support
