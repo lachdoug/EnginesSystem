@@ -1,0 +1,10 @@
+---
+publisher_namespace: EnginesSystem
+type_path: control
+title: Control panel
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: control
+service_handle_field: control
