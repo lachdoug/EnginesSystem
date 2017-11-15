@@ -1,0 +1,267 @@
+---
+publisher_namespace: EnginesSystem
+type_path: certs
+accepts:
+- ManagedEngine
+- ManagedService
+title: Certificate Management
+major: 0
+minor: 0
+release_level: beta
+patch: 0
+service_container: certs
+service_handle_field: cert_name
+persistent: true
+attach_post_build: true
+consumer_params:
+  country:
+    name: country
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      type: string
+      title: Country
+      hint: '2 Character Country Code  '
+      placeholder: XX
+      validation:
+        pattern: "[a-zA-Z][a-zA-Z]"
+        message: Two Letters Only
+  state:
+    name: state
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      label: State
+      type: string
+  organisation:
+    name: organisation
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      label: Organization
+      type: string
+  person:
+    name: person
+    mandatory: true
+    ask_at_build_time: true
+    input:
+      label: person
+      type: string
+      title: Person
+  cert_name:
+    name: cert_name
+    mandatory: true
+    input:
+      label: cert_name
+      type: string
+      title: Certificate name
+  domainname:
+    name: domainname
+    ask_at_build_time: true
+    input:
+      label: domainname
+      type: string
+      title: Domain name
+  hostname:
+    name: hostname
+    ask_at_build_time: true
+    input:
+      label: hostname
+      type: string
+      title: Hostname
+  alt_names:
+    name: alt_names
+    input:
+      label: alt_names
+      type: string
+      title: Alt names
+      hint: space seperated list of hostnames
+configurators:
+  system_ca:
+    name: system_ca
+    label: Root Certificate Authority
+    no_save: true
+    variables:
+    - name: cert_name
+      mandatory: true
+      input:
+        label: cert_name
+        type: string
+        title: 'cert name name  '
+    - name: domainname
+      input:
+        label: domainname
+        type: string
+        title: Domain name
+    - name: person
+      input:
+        label: person
+        type: string
+        title: Person
+    - name: organisation
+      mandatory: true
+      input:
+        label: organisation
+        type: string
+        title: Organization
+    - name: city
+      mandatory: true
+      input:
+        label: city
+        type: string
+        title: City
+    - name: state
+      mandatory: true
+      input:
+        label: state
+        type: string
+        title: State
+    - name: country
+      input:
+        label: country
+        type: string
+        title: Country 2 letter code
+        placeholder: xx
+        validation:
+          pattern: "[a-zA-Z][a-zA-Z]"
+          message: 2 letter code only
+service_actionators:
+  fetch_cert:
+    name: fetch_cert
+    label: Retrieve Cert
+    return_type: file
+    return_file_name: certificate
+    variables:
+    - name: cert_name
+      mandatory: true
+      input:
+        label: Certificate name
+        type: string
+    - name: store
+      mandatory: true
+      input:
+        label: Store
+        type: string
+        hint: 'imported|container type/name '
+  import_cert:
+    name: import_cert
+    label: Import certificate
+    return_type: none
+    variables:
+    - name: certificate
+      mandatory: true
+      input:
+        type: text
+        title: Certificate
+    - name: private_key
+      mandatory: true
+      input:
+        type: text
+        title: Private key
+    - name: Password
+      input:
+        type: password
+  list_certs:
+    name: list_certs
+    label: List certificates
+    return_type: json
+  remove_cert:
+    name: remove_cert
+    label: Remove Certificate
+    return_type: none
+    variables:
+    - name: cert_name
+      mandatory: true
+      input:
+        label: Certificate name
+        type: string
+    - name: store
+      mandatory: true
+      input:
+        label: Store
+        type: string
+        hint: imported|container_type/name
+  system_ca:
+    name: system_ca
+    label: System CA
+    return_type: file
+    return_file_name: enginesCA.crt
+  se_default:
+    name: se_default
+    label: Set Default
+    return_type: plain_text
+    enable_logging: true
+    variables:
+    - name: target
+      value: default
+      mandatory: true
+      input:
+        label: Target
+        type: string
+        hint: default|service
+    - name: cert_name
+      mandatory: true
+      input:
+        label: Certificate name
+        type: string
+    - name: store
+      mandatory: true
+      input:
+        label: Store
+        type: string
+        hint: 'imported| ctype/cname/  '
+  list_services_defaults:
+    name: list_services_defaults
+    label: List services default certificates
+    return_type: json
+  create_certificate:
+    name: create_certificate
+    label: Create certificate
+    return_type: json
+    variables:
+    - name: country
+      input:
+        label: Country 2 letter code
+        type: string
+        hint: XX
+        validation:
+          pattern: "[a-zA-Z][a-zA-Z]"
+          message: Two letters only
+    - name: State
+      input:
+        label: State
+        type: string
+    - name: organisation
+      input:
+        label: Organization
+        type: string
+    - name: city
+      input:
+        label: City
+        type: string
+    - name: cert_name
+      input:
+        type: string
+    - name: domainname
+      mandatory: true
+      input:
+        type: string
+        title: Domain name
+    - name: hostname
+      mandatory: true
+      input:
+        type: string
+        title: Hostname
+    - name: alt_names
+      input:
+        label: Alternative names
+        type: string
+        hint: 'List of space seperated names   '
+    - name: person
+      input:
+        label: Person
+        type: string
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'
