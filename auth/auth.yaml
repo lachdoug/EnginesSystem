@@ -3,9 +3,9 @@ publisher_namespace: EnginesSystem
 type_path: auth
 accepts:
 - ManagedEngine
-- ManagesService
-title: Auth
-description: Kerberos for engines
+- ManagedService
+title: Authentication ticket service
+description: Kerberos implementation for engines
 major: 0
 minor: 0
 release_level: rc
