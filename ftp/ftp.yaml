@@ -1,0 +1,66 @@
+---
+publisher_namespace: EnginesSystem
+type_path: ftp
+accepts:
+- filesystem/local/filesystem
+title: ftp server
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: ftpd
+service_handle_field: username
+persistent: true
+attach_post_build: true
+consumer_params:
+  folder:
+    name: folder
+    value: "/"
+    mandatory: true
+    input:
+      label: Top level directorty
+      type: string
+  volume:
+    name: volume
+    value: _Engines_Environment(volume_name)
+    mandatory: true
+    immutable: true
+    input:
+      label: Volume name
+      type: string
+  username:
+    name: username
+    value: _Engines_System(service_account())
+    mandatory: true
+    immutable: true
+    input:
+      label: User Name
+      type: string
+  password:
+    name: password
+    value: _Engines_Builder(service_password(8))
+    mandatory: true
+    input:
+      type: password_with_confirmation
+  rw_access:
+    name: rw_access
+    value: 'false'
+    mandatory: true
+    immutable: true
+    input:
+      label: Write access
+      type: boolean
+      comment: 'Write access includes the ability to delete '
+      hint: 'Allow ftp service to write files '
+  ftp_gid:
+    name: ftp_gid
+    value: _Engines_Builder(data_gid)
+    mandatory: true
+    immutable: true
+    input:
+      type: string
+service_actionators:
+  active_users:
+    name: active_users
+    label: List users logged on
+    return_type: json
