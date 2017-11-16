@@ -1,112 +1,71 @@
 ---
-type_path: dns
 publisher_namespace: EnginesSystem
+type_path: dns
 accepts:
 - ManagedEngine
 - ManagedService
-author: Engines
-title: DNS
-description: Resolves names to to IP address
+title: dns server
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: dns
 service_handle_field: hostname
-dedicated: false
-persistent: false
 immutable: true
 attach_post_build: true
-attach_requires_restart: false
-target_environment_variables: 
 consumer_params:
   hostname:
     name: hostname
-    value: " "
-    label: hostname
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: hostname
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
+    input:
+      type: string
   ip:
     name: ip
-    value: " "
-    label: IP Address
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ip address
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
+    input:
+      type: string
+      hint: 'ip address '
   ip_type:
     name: ip_type
-    value: ''
-    label: ip_type
-    field_type: text
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
+    input:
+      label: Internal or External for domain
+      type: select
+      collection:
+        items:
+          lan: Lan
+          wan: External
+        include_blank: true
 configurators:
-  dns_forwarders:
-    name: dns_forwarders
-    label: dns_forwarders
-    description: ''
-    no_save: false
-    params:
-      dns_server2:
-        name: dns_server2
-        value: ''
-        label: 2nd Upstream DNS
-        field_type: text
-        select_collection: ''
-        tooltip: ''
+  'dns_forwarders ':
+    name: 'dns_forwarders '
+    label: DNS forwarders
+    variables:
+    - name: dns_server
+      mandatory: true
+      input:
+        label: DNS Server
+        type: string
+        hint: 'IP address '
+        placeholder: x.x.x.x
+    - name: dns_server
+      input:
+        label: 2nd DNS server
+        type: string
         hint: IP address x.x.x.x
-        placeholder: ''
-        comment: ''
-        regex_validator: ''
-        regex_invalid_message: ''
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dns_server:
-        name: dns_server
-        value: ''
-        label: Upstream DNS
-        field_type: text
-        select_collection: ''
-        tooltip: ''
-        hint: 'IP address x.x.x.x '
-        placeholder: ''
-        comment: ''
-        regex_validator: ''
-        regex_invalid_message: ''
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
-constants: {}
+        placeholder: x.x.x.x
+service_actionators:
+  list_records:
+    name: list_records
+    label: List Records
+    return_type: json
+  list_domains:
+    name: list_domains
+    label: List Domains
+    return_type: json
+  refresh_hosted_domains:
+    name: refresh_hosted_domains
+    label: Refresh hosted domains
+    description: Used by system when external or lan ip changes
+    return_type: none
