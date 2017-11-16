@@ -1,0 +1,227 @@
+---
+publisher_namespace: EnginesSystem
+type_path: ivpn
+title: Ipsec vpn
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: ipsec
+service_handle_field: vpn_name
+configurators:
+  enable_user_vpn:
+    name: enable_user_vpn
+    label: Add user VPN
+    enable_logging: true
+    variables:
+    - name: enable_user_vpn
+      value: 'false'
+      mandatory: true
+      input:
+        type: boolean
+service_actionators:
+  add_site_vpn:
+    name: add_site_vpn
+    label: add site vpn
+    return_type: json
+    variables:
+    - name: vpn_name
+      mandatory: true
+      input:
+        type: string
+    - name: remote_site
+      mandatory: true
+      input:
+        label: remote_endpoint
+        type: string
+        hint: x.x.x.x
+    - name: remote_lan
+      mandatory: true
+      input:
+        label: Remote  lan
+        type: string
+    - name: remote_subnet
+      mandatory: true
+      input:
+        label: remote subnet
+        type: string
+    - name: remote_id
+      input:
+        type: string
+    - name: ike_version
+      input:
+        type: select
+        collection:
+          items:
+            ikev1: IKEv1
+            ikev2: IKv2
+    - name: my_id
+      input:
+        label: My ID
+        type: string
+    - name: psk
+      value: _Engines_System(random(64))
+      mandatory: true
+      input:
+        label: Pre Shared Key
+        type: string
+    - name: phase1_enc_al
+      mandatory: true
+      input:
+        label: Phase 1 Encryption Algorithm
+        type: select
+        collection:
+          items:
+            aes256: AES256
+            aes128: AES128
+            aes192: AES192
+            3DES: 3DES
+    - name: phase1_hash
+      mandatory: true
+      input:
+        label: Phase 1 Hash Algorithm
+        type: select
+        collection:
+          items:
+            sha1: SHA1
+            sha256: SHA256
+            sha384: SHA384
+    - name: phase1_dh_group
+      mandatory: true
+      input:
+        label: " DH Group"
+        type: select
+        collection:
+          items:
+            dhgroup2: 2 (1024 bit)
+            dhgroup5: 5 (1563 bit)
+            dhgroup14: 14 (2048 bit)
+            dhgrop15: 15 (3072 bit)
+    - name: 'disable_rekey '
+      value: 'false'
+      input:
+        label: Disable rekey
+        type: boolean
+    - name: respond_only
+      value: 'false'
+      input:
+        type: boolean
+        title: Respond Only
+    - name: nat_t
+      value: 'false'
+      input:
+        label: Force Nat Traversal
+        type: boolean
+    - name: dpd
+      value: 'true'
+      input:
+        label: Dead peer detection
+        type: boolean
+    - name: dpd_delay
+      input:
+        label: Dead Peer Detection Delay
+        type: integer
+    - name: dpd_max
+      input:
+        type: integer
+        title: Max failures
+    - name: dpd_action
+      input:
+        type: select
+        collection:
+          items:
+            restart: restart
+            clear: clear
+    - name: ike_life
+      value: '36000'
+      input:
+        label: IKE key lifetime
+        type: integer
+    - name: phase2_enc_al
+      mandatory: true
+      input:
+        label: Phase 2 Encryption
+        type: select
+        collection:
+          items:
+            aes: AES
+            3des: 3DES
+    - name: phase2_hash
+      mandatory: true
+      input:
+        label: Phase 2 Hash Algorithm
+        type: select
+        collection:
+          items:
+            sha1: SHA1
+            sha256: SHA256
+            sha384: SHA384
+    - name: pfs
+      value: 'off'
+      input:
+        type: select
+        title: PFS Group
+        collection:
+          items:
+            'off': 'off'
+            '1': 1 (768 bit)
+            '2': 2 (1024 bit)
+            '5': 5 (1536 bit)
+            '14': 14 (2048 bit)
+    - name: sa_life
+      value: '3600'
+      input:
+        label: SA lifetime
+        type: integer
+  rm_vpn:
+    name: rm_vpn
+    label: Remove VPN
+    return_type: none
+    variables:
+    - name: vpn_name
+      mandatory: true
+      input:
+        type: string
+  vpn_status:
+    name: vpn_status
+    return_type: json
+    variables:
+    - name: vpn_name
+      input:
+        type: string
+        placeholder: optional lists all without
+  stop_vpn:
+    name: stop_vpn
+    label: Stop VPN
+    return_type: none
+    variables:
+    - name: vpn_name
+      mandatory: true
+      input:
+        type: string
+  start_vpn:
+    name: start_vpn
+    label: Start Vpn
+    return_type: json
+    variables:
+    - name: vpn_name
+      mandatory: true
+      input:
+        type: string
+  disable_vpn:
+    name: disable_vpn
+    label: Disable vpn
+    return_type: json
+    variables:
+    - name: vpn_name
+      input:
+        label: VPN name
+        type: string
+  list_vpns:
+    name: list_vpns
+    label: List VPNs
+    return_type: json
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'
