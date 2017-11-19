@@ -1,0 +1,10 @@
+---
+publisher_namespace: EnginesSystem
+type_path: openid
+title: OpenID provider
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: openid
+persistent: true
