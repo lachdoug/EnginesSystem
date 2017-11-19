@@ -1,24 +1,49 @@
 ---
-type_path: ldap
 publisher_namespace: EnginesSystem
-accepts: []
-author: 
-title: ldap
-description: ''
+type_path: ldap
+title: ldap server
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: ldap
-service_handle_field: ''
-dedicated: false
+service_handle_field: cn
 persistent: true
-immutable: false
-attach_post_build: false
-attach_requires_restart: false
-target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+consumer_params:
+  type:
+    name: type
+    mandatory: true
+    input:
+      type: select
+      collection:
+        items:
+          group: Group
+          ou: Organizational Unit
+  'parent_engine ':
+    name: 'parent_engine '
+    value: '_Engines_Builder(engine_name) '
+    mandatory: true
+    immutable: true
+    input:
+      type: string
+  cn:
+    name: cn
+    value: _Engines_Builder(engine_name)
+    immutable: true
+    input:
+      type: string
+      title: cn
+service_actionators:
+  set_admin_password:
+    name: set_admin_password
+    label: Set LDAP Admin Password
+    return_type: json
+    variables:
+    - name: current_password
+      input:
+        label: Current Password
+        type: password
+    - name: new_password
+      input:
+        label: New Password
+        type: password_with_confirmation
