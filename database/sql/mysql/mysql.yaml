@@ -12,6 +12,55 @@ patch: 0
 service_container: mysql
 service_handle_field: database_name
 persistent: true
+consumer_params:
+  database_name:
+    name: database_name
+    value: _Engines_Builder(engine_name)
+    mandatory: true
+    immutable: true
+    input:
+      label: Database name
+      type: string
+  database_host:
+    name: database_host
+    value: _Engines_System(mysql_host)
+    mandatory: true
+    input:
+      type: string
+  db_username:
+    name: db_username
+    value: '_Engines_Builder(engine_name) '
+    mandatory: true
+    immutable: true
+    input:
+      label: DB User Name
+      type: boolean
+  db_password:
+    name: db_password
+    value: _Engines_System(random(10))
+    mandatory: true
+    input:
+      type: password_with_confirmation
+  collation:
+    name: collation
+    value: utf8_general_ci
+    mandatory: true
+    immutable: true
+    input:
+      label: Collattion
+      type: select_with_input
+      collection:
+        items:
+          utf8_general_ci: utf8_general_ci
+          ascii: ascii
+          utf8mb4_general_ci: utf8mb4_general_ci
+  full_access:
+    name: full_access
+    value: 'false'
+    input:
+      label: 'Full Database Server Access '
+      type: boolean
+      comment: 'Access to all databases includes the ability to delete '
 configurators:
   db_master_pass:
     name: db_master_pass
@@ -31,3 +80,6 @@ constants:
   backup_support:
     name: backup_support
     value: 'true'
+  db_flavor:
+    name: db_flavor
+    value: mysql2
