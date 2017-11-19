@@ -1,74 +1,44 @@
 ---
-type_path: logview
 publisher_namespace: EnginesSystem
+type_path: logview
 accepts:
-- ManagedEngine
 - ManagedService
-author: 
-title: Log View
-description: ''
+- ManagedEngine
+title: Log view
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: logview
 service_handle_field: log_name
-dedicated: false
-persistent: false
-immutable: false
-attach_post_build: false
-attach_requires_restart: false
-target_environment_variables: 
+attach_post_build: true
 consumer_params:
   log_name:
     name: log_name
-    value: ''
-    label: Log Name
-    field_type: text
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    immutable: true
+    input:
+      label: Log name
+      type: string
   log_file_path:
     name: log_file_path
-    value: ''
-    label: log_file_path
-    field_type: text
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    input:
+      label: Log file path
+      type: string
   log_type:
     name: log_type
     value: raw
-    label: log type
-    field_type: collection
-    select_collection: nginx apache raw syslog nginx_error_log apache_error_log raw_dated
-    tooltip: ''
-    hint: nginx apache raw syslog nginx_error_log apache_error_log raw_dated
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+    input:
+      label: Log file format
+      type: select
+      collection:
+        items:
+          nginx: Nginx
+          apache: Apache
+          syslog: syslog
+          nginx_error_log: Nginx error log
+          apache_error_log: Apache error log
+          raw_dated: Dated raw logs
+          raw: Raw logs
