@@ -1,0 +1,52 @@
+---
+publisher_namespace: EnginesSystem
+type_path: logrotate
+accepts:
+- ManagedEngine
+- ManagedService
+title: logrotate
+major: 0
+minor: 0
+release_level: beta
+patch: 0
+service_container: logrotate
+service_handle_field: log_file_path
+soft_service: true
+consumer_params:
+  log_name:
+    name: log_name
+    mandatory: true
+    immutable: true
+    input:
+      label: Log Name
+      type: string
+  log_file_path:
+    name: log_file_path
+    mandatory: true
+    input:
+      type: string
+      title: Log file path
+  cycle:
+    name: cycle
+    mandatory: true
+    input:
+      label: Cycle
+      type: select
+      collection:
+        items:
+          daily: Daily
+          weekly: Weekly
+          monthly: Monthly
+  rotate:
+    name: rotate
+    value: '12'
+    mandatory: true
+    input:
+      label: Rotations to keep
+      type: integer
+  compress:
+    name: compress
+    value: 'true'
+    input:
+      label: Compress
+      type: boolean
