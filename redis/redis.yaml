@@ -1,41 +1,45 @@
 ---
-type_path: redis
 publisher_namespace: EnginesSystem
+type_path: redis
 accepts:
 - ManagedEngine
-author: 
+- ManagedService
 title: redis
-description: ''
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: redis
-service_handle_field: redis-host
-dedicated: true
-persistent: true
-immutable: false
-attach_post_build: false
-attach_requires_restart: false
-target_environment_variables: 
+service_handle_field: port
+target_environment_variables:
+  password:
+    variable_name: password
+    environment_variable_name: redis_password
+  port:
+    variable_name: port
+    environment_variable_name: redis_port
+  hostname:
+    variable_name: hostname
+    environment_variable_name: redis_hostname
 consumer_params:
-  redis-host:
-    name: redis-host
-    value: " _Engines_Builder(engine_name)-redis.engines.internal"
-    label: ''
-    field_type: ''
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
+  password:
+    name: password
+    value: _Engines_System(random(16))
+    mandatory: true
+    input:
+      label: Password
+      type: password_with_confirmation
+  port:
+    name: port
+    value: _Engines_System(service_resource(redis,next_port))
+    mandatory: true
     immutable: true
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+    input:
+      label: Port
+      type: integer
+  hostname:
+    name: hostname
+    value: redis._Engines_System(internal_domain)
+    mandatory: true
+    input:
+      type: string
