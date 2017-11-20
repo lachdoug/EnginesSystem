@@ -1,216 +1,108 @@
 ---
-type_path: database/sql/pgsql
 publisher_namespace: EnginesSystem
+type_path: database/sql/pgsql
 accepts:
 - ManagedEngine
 - ManagedService
-author: Engines
-title: PgSQL Database
-description: 'Postgres SQL Database '
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
-service_container: pgsql_server
+service_container: psql
 service_handle_field: database_name
-dedicated: false
 persistent: true
-immutable: false
 attach_post_build: true
-attach_requires_restart: false
 target_environment_variables:
-  dbhost:
-    environment_name: dbhost
-    variable_name: database_host
-  dbname:
-    environment_name: dbname
-    variable_name: database_name
-  dbuser:
-    environment_name: dbuser
-    variable_name: dbusername
-  dbpasswd:
-    environment_name: dbpasswd
-    variable_name: dbpassword
-  dbflavor:
-    environment_name: dbflavor
-    variable_name: db_flavor
-  rails_flavor:
-    environment_name: rails_flavor
-    variable_name: rails_flavor
-consumer_params:
-  collation:
-    name: collation
-    value: C
-    label: DB Collation
-    field_type: select_single
-    select_collection: '["C", "en_GB"]'
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " defaults to C"
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-  encoding:
-    name: encoding
-    value: ascii
-    label: DB encoding
-    field_type: select_single
-    select_collection: '["utf8", "ascii"]'
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " defaults to acsii"
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-  dbpassword:
-    name: dbpassword
-    value: _Engines_System(random(10))
-    label: DB Password
-    field_type: password_with_confirmation
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-  full_access:
-    name: full_access
-    value: '0'
-    label: Full Database Server Access
-    field_type: select_single
-    select_collection: "[true, false]"
-    tooltip: Access to all databases includes the ability to delete
-    hint: true|false
-    placeholder: true|false
-    comment: Access to all databases includes the ability to delete
-    regex_validator: true|false
-    regex_invalid_message: 
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  rails_flavor:
-    name: rails_flavor
-    value: postgres
-    label: ''
-    field_type: ''
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
   database_host:
-    name: database_host
-    value: _Engines_System(pgsql_host)
-    label: database_host
-    field_type: text_field
-    select_collection: ''
-    tooltip: Local or the ip address/hostname of the database server
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
+    variable_name: database_host
+    environment_variable_name: dbhost
+  database_name:
+    variable_name: database_name
+    environment_variable_name: dbname
+  dbpassword:
+    variable_name: dbpassword
+    environment_variable_name: dbpasswd
+  dbusername:
+    variable_name: dbusername
+    environment_variable_name: dbuser
+consumer_params:
   database_name:
     name: database_name
     value: _Engines_Builder(engine_name)
-    label: Database name
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
-  db_flavor:
-    name: db_flavor
-    value: pgsql
-    label: DB db_flavor
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
+    input:
+      label: Database name
+      type: string
+  'database_host ':
+    name: 'database_host '
+    value: _Engines_System(pgsql_host)
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
+    input:
+      label: Database host
+      type: string
   dbusername:
     name: dbusername
     value: _Engines_Builder(engine_name)
-    label: DB User Name
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
-type_consumer_params: {}
+    input:
+      label: DB User Name
+      type: string
+  dbpassword:
+    name: dbpassword
+    value: _Engines_System(random(10))
+    mandatory: true
+    input:
+      label: DB Password
+      type: password_with_confirmation
+  collation:
+    name: collation
+    value: C
+    mandatory: true
+    immutable: true
+    input:
+      label: DB Collation
+      type: string
+  encoding:
+    name: encoding
+    value: ascii
+    mandatory: true
+    immutable: true
+    input:
+      type: select
+      collection:
+        items:
+          ascii: ACSII
+          utf8: UTF8
+  full_access:
+    name: full_access
+    value: fals
+    mandatory: true
+    input:
+      label: Full Database Server Access
+      type: boolean
+      comment: 'Access to all databases includes the ability to delete '
 configurators:
   db_master_pass:
     name: db_master_pass
     label: PgSQL Master Password
-    description: PgSQL Master Password for root user
+    description: PgSQL Master Password for user rma
+    enable_logging: true
     no_save: true
-    params:
-      db_master_pass:
-        name: db_master_pass
-        value: 
-        label: root passwowd for PgSQL
-        field_type: text_field
-        select_collection: ''
-        tooltip: 'no : or #'
-        hint: ''
-        placeholder: ''
-        comment: ''
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
+    variables:
+    - name: db_master_pass
+      mandatory: true
+      input:
+        label: Passwowd user rma
+        type: password_with_confirmation
 constants:
-  rails_flavor:
-    name: rails_flavor
-    value: postgres
   backup_support:
     name: backup_support
     value: 'true'
+  rails_flavor:
+    name: rails_flavor
+    value: postgres
+  db_flavor:
+    name: db_flavor
+    value: pgsql
