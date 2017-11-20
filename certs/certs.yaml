@@ -7,7 +7,7 @@ accepts:
 title: Certificate Management
 major: 0
 minor: 0
-release_level: beta
+release_level: rc
 patch: 0
 service_container: certs
 service_handle_field: cert_name
@@ -19,7 +19,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     input:
-      type: string
+      type: country
       title: Country
       hint: '2 Character Country Code  '
       placeholder: XX
@@ -130,7 +130,7 @@ service_actionators:
     name: fetch_cert
     label: Retrieve Cert
     return_type: file
-    return_file_name: certificate
+    return_file_name: certificate.crt
     variables:
     - name: cert_name
       mandatory: true
@@ -223,7 +223,7 @@ service_actionators:
       mandatory: true
       input:
         label: Country 2 letter code
-        type: string
+        type: country
         hint: XX
         validation:
           pattern: "[a-zA-Z][a-zA-Z]"
