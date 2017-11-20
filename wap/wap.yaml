@@ -1,0 +1,75 @@
+---
+publisher_namespace: EnginesSystem
+type_path: wap
+accepts:
+- ManagedEngine
+- ManagedService
+title: wap
+major: 0
+minor: 0
+release_level: rc
+patch: 0
+service_container: wap
+service_handle_field: fqdn
+attach_post_build: true
+consumer_params:
+  fqdn:
+    name: fqdn
+    mandatory: true
+    input:
+      label: Fqdn
+      type: boolean
+      title: www.mydomain.com
+  proto:
+    name: proto
+    value: https
+    mandatory: true
+    input:
+      type: select
+      collection:
+        items:
+          https: HTTPS
+          http: HTTP
+          http_https: HTTPS and HTTP
+  port:
+    name: port
+    value: '8000'
+    mandatory: true
+    input:
+      label: port
+      type: integer
+  internal_dir:
+    name: internal_dir
+    value: "/"
+    input:
+      label: Internal dir
+      type: string
+  public:
+    name: public
+    value: 'true'
+    mandatory: true
+    input:
+      label: Publish beyond LAN
+      type: boolean
+  engine_count:
+    name: engine_count
+    value: '1'
+    mandatory: true
+    input:
+      type: integer
+  'system_auth ':
+    name: 'system_auth '
+    value: 'false'
+    input:
+      label: Use system auth
+      type: boolean
+  auth_group:
+    name: auth_group
+    value: _Engines_Builder(engine_name)
+    input:
+      label: Access group
+      type: string
+configurators:
+  default_site:
+    name: default_site
+    label: Default site
