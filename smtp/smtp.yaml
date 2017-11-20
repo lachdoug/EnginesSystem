@@ -1,148 +1,76 @@
 ---
-type_path: smtp
 publisher_namespace: EnginesSystem
-accepts: []
-author: Engines
-title: Smtp Relay
-description: Outbound SMTP relay
+type_path: smtp
+title: Smtp internal outbound relay
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: smtp
-service_handle_field: ''
-dedicated: false
-persistent: false
-immutable: false
 attach_post_build: true
-attach_requires_restart: false
-target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
 configurators:
   smarthost:
     name: smarthost
     label: Smart host settings
-    description: Configure Smarthost settings
-    no_save: 
-    params:
-      smart_host_port:
-        name: smart_host_port
-        value: '25'
+    description: 'Configure Smarthost settings '
+    enable_logging: true
+    variables:
+    - name: smart_host_port
+      value: '25'
+      mandatory: true
+      input:
         label: Smart host port
-        field_type: text_field
-        select_collection: ''
-        tooltip: ''
-        hint: '25 or 587 '
-        placeholder: 'port number '
-        comment: ''
-        regex_validator: "[0-9]*"
-        regex_invalid_message: ''
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      smart_hostname:
-        name: smart_hostname
-        value: ''
-        label: Smart host Name
-        field_type: text_field
-        select_collection: ''
-        tooltip: ''
-        hint: 'smtp-host.domain.com '
-        placeholder: 'host name or address '
-        comment: ''
-        regex_validator: ".*"
-        regex_invalid_message: ''
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      auth_type:
-        name: auth_type
-        value: none
-        label: Authenication with Smart host
-        field_type: select_single
-        select_collection: '["none", "plaintext", "md5"]'
-        tooltip: " "
-        hint: engine
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      smart_host_user:
-        name: smart_host_user
-        value: 
+        type: integer
+        placeholder: port number
+    - name: smart_hostname
+      mandatory: true
+      input:
+        type: string
+    - name: auth_type
+      value: none
+      mandatory: true
+      input:
+        type: select
+        collection:
+          items:
+            none: None
+            plaintext: Plain
+            md5: MD5
+    - name: smart_host_user
+      input:
         label: Username for Smart host authentication
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: 'username '
-        placeholder: user@somedomain.com
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      smart_host_passwd:
-        name: smart_host_passwd
-        value: 
+        type: string
+    - name: smart_host_passwd
+      input:
         label: Password for Smart host authentication
-        field_type: password
-        select_collection: ''
-        tooltip: " "
-        hint: password
-        placeholder: password
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
+        type: password_with_confirmation
   default_domain:
     name: default_domain
     label: Default Domain
-    description: Default Domain
-    no_save: 
-    params:
-      deliver_local:
-        name: deliver_local
-        value: 'false'
-        label: Deliver Locally
-        field_type: boolean
-        select_collection: ''
-        tooltip: ''
-        hint: ''
-        placeholder: ''
-        comment: ''
-        regex_validator: ''
-        regex_invalid_message: ''
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      domain_name:
-        name: domain_name
-        value: 
+    enable_logging: true
+    variables:
+    - name: deliver_local
+      value: 'false'
+      mandatory: true
+      input:
+        type: boolean
+    - name: domain_name
+      value: _Engines_System(default_domain)
+      mandatory: true
+      input:
         label: Default Domain
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: default domain name
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
-constants: {}
+        type: string
+service_actionators:
+  show_queue:
+    name: show_queue
+    label: Show mail queue
+    return_type: json
+  flush_queue:
+    name: flush_queue
+    label: Flush mail queue
+    return_type: json
+  rm_email:
+    name: rm_email
+    label: Remove email from queue
+    return_type: json
+    enable_logging: true
