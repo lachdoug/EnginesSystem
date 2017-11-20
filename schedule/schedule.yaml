@@ -1,90 +1,46 @@
 ---
-type_path: schedule
 publisher_namespace: EnginesSystem
+type_path: schedule
 accepts:
 - ManagedEngine
 - ManagedService
-author: 
-title: Schedule
-description: ''
+title: schedule
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
-service_container: cron
+service_container: schedule
 service_handle_field: title
-dedicated: false
 persistent: true
-immutable: false
-attach_post_build: true
-attach_requires_restart: false
-target_environment_variables: 
 consumer_params:
   action_type:
     name: action_type
     value: schedule
-    label: ''
-    field_type: ''
-    select_collection: "[schedule, sheduled_action]"
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
     immutable: true
+    input:
+      label: Action type
+      type: select
+      collection:
+        items:
+          schedule: Schedule
+          action: Action
   cron_job:
     name: cron_job
-    value: ''
-    label: Cron line
-    field_type: text_field
-    select_collection: ''
-    tooltip: ''
-    hint: 'the action  '
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  title:
-    name: title
-    value: ''
-    label: ''
-    field_type: text_field
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
+    input:
+      label: The action
+      type: boolean
+  tiltle:
+    name: tiltle
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
+    immutable: true
+    input:
+      type: string
   when:
     name: when
-    value: ''
-    label: Cron when specification
-    field_type: ''
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
     mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+    input:
+      label: Cron when specification
+      type: string
+      placeholder: "* * * * *"
