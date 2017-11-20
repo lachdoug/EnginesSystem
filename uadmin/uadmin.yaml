@@ -16,8 +16,14 @@ service_actionators:
     return_type: json
     variables:
     - name: email_address
+      mandatory: true
       input:
         label: Email Address
+        type: email
+    - name: uid
+      mandatory: true
+      input:
+        label: User id
         type: string
   add_user_to_group:
     name: add_user_to_group
@@ -25,10 +31,12 @@ service_actionators:
     return_type: json
     variables:
     - name: uid
+      mandatory: true
       input:
         label: User id
         type: string
     - name: group
+      mandatory: true
       input:
         label: Group Name
         type: string
@@ -61,6 +69,11 @@ service_actionators:
       input:
         type: boolean
         title: Email Support
+    - name: default_domain
+      value: _Engines_System(default_domain)
+      input:
+        label: Primary email domain
+        type: string
   del_user:
     name: del_user
     label: Delete User
@@ -78,6 +91,7 @@ service_actionators:
     return_type: json
     variables:
     - name: group_name
+      mandatory: true
       input:
         label: Group Name
         type: string
@@ -91,8 +105,9 @@ service_actionators:
     return_type: json
     variables:
     - name: uid
+      mandatory: true
       input:
-        label: User Name
+        label: User id
         type: string
   list_users:
     name: list_users
@@ -119,6 +134,7 @@ service_actionators:
         type: string
         title: User ID
     - name: email_address
+      mandatory: true
       input:
         type: string
         title: Email Address
@@ -133,6 +149,7 @@ service_actionators:
         type: string
         title: User ID
     - name: group_name
+      mandatory: true
       input:
         type: string
         title: Group Name
@@ -142,6 +159,134 @@ service_actionators:
     return_type: none
     variables:
     - name: uid
+      mandatory: true
       input:
         label: Username
         type: string
+  group_details:
+    name: group_details
+    return_type: json
+    variables:
+    - name: group_name
+      input:
+        label: Group name
+        type: string
+  user_group_membership:
+    name: user_group_membership
+    label: User group membership
+    return_type: json
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        label: User id
+        type: string
+  change_user_password:
+    name: change_user_password
+    label: Change password
+    return_type: json
+    variables:
+    - name: uid
+      mandatory: true
+      input:
+        label: User id
+        type: string
+    - name: password
+      mandatory: true
+      input:
+        label: New password
+        type: password_with_confirmation
+    - name: current_password
+      input:
+        label: Current password
+        type: password
+  list_email_groups:
+    name: list_email_groups
+    label: List email groups
+    return_type: json
+  list_email_group_members:
+    name: list_email_group_members
+    label: List members of an email group
+    return_type: json
+    variables:
+    - name: email_group
+      mandatory: true
+      input:
+        type: string
+  " create_email_group":
+    name: " create_email_group"
+    label: Create email group
+    return_type: json
+    enable_logging: true
+    variables:
+    - name: email_group
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+    - name: description
+      mandatory: true
+      input:
+        type: string
+  add_email_to_email_group:
+    name: add_email_to_email_group
+    label: Add email address to email group
+    return_type: json
+    variables:
+    - name: email_group
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+    - name: email_address
+      input:
+        label: Email address
+        type: email
+  rm_email_group:
+    name: rm_email_group
+    label: Remove email group
+    return_type: json
+    variables:
+    - name: email_group
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+  rm_email_from_email_group:
+    name: rm_email_from_email_group
+    label: Remove email from email group
+    return_type: json
+    enable_logging: true
+    variables:
+    - name: email_group
+      mandatory: true
+      input:
+        type: email
+        title: Group email address
+    - name: email_address
+      mandatory: true
+      input:
+        label: Email address
+        type: email
+  all_user_names:
+    name: all_user_names
+    label: All user ids
+    return_type: json
+  all_email_adresses:
+    name: all_email_adresses
+    label: All email addresses
+    return_type: json
+  all_group_names:
+    name: all_group_names
+    label: List all group names
+    return_type: json
+  whose_email:
+    name: whose_email
+    label: Who receives an email address
+    return_type: json
+    variables:
+    - name: email_address
+      mandatory: true
+      input:
+        label: Email address
+        type: email
