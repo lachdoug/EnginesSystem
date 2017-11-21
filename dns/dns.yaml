@@ -7,7 +7,7 @@ accepts:
 title: dns server
 major: 0
 minor: 0
-release_level: alpha
+release_level: rc
 patch: 0
 service_container: dns
 service_handle_field: hostname
