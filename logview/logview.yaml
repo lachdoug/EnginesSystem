@@ -5,34 +5,75 @@ accepts:
 - ManagedService
 - ManagedEngine
 title: Log view
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: logview
 service_handle_field: log_name
+dedicated: false
+persistent: false
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
 consumer_params:
   log_name:
     name: log_name
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Log name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   log_file_path:
     name: log_file_path
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Log file path
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   log_type:
     name: log_type
     value: raw
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Log file format
       type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           nginx: Nginx
@@ -42,3 +83,10 @@ consumer_params:
           apache_error_log: Apache error log
           raw_dated: Dated raw logs
           raw: Raw logs
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: 
+service_actionators: 
+constants: 
