@@ -61,9 +61,9 @@ consumer_params:
         pattern: 
         message: 
 configurators:
-  'default_mdns_domain ':
-    name: 'default_mdns_domain '
-    label: 'default_mdns_domain '
+  default_mdns_domain:
+    name: default_mdns_domain
+    label: default_mdns_domain
     description: 
     enable_logging: false
     no_save: false
