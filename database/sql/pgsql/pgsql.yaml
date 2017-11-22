@@ -4,17 +4,23 @@ type_path: database/sql/pgsql
 accepts:
 - ManagedEngine
 - ManagedService
+title: 
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: psql
 service_handle_field: database_name
+dedicated: false
 persistent: true
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
 target_environment_variables:
-  database_host:
-    variable_name: database_host
+  'database_host ':
+    variable_name: 'database_host '
     environment_variable_name: dbhost
   database_name:
     variable_name: database_name
@@ -30,59 +36,144 @@ consumer_params:
     name: database_name
     value: _Engines_Builder(engine_name)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Database name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   'database_host ':
     name: 'database_host '
     value: _Engines_System(pgsql_host)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Database host
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   dbusername:
     name: dbusername
     value: _Engines_Builder(engine_name)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: DB User Name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   dbpassword:
     name: dbpassword
     value: _Engines_System(random(10))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: DB Password
       type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   collation:
     name: collation
     value: C
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: DB Collation
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   encoding:
     name: encoding
     value: ascii
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           ascii: ACSII
           utf8: UTF8
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   full_access:
     name: full_access
     value: fals
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Full Database Server Access
       type: boolean
+      title: 
       comment: 'Access to all databases includes the ability to delete '
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   db_master_pass:
     name: db_master_pass
@@ -92,10 +183,22 @@ configurators:
     no_save: true
     variables:
     - name: db_master_pass
+      value: 
       mandatory: true
       input:
         label: Passwowd user rma
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators: 
 constants:
   backup_support:
     name: backup_support
