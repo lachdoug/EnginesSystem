@@ -1,90 +1,159 @@
 ---
-type_path: cron
 publisher_namespace: EnginesSystem
+type_path: cron
 accepts:
 - ManagedEngine
 - ManagedService
-author: Engines
-title: Cron
-description: Scheduales tasks
+title: cron
+description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: cron
 service_handle_field: title
 dedicated: false
 persistent: false
 immutable: false
-attach_post_build: true
+attach_post_build: false
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
 consumer_params:
   action_type:
     name: action_type
     value: 
-    label: Cron type web or command
-    field_type: select
-    select_collection: '["command", "web"]'
-    tooltip: " "
-    hint: ''
-    placeholder: 'a label '
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
-    immutable: false
+    immutable: true
+    input:
+      label: Action Type
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          command: Run Command
+          web: Get a URL
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   cron_job:
     name: cron_job
-    value: ''
-    label: Cron line
-    field_type: text_field
-    select_collection: ''
-    tooltip: ''
-    hint: the command
-    placeholder: ''
-    comment: ''
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  title:
-    name: title
     value: 
-    label: Cron line title
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: ''
-    placeholder: 'a label '
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: wrong go back and try again
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
+    input:
+      label: Cron Job
+      type: string
+      title: 
+      comment: 
+      hint: The command or URL
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  titlt:
+    name: titlt
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: Title
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   when:
     name: when
-    value: ''
-    label: Cron when specification
-    field_type: ''
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
+    value: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+    input:
+      label: 
+      type: string
+      title: Cron when specification
+      comment: "(minute) {hr} {day  of month} {month} {day of week}"
+      hint: "*/15 * * * *"
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  notication_address:
+    name: notication_address
+    value: default
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: email
+      title: 
+      comment: 'not present or ''default'' for default, none for silent, log for log,
+        email address for email '
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators:
+  default_notifcation_address:
+    name: default_notifcation_address
+    label: Default notificaton address
+    description: 
+    enable_logging: true
+    no_save: false
+    variables:
+    - name: notification_address
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators:
+  show_crontab:
+    name: show_crontab
+    label: Show crontab
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+constants: 
