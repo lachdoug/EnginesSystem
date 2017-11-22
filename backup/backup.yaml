@@ -9,43 +9,95 @@ accepts:
 - database/sql/pgsql
 - database/nosql/mongo
 title: Backup System
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: backup
 service_handle_field: backup_name
+dedicated: false
+persistent: false
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
 consumer_params:
   src_type:
     name: src_type
     value: engine
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   sources:
     name: sources
     value: " _Engines_Builder(engine_persistent_services)"
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   email:
     name: email
+    value: 
+    mandatory: false
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: email
       type: email
       title: Notification email
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
       validation:
         pattern: ".[@].*"
         message: 'Please enter a valid email address   '
   dest_proto:
     name: dest_proto
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: dest_proto
       type: select
       title: Destination Protocol
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           ftp: ftp
@@ -53,166 +105,378 @@ consumer_params:
           smbfs: smbfs
           s3: s3
         include_blank: true
+      validation:
+        pattern: 
+        message: 
   dest_user:
     name: dest_user
+    value: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: dest_user
       type: string
       title: Destination username
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   dest_pass:
     name: dest_pass
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: password
       type: password
       title: Destination password
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
       validation:
         pattern: ".*"
         message: Please enter password
   dest_address:
     name: dest_address
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: string
       title: 'Destination address '
       comment: FQDN or ip address
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   dest_folder:
     name: dest_folder
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: dest_folder
       type: string
       title: Destination Folder
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   backup_name:
     name: backup_name
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: string
       title: Backup Name
       comment: Unique for distination/folder
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   backup_type:
     name: backup_type
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
     immutable: true
     input:
       label: backup_type
       type: select
       title: Backup Type
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           full: Full
           incre: Incremental
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   backup_notification_email:
     name: backup_notification_email
+    label: 
     description: 'Backup notification email '
     enable_logging: true
+    no_save: false
     variables:
     - name: backup_email
+      value: 
+      mandatory: false
       input:
         label: 'backup_email '
         type: email
         title: Ntoifcation Email
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   system_backup:
     name: system_backup
     label: System Backup setup
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: include_logs
       value: 'true'
+      mandatory: false
       input:
+        label: 
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: include_files
       value: 'true'
+      mandatory: false
       input:
+        label: 
         type: boolean
         title: Include files
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: include_services
       value: 'true'
+      mandatory: false
       input:
+        label: 
         type: boolean
         title: Backup services
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: include_system
       value: 'true'
+      mandatory: false
       input:
+        label: 
         type: boolean
         title: Include system
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: frequency
+      value: 
+      mandatory: false
       input:
         label: Backup Frequency
         type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
         collection:
           items:
             nightly: Nightly
             weekly: monthly
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   default_destination:
     name: default_destination
     label: Default Backup settings
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: dest_pass
+      value: 
+      mandatory: false
       input:
         label: Destination password
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dest_proto
+      value: 
       mandatory: true
       input:
+        label: 
         type: select
         title: 'Backup destination type '
+        comment: 
+        hint: 
+        placeholder: 
         collection:
           items:
             ftp: ftp
             local: local
             s3: AWS S3 bucket
             smbfs: smbfs
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dest_address
+      value: 
       mandatory: true
       input:
         label: Destinaton address fqdn | ip address
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dest_user
+      value: 
       mandatory: true
       input:
         label: Destination username
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dest_folder
+      value: 
       mandatory: true
       input:
+        label: 
         type: string
         title: Destination folder
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   download_public_key:
     name: download_public_key
     label: Dowload public key
+    description: 
     return_type: file
     return_file_name: backup_key.pub
+    enable_logging: false
+    variables: []
   download_private_key:
     name: download_private_key
     label: Download private key
+    description: 
     return_type: file
     return_file_name: backup_key.priv
     enable_logging: true
+    variables: []
   show_backup_password:
     name: show_backup_password
     label: Show Backup Password
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
+    variables: []
   restore:
     name: restore
     label: Restore
+    description: 
     return_type: plain_text
+    return_file_name: 
     enable_logging: true
     variables:
     - name: type
+      value: 
       mandatory: true
       input:
         label: 'Restore type '
         type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
         collection:
           items:
             all: All
@@ -221,85 +485,232 @@ service_actionators:
             service: Service
             app: Application
             volume: Volume
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: before
+      value: 
+      mandatory: false
       input:
         label: Before Date
         type: date
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: source
+      value: 
+      mandatory: false
       input:
         label: Source
         type: string
+        title: 
+        comment: 
         hint: service | app name
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: section
+      value: 
+      mandatory: false
       input:
         label: Section
         type: string
+        title: 
+        comment: 
         hint: 'Restore just a dir or db or .. or table '
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   set_backup_credentials:
     name: set_backup_credentials
     label: Credentials for Restore
+    description: 
     return_type: plain_text
+    return_file_name: 
     enable_logging: true
     variables:
     - name: backup_password
+      value: 
       mandatory: true
       input:
+        label: 
         type: password_with_confirmation
         title: Password
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: pub_key
+      value: 
       mandatory: true
       input:
+        label: 
         type: text
         title: Public Key
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: priv_key
+      value: 
       mandatory: true
       input:
+        label: 
         type: text
         title: Private Key
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   set_key_id:
     name: set_key_id
     label: Set key id
+    description: 
     return_type: plain_text
+    return_file_name: 
     enable_logging: true
     variables:
     - name: disabled
+      value: 
+      mandatory: false
       input:
+        label: 
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: key_id
+      value: 
+      mandatory: false
       input:
+        label: 
         type: string
         title: Key ID
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   run_backup:
     name: run_backup
     label: Run Backup
+    description: 
     return_type: plain_text
+    return_file_name: 
     enable_logging: true
     variables:
     - name: backup_name
+      value: 
+      mandatory: false
       input:
         label: Leave blank for complete
         type: string
         title: Back Up Name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_backups:
     name: list_backups
     label: List Backups
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
+    variables: []
   status:
     name: status
     label: Status
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   backup_logs:
     name: backup_logs
     label: Backup logs
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
     variables:
     - name: 'backup_name '
+      value: 
+      mandatory: false
       input:
         label: Backup Name
         type: string
+        title: 
         comment: name from backup list
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: date
+      value: 
+      mandatory: false
       input:
+        label: 
         type: date
         title: Date
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: 
