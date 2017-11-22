@@ -3,7 +3,7 @@ publisher_namespace: EnginesSystem
 type_path: avahi
 accepts:
 - ManagedEngine
-- ManagesService
+- ManagedService
 title: avahi
 description: Provides zeroconf support
 major: 0
@@ -12,39 +12,93 @@ release_level: beta
 patch: 0
 service_container: avahi
 service_handle_field: hostname
+dedicated: false
+persistent: false
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
 soft_service: true
+target_environment_variables: 
 consumer_params:
   hostname:
     name: hostname
     value: " _Engines_Builder(engine_name)"
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   name:
     name: name
     value: " _Engines_Builder(engine_name)"
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   'default_mdns_domain ':
     name: 'default_mdns_domain '
     label: 'default_mdns_domain '
+    description: 
+    enable_logging: false
+    no_save: false
     variables:
     - name: 'default_mdns_domain '
       value: engines.local
       mandatory: true
       input:
+        label: 
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   list_hosts:
     name: list_hosts
     label: List host
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   list_servces:
     name: list_servces
     label: 'List Services '
+    description: 
     return_type: none
+    return_file_name: 
+    enable_logging: false
+    variables: []
+constants: 
