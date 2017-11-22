@@ -5,13 +5,19 @@ accepts:
 - ManagedEngine
 - ManagedService
 title: Mongo database server
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: mongo
 service_handle_field: database_name
+dedicated: false
 persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
 target_environment_variables:
   db_password:
     variable_name: db_password
@@ -30,43 +36,107 @@ consumer_params:
     name: db_password
     value: _Engines_System(random(10))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: DB Password
       type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   db_username:
     name: db_username
     value: '_Engines_Builder(engine_name) '
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: DB User Name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   database_name:
     name: database_name
     value: _Engines_Builder(engine_name)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Database name
       type: boolean
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   database_host:
     name: database_host
     value: _Engines_System(mongo_host)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: 'Database_host '
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   db_master_pass:
     name: db_master_pass
     label: Set admin password
+    description: 
+    enable_logging: false
     no_save: true
     variables:
     - name: db_master_pass
+      value: 
       mandatory: true
       input:
         label: Admin password
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators: 
 constants:
   backup_support:
     name: backup_support
