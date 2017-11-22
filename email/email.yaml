@@ -1,128 +1,316 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: email
+accepts: []
 title: Email server
+description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
 service_container: email
 service_handle_field: name
+dedicated: false
 persistent: true
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
+consumer_params: 
 configurators:
   default_domain:
     name: default_domain
     label: Default Domain
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: default_domain
+      value: 
       mandatory: true
       input:
         label: Default Domain
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   anti_spam_rbls:
     name: anti_spam_rbls
     label: Anti Spam lookup list
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: zen_spamhaus_org
       value: 'false'
+      mandatory: false
       input:
+        label: 
         type: boolean
         title: zen.spamhaus.org
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: bl_spamcop_net
       value: 'false'
+      mandatory: false
       input:
         label: bl.spamcop.net
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: cbl_abuseat_org
       value: 'false'
+      mandatory: false
       input:
         label: cbl.abuseat.org
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dnsbl_njabl_org
       value: 'false'
+      mandatory: false
       input:
         label: dnsbl.njabl.org
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dnsbl_sorbs_net
       value: 'false'
+      mandatory: false
       input:
         label: dnsbl.sorbs.net
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: dsn_rfc-ignorant_org
       value: 'false'
+      mandatory: false
       input:
         label: dsn.rfc-ignorant.org
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   grey_listing:
     name: grey_listing
     label: 'Grey Listing '
+    description: 
+    enable_logging: false
+    no_save: false
     variables:
     - name: enable_grey_listing
       value: 'false'
+      mandatory: false
       input:
         label: Enable grey listing
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: grey_list_delay
       value: '120'
       mandatory: true
       input:
         label: Grey list delay
         type: integer
+        title: 
         comment: Time in secs to delay connection to deter spammers
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: whitelist_clients
+      value: 
+      mandatory: false
       input:
         label: List of Addresses or hostnames excluded from grey listing
         type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: whitelist_addresses
+      value: 
+      mandatory: false
       input:
         label: List of email adresses excluded from grey listing
         type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   list_domains:
     name: list_domains
     label: List Email domains
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   add_domain:
     name: add_domain
     label: Add email domainin
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
     variables:
     - name: domain_name
+      value: 
       mandatory: true
       input:
         label: Domain name
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   del_domain:
     name: del_domain
     label: Remove domain
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
     variables:
     - name: domain_name
+      value: 
       mandatory: true
       input:
         label: Domain to remove from email
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   show_queue:
     name: show_queue
     label: Show email queue
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   flush_queue:
     name: flush_queue
     label: Flush email queue
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   rm_email:
     name: rm_email
     label: Remove email from queue
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
     variables:
     - name: queue_id
+      value: 
       mandatory: true
       input:
         label: Message id
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: 
