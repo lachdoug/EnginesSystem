@@ -1,6 +1,7 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: dyndns
+accepts: []
 title: dyndns
 description: Maintains a DNS record so engines installation is always reachable without
   needing to know current external ip
@@ -10,32 +11,87 @@ release_level: alpha
 patch: 0
 service_container: dyndns
 service_handle_field: hostname
+dedicated: false
+persistent: false
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
+consumer_params: 
 configurators:
   dyndns_settings:
     name: dyndns_settings
     label: DynDns Account Settings
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: domain_name
+      value: 
+      mandatory: false
       input:
         label: Domain name
         type: string
+        title: 
         comment: Domain name Configured with Dynamic DNS provider
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: provivder
+      value: 
       mandatory: true
       input:
+        label: 
         type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
         collection:
           items:
             no-ip: no-ip
             dyndns2: Dyn DNS
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: login
+      value: 
       mandatory: true
       input:
         label: Login
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: password
+      value: 
+      mandatory: false
       input:
         label: Password
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators: 
+constants: 
