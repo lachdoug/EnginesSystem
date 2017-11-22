@@ -1,19 +1,30 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: smtp
+accepts: []
 title: Smtp internal outbound relay
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: smtp
+service_handle_field: 
+dedicated: false
+persistent: false
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
+consumer_params: 
 configurators:
   smarthost:
     name: smarthost
     label: Smart host settings
     description: 'Configure Smarthost settings '
     enable_logging: true
+    no_save: false
     variables:
     - name: smart_host_port
       value: '25'
@@ -21,56 +32,145 @@ configurators:
       input:
         label: Smart host port
         type: integer
+        title: 
+        comment: 
+        hint: 
         placeholder: port number
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: smart_hostname
+      value: 
       mandatory: true
       input:
+        label: 
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: auth_type
       value: none
       mandatory: true
       input:
+        label: 
         type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
         collection:
           items:
             none: None
             plaintext: Plain
             md5: MD5
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: smart_host_user
+      value: 
+      mandatory: false
       input:
         label: Username for Smart host authentication
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: smart_host_passwd
+      value: 
+      mandatory: false
       input:
         label: Password for Smart host authentication
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   default_domain:
     name: default_domain
     label: Default Domain
+    description: 
     enable_logging: true
+    no_save: false
     variables:
     - name: deliver_local
       value: 'false'
       mandatory: true
       input:
+        label: 
         type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: domain_name
       value: _Engines_System(default_domain)
       mandatory: true
       input:
         label: Default Domain
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   show_queue:
     name: show_queue
     label: Show mail queue
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   flush_queue:
     name: flush_queue
     label: Flush mail queue
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   rm_email:
     name: rm_email
     label: Remove email from queue
+    description: 
     return_type: json
+    return_file_name: 
     enable_logging: true
+    variables: []
+constants: 
