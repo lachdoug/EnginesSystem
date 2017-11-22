@@ -4,63 +4,149 @@ type_path: ftp
 accepts:
 - filesystem/local/filesystem
 title: ftp server
+description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
 service_container: ftpd
 service_handle_field: username
+dedicated: false
 persistent: true
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
 consumer_params:
   folder:
     name: folder
     value: "/"
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Top level directorty
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   volume:
     name: volume
     value: _Engines_Environment(volume_name)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Volume name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   username:
     name: username
     value: _Engines_System(service_account())
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: User Name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   password:
     name: password
     value: _Engines_Builder(service_password(8))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   rw_access:
     name: rw_access
     value: 'false'
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Write access
       type: boolean
+      title: 
       comment: 'Write access includes the ability to delete '
       hint: 'Allow ftp service to write files '
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   ftp_gid:
     name: ftp_gid
     value: _Engines_Builder(data_gid)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: 
 service_actionators:
   active_users:
     name: active_users
     label: List users logged on
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+constants: 
