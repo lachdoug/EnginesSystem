@@ -5,48 +5,124 @@ accepts:
 - ManagedEngine
 - ManagedService
 title: logrotate
+description: 
 major: 0
 minor: 0
 release_level: beta
 patch: 0
 service_container: logrotate
 service_handle_field: log_file_path
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
 soft_service: true
+target_environment_variables: 
 consumer_params:
   log_name:
     name: log_name
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Log Name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   log_file_path:
     name: log_file_path
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: string
       title: Log file path
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   cycle:
     name: cycle
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Cycle
       type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           daily: Daily
           weekly: Weekly
           monthly: Monthly
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   rotate:
     name: rotate
     value: '12'
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Rotations to keep
       type: integer
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   compress:
     name: compress
     value: 'true'
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Compress
       type: boolean
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: 
+service_actionators: 
+constants: 
