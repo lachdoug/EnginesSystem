@@ -5,123 +5,298 @@ accepts:
 - ManagedEngine
 - ManagedService
 title: Certificate Management
+description: 
 major: 0
 minor: 0
 release_level: rc
 patch: 0
 service_container: certs
 service_handle_field: cert_name
+dedicated: false
 persistent: true
+immutable: false
 attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
 consumer_params:
   country:
     name: country
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: country
       title: Country
+      comment: 
       hint: '2 Character Country Code  '
       placeholder: XX
+      collection:
+        items: {}
+        include_blank: false
       validation:
         pattern: "[a-zA-Z][a-zA-Z]"
         message: Two Letters Only
   state:
     name: state
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: State
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   organisation:
     name: organisation
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: Organization
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   person:
     name: person
+    value: 
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: person
       type: string
       title: Person
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   cert_name:
     name: cert_name
+    value: 
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: cert_name
       type: string
       title: Certificate name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   domainname:
     name: domainname
+    value: 
+    mandatory: false
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: domainname
       type: string
       title: Domain name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   hostname:
     name: hostname
+    value: 
+    mandatory: false
     ask_at_build_time: true
+    build_time_only: false
+    immutable: false
     input:
       label: hostname
       type: string
       title: Hostname
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   alt_names:
     name: alt_names
+    value: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: alt_names
       type: string
       title: Alt names
+      comment: 
       hint: space seperated list of hostnames
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
     label: Root Certificate Authority
+    description: 
+    enable_logging: false
     no_save: true
     variables:
     - name: cert_name
+      value: 
       mandatory: true
       input:
         label: cert_name
         type: string
         title: 'cert name name  '
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: domainname
+      value: 
+      mandatory: false
       input:
         label: domainname
         type: string
         title: Domain name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: person
+      value: 
+      mandatory: false
       input:
         label: person
         type: string
         title: Person
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: organisation
+      value: 
       mandatory: true
       input:
         label: organisation
         type: string
         title: Organization
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: city
+      value: 
       mandatory: true
       input:
         label: city
         type: string
         title: City
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: state
+      value: 
       mandatory: true
       input:
         label: state
         type: string
         title: State
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: country
+      value: 
+      mandatory: false
       input:
         label: country
         type: string
         title: Country 2 letter code
+        comment: 
+        hint: 
         placeholder: xx
+        collection:
+          items: {}
+          include_blank: false
         validation:
           pattern: "[a-zA-Z][a-zA-Z]"
           message: 2 letter code only
@@ -129,67 +304,161 @@ service_actionators:
   fetch_cert:
     name: fetch_cert
     label: Retrieve Cert
+    description: 
     return_type: file
     return_file_name: certificate.crt
+    enable_logging: false
     variables:
     - name: cert_name
+      value: 
       mandatory: true
       input:
         label: Certificate name
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: store
+      value: 
       mandatory: true
       input:
         label: Store
         type: string
+        title: 
+        comment: 
         hint: 'imported|container type/name '
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   import_cert:
     name: import_cert
     label: Import certificate
+    description: 
     return_type: none
+    return_file_name: 
+    enable_logging: false
     variables:
     - name: certificate
+      value: 
       mandatory: true
       input:
+        label: 
         type: text
         title: Certificate
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: private_key
+      value: 
       mandatory: true
       input:
+        label: 
         type: text
         title: Private key
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: Password
+      value: 
+      mandatory: false
       input:
+        label: 
         type: password
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_certs:
     name: list_certs
     label: List certificates
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   remove_cert:
     name: remove_cert
     label: Remove Certificate
+    description: 
     return_type: none
+    return_file_name: 
+    enable_logging: false
     variables:
     - name: cert_name
+      value: 
       mandatory: true
       input:
         label: Certificate name
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: store
+      value: 
       mandatory: true
       input:
         label: Store
         type: string
+        title: 
+        comment: 
         hint: imported|container_type/name
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   system_ca:
     name: system_ca
     label: System CA
+    description: 
     return_type: file
     return_file_name: enginesCA.crt
+    enable_logging: false
+    variables: []
   set_default:
     name: set_default
     label: Set Default
+    description: 
     return_type: plain_text
+    return_file_name: 
     enable_logging: true
     variables:
     - name: target
@@ -198,70 +467,208 @@ service_actionators:
       input:
         label: Target
         type: string
+        title: 
+        comment: 
         hint: default|service
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: cert_name
+      value: 
       mandatory: true
       input:
         label: Certificate name
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: store
+      value: 
       mandatory: true
       input:
         label: Store
         type: string
+        title: 
+        comment: 
         hint: 'imported| ctype/cname/  '
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_services_defaults:
     name: list_services_defaults
     label: List services default certificates
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
   create_certificate:
     name: create_certificate
     label: Create certificate
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
     variables:
     - name: country
+      value: 
       mandatory: true
       input:
         label: Country 2 letter code
         type: country
+        title: 
+        comment: 
         hint: XX
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
         validation:
           pattern: "[a-zA-Z][a-zA-Z]"
           message: Two letters only
     - name: State
+      value: 
+      mandatory: false
       input:
         label: State
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: organisation
+      value: 
+      mandatory: false
       input:
         label: Organization
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: city
+      value: 
+      mandatory: false
       input:
         label: City
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: cert_name
+      value: 
+      mandatory: false
       input:
+        label: 
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: domainname
+      value: 
       mandatory: true
       input:
+        label: 
         type: string
         title: Domain name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: hostname
+      value: 
       mandatory: true
       input:
+        label: 
         type: string
         title: Hostname
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: alt_names
+      value: 
+      mandatory: false
       input:
         label: Alternative names
         type: string
+        title: 
+        comment: 
         hint: 'List of space seperated names   '
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: person
+      value: 
+      mandatory: false
       input:
         label: Person
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
