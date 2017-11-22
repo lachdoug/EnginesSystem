@@ -204,6 +204,22 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: initiallastname
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   del_user:
     name: del_user
     label: Delete User
