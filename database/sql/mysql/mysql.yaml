@@ -10,7 +10,7 @@ major: 0
 minor: 0
 release_level: rc
 patch: 0
-service_container: mysql
+service_container: mysqld
 service_handle_field: database_name
 dedicated: false
 persistent: true
