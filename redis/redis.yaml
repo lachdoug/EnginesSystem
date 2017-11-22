@@ -5,12 +5,19 @@ accepts:
 - ManagedEngine
 - ManagedService
 title: redis
+description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
 service_container: redis
 service_handle_field: port
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
 target_environment_variables:
   password:
     variable_name: password
@@ -26,20 +33,62 @@ consumer_params:
     name: password
     value: _Engines_System(random(16))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: Password
       type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   port:
     name: port
     value: _Engines_System(service_resource(redis,next_port))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Port
       type: integer
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   hostname:
     name: hostname
     value: redis._Engines_System(internal_domain)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: 
+service_actionators: 
+constants: 
