@@ -1,26 +1,33 @@
 ---
-type_path: imap
 publisher_namespace: EnginesSystem
+type_path: imap
 accepts: []
-author: Engines
-title: IMAP Server
+title: imap mail store
 description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: imap
-service_handle_field: fqdn
+service_handle_field: 
 dedicated: false
 persistent: false
 immutable: false
 attach_post_build: false
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
+consumer_params: 
+configurators: 
+service_actionators:
+  list_mailboxes:
+    name: list_mailboxes
+    label: List mail boxes
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
 constants:
   backup_support:
     name: backup_support

@@ -1,15 +1,15 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: syslog
+type_path: openid
 accepts: []
-title: Syslog
+title: OpenID provider
 description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
-service_container: syslog
-service_handle_field: log_name
+service_container: openid
+service_handle_field: 
 dedicated: false
 persistent: true
 immutable: false

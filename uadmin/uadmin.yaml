@@ -1,37 +1,767 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: uadmin
+accepts: []
 title: uadmin
+description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
 service_container: uadmin
 service_handle_field: na
+dedicated: false
 persistent: true
-type_consumer_params: type_consumer_params.form_data.map{ |v| { v[:name].to_sym =>
-  v } }.inject(:merge)
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
+consumer_params: 
+configurators: 
 service_actionators:
+  add_email_to_user:
+    name: add_email_to_user
+    label: Add Email Address to user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: email_address
+      value: 
+      mandatory: true
+      input:
+        label: Email Address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  add_user_to_group:
+    name: add_user_to_group
+    label: Add User to Group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: group
+      value: 
+      mandatory: true
+      input:
+        label: Group Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   add_user:
     name: add_user
     label: Add User
-    return_type: plain_text
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
     variables:
-    - name: first_name
+    - name: given_name
+      value: 
       mandatory: true
       input:
         label: First Name
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
     - name: last_name
+      value: 
       mandatory: true
       input:
         label: Last Name
         type: string
-    - name: nitialsi
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: middle_name
+      value: 
+      mandatory: false
       input:
-        label: Initials
+        label: Middle name(s)
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: password
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: email_user
+      value: 'true'
+      mandatory: true
+      input:
+        label: 
+        type: boolean
+        title: Email Support
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: default_domain
+      value: _Engines_System(default_domain)
+      mandatory: false
+      input:
+        label: Primary email domain
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: initiallastname
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  del_user:
+    name: del_user
+    label: Delete User
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User Name
+        type: string
+        title: 
+        comment: first_initialLast_Name as in jdoe
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_group_members:
+    name: list_group_members
+    label: Groups Member
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: group_name
+      value: 
+      mandatory: true
+      input:
+        label: Group Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_groups:
+    name: list_groups
+    label: List Groups
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  list_user_email_adresses:
+    name: list_user_email_adresses
+    label: List Email address for user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_users:
     name: list_users
     label: List Users
+    description: 
     return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  mod_user:
+    name: mod_user
+    label: Modify User
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: User Id
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_email_address_from_user:
+    name: rm_email_address_from_user
+    label: Remove email address from User
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: User ID
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: email_address
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Email Address
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_user_from_group:
+    name: rm_user_from_group
+    label: Remove User From Group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: User ID
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: group_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Group Name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  user_details:
+    name: user_details
+    label: User details
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: Username
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  group_details:
+    name: group_details
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: group_name
+      value: 
+      mandatory: false
+      input:
+        label: Group name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  user_group_membership:
+    name: user_group_membership
+    label: User group membership
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  change_user_password:
+    name: change_user_password
+    label: Change password
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: uid
+      value: 
+      mandatory: true
+      input:
+        label: User id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: password
+      value: 
+      mandatory: true
+      input:
+        label: New password
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: current_password
+      value: 
+      mandatory: false
+      input:
+        label: Current password
+        type: password
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_email_groups:
+    name: list_email_groups
+    label: List email groups
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  list_email_group_members:
+    name: list_email_group_members
+    label: List members of an email group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: email_group
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  create_email_group:
+    name: create_email_group
+    label: Create email group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: email_group
+      value: 
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: description
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  add_email_to_email_group:
+    name: add_email_to_email_group
+    label: Add email address to email group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: email_group
+      value: 
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: email_address
+      value: 
+      mandatory: false
+      input:
+        label: Email address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_email_group:
+    name: rm_email_group
+    label: Remove email group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: email_group
+      value: 
+      mandatory: true
+      input:
+        label: Email group address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_email_from_email_group:
+    name: rm_email_from_email_group
+    label: Remove email from email group
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: email_group
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: email
+        title: Group email address
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: email_address
+      value: 
+      mandatory: true
+      input:
+        label: Email address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  all_user_names:
+    name: all_user_names
+    label: All user ids
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  all_email_adresses:
+    name: all_email_adresses
+    label: All email addresses
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  all_group_names:
+    name: all_group_names
+    label: List all group names
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables: []
+  whose_email:
+    name: whose_email
+    label: Who receives an email address
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: email_address
+      value: 
+      mandatory: true
+      input:
+        label: Email address
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: 

@@ -1,35 +1,64 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: logview
+type_path: redis
 accepts:
-- ManagedService
 - ManagedEngine
-title: Log view
+- ManagedService
+title: redis
 description: 
 major: 0
 minor: 0
-release_level: beta
+release_level: alpha
 patch: 0
-service_container: logview
-service_handle_field: log_name
+service_container: redis
+service_handle_field: port
 dedicated: false
 persistent: false
 immutable: false
-attach_post_build: true
+attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+target_environment_variables:
+  password:
+    variable_name: password
+    environment_variable_name: redis_password
+  port:
+    variable_name: port
+    environment_variable_name: redis_port
+  hostname:
+    variable_name: hostname
+    environment_variable_name: redis_hostname
 consumer_params:
-  log_name:
-    name: log_name
-    value: 
+  password:
+    name: password
+    value: _Engines_System(random(16))
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Password
+      type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  port:
+    name: port
+    value: _Engines_System(service_resource(redis,next_port))
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
     input:
-      label: Log name
-      type: string
+      label: Port
+      type: integer
       title: 
       comment: 
       hint: 
@@ -40,15 +69,15 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  log_file_path:
-    name: log_file_path
-    value: 
+  hostname:
+    name: hostname
+    value: redis._Engines_System(internal_domain)
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Log file path
+      label: 
       type: string
       title: 
       comment: 
@@ -56,33 +85,6 @@ consumer_params:
       placeholder: 
       collection:
         items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  log_type:
-    name: log_type
-    value: raw
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Log file format
-      type: select
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items:
-          nginx: Nginx
-          apache: Apache
-          syslog: syslog
-          nginx_error_log: Nginx error log
-          apache_error_log: Apache error log
-          raw_dated: Dated raw logs
-          raw: Raw logs
         include_blank: false
       validation:
         pattern: 

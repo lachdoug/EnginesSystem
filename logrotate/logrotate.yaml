@@ -1,40 +1,34 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: filesystem/local/filesystem
+type_path: logrotate
 accepts:
 - ManagedEngine
 - ManagedService
-title: 
+title: logrotate
 description: 
 major: 0
 minor: 0
-release_level: alpha
+release_level: beta
 patch: 0
-service_container: volmgr
-service_handle_field: service_name
+service_container: logrotate
+service_handle_field: log_file_path
 dedicated: false
-persistent: true
+persistent: false
 immutable: false
-attach_post_build: true
-attach_requires_restart: true
-soft_service: false
-target_environment_variables:
-  engine_path:
-    variable_name: engine_path
-    environment_variable_name: VOLDIR
-  service_name:
-    variable_name: service_name
-    environment_variable_name: volume_name
+attach_post_build: false
+attach_requires_restart: false
+soft_service: true
+target_environment_variables: 
 consumer_params:
-  service_name:
-    name: service_name
-    value: '_Engines_Builder(engine_name) '
+  log_name:
+    name: log_name
+    value: 
     mandatory: true
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
     immutable: true
     input:
-      label: Service tag name
+      label: Log Name
       type: string
       title: 
       comment: 
@@ -46,55 +40,35 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  volume_src:
-    name: volume_src
+  log_file_path:
+    name: log_file_path
     value: 
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Volume source path
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  engine_path:
-    name: engine_path
-    value: 
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Engine path
-      type: boolean
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  permissions:
-    name: permissions
-    value: ro
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
       label: 
+      type: string
+      title: Log file path
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  cycle:
+    name: cycle
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Cycle
       type: select
       title: 
       comment: 
@@ -102,22 +76,23 @@ consumer_params:
       placeholder: 
       collection:
         items:
-          ro: Read only
-          rw: Write access
+          daily: Daily
+          weekly: Weekly
+          monthly: Monthly
         include_blank: false
       validation:
         pattern: 
         message: 
-  user:
-    name: user
-    value: _Engines_Builder(data_uid)
+  rotate:
+    name: rotate
+    value: '12'
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Owner
-      type: boolean
+      label: Rotations to keep
+      type: integer
       title: 
       comment: 
       hint: 
@@ -128,16 +103,16 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  group:
-    name: group
-    value: _Engines_Builder(data_gid)
-    mandatory: true
+  compress:
+    name: compress
+    value: 'true'
+    mandatory: false
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Group
-      type: string
+      label: Compress
+      type: boolean
       title: 
       comment: 
       hint: 
@@ -150,7 +125,4 @@ consumer_params:
         message: 
 configurators: 
 service_actionators: 
-constants:
-  backup_support:
-    name: backup_support
-    value: 'true'
+constants: 

@@ -1,13 +1,12 @@
 ---
-type_path: dhcpd
 publisher_namespace: EnginesSystem
+type_path: dhcpd
 accepts: []
-author: Engines
-title: DHCP server
-description: DHCP server
+title: Dhcpd
+description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: dhcpd
 service_handle_field: subnet
@@ -16,159 +15,168 @@ persistent: false
 immutable: false
 attach_post_build: true
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
+consumer_params: 
 configurators:
   dhcpd_settings:
     name: dhcpd_settings
-    label: DHCPD Settings
-    description: Configure DHCP Server settings
-    no_save: 
-    params:
-      domain_name:
-        name: domain_name
-        value: Engines_System(defaul_domain)
+    label: dhcpd settings
+    description: 
+    enable_logging: true
+    no_save: false
+    variables:
+    - name: domain_name
+      value: Engines_System(default_domain)
+      mandatory: false
+      input:
         label: Default Domain
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: domain.tld
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      subnet:
-        name: subnet
-        value: ''
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: 'subnet  '
+      value: 
+      mandatory: true
+      input:
         label: Subnet
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: 'x.x.x.x/y '
-        placeholder: ''
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      start:
-        name: start
-        value: ''
-        label: DHCP Range Start
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
+        type: string
+        title: 
+        comment: 
         hint: x.x.x.x
-        placeholder: x.x.x.x
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      end:
-        name: end
-        value: 
-        label: end
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: 'username '
-        placeholder: x.x.x.x
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      default_lease:
-        name: default_lease
-        value: '6000'
-        label: Default Lease Time
-        field_type: text
-        select_collection: ''
-        tooltip: " "
-        hint: in secs
-        placeholder: ''
-        comment: " "
-        regex_validator: "[0-9]."
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      default_gateway:
-        name: default_gateway
-        value: Engines_System(gateway)
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: start
+      value: 
+      mandatory: true
+      input:
+        label: dhcp range start
+        type: string
+        title: 
+        comment: 
+        hint: x.x.x.x
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: end
+      value: 
+      mandatory: true
+      input:
+        label: dhcp range end
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: default_lease
+      value: '6000'
+      mandatory: true
+      input:
+        label: Lease time
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: default_gateway
+      value: Engines_System(gateway)
+      mandatory: true
+      input:
         label: Default Gateway
-        field_type: text
-        select_collection: ''
-        tooltip: " "
+        type: string
+        title: 
+        comment: 
         hint: ip or host
         placeholder: x.x.x.x
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dns_server2:
-        name: dns_server2
-        value: Engines_System(dns2)
-        label: DNS Server 2
-        field_type: text
-        select_collection: ''
-        tooltip: " "
-        hint: ip
-        placeholder: x.x.x.x
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      dns_server1:
-        name: dns_server1
-        value: Engines_System(engines_ip)
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: 'dns_server1 '
+      value: Engines_System(engines_ip)
+      mandatory: true
+      input:
         label: DNS Server 1
-        field_type: text
-        select_collection: ''
-        tooltip: " "
-        hint: ip
+        type: string
+        title: 
+        comment: 
+        hint: ip address
         placeholder: x.x.x.x
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: false
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      netmask:
-        name: netmask
-        value: ''
-        label: netask
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: 'x.x.x.x/y '
-        placeholder: ''
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: 
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
-constants: {}
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dns_server2
+      value: Engines_System(dns2)
+      mandatory: false
+      input:
+        label: DNS Server 2
+        type: string
+        title: 
+        comment: 
+        hint: ip address
+        placeholder: x.x.x.x
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: netmask
+      value: 255.255.255.0
+      mandatory: true
+      input:
+        label: netmask
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators:
+  show_leases:
+    name: show_leases
+    label: Show Leases
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    variables: []
+constants: 

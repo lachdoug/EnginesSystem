@@ -1,82 +1,36 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: filesystem/local/filesystem
+type_path: wap
 accepts:
 - ManagedEngine
 - ManagedService
-title: 
+title: wap
 description: 
 major: 0
 minor: 0
-release_level: alpha
+release_level: rc
 patch: 0
-service_container: volmgr
-service_handle_field: service_name
+service_container: wap
+service_handle_field: fqdn
 dedicated: false
-persistent: true
+persistent: false
 immutable: false
 attach_post_build: true
-attach_requires_restart: true
+attach_requires_restart: false
 soft_service: false
-target_environment_variables:
-  engine_path:
-    variable_name: engine_path
-    environment_variable_name: VOLDIR
-  service_name:
-    variable_name: service_name
-    environment_variable_name: volume_name
+target_environment_variables: 
 consumer_params:
-  service_name:
-    name: service_name
-    value: '_Engines_Builder(engine_name) '
-    mandatory: true
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: Service tag name
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  volume_src:
-    name: volume_src
-    value: 
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Volume source path
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  engine_path:
-    name: engine_path
+  fqdn:
+    name: fqdn
     value: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Engine path
+      label: Fqdn
       type: boolean
-      title: 
+      title: www.mydomain.com
       comment: 
       hint: 
       placeholder: 
@@ -86,9 +40,9 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  permissions:
-    name: permissions
-    value: ro
+  proto:
+    name: proto
+    value: https
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
@@ -102,22 +56,23 @@ consumer_params:
       placeholder: 
       collection:
         items:
-          ro: Read only
-          rw: Write access
+          https: HTTPS
+          http: HTTP
+          http_https: HTTPS and HTTP
         include_blank: false
       validation:
         pattern: 
         message: 
-  user:
-    name: user
-    value: _Engines_Builder(data_uid)
+  port:
+    name: port
+    value: '8000'
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Owner
-      type: boolean
+      label: port
+      type: integer
       title: 
       comment: 
       hint: 
@@ -128,15 +83,15 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  group:
-    name: group
-    value: _Engines_Builder(data_gid)
-    mandatory: true
+  internal_dir:
+    name: internal_dir
+    value: "/"
+    mandatory: false
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
-      label: Group
+      label: Internal dir
       type: string
       title: 
       comment: 
@@ -148,9 +103,93 @@ consumer_params:
       validation:
         pattern: 
         message: 
-configurators: 
-service_actionators: 
-constants:
-  backup_support:
-    name: backup_support
+  public:
+    name: public
     value: 'true'
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Publish beyond LAN
+      type: boolean
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  engine_count:
+    name: engine_count
+    value: '1'
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: integer
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  'system_auth ':
+    name: 'system_auth '
+    value: 'false'
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Use system auth
+      type: boolean
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  auth_group:
+    name: auth_group
+    value: _Engines_Builder(engine_name)
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Access group
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators:
+  default_site:
+    name: default_site
+    label: Default site
+    description: 
+    enable_logging: false
+    no_save: false
+    variables: []
+service_actionators: 
+constants: 

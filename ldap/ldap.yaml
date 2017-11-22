@@ -1,24 +1,125 @@
 ---
-type_path: ldap
 publisher_namespace: EnginesSystem
+type_path: ldap
 accepts: []
-author: 
-title: ldap
-description: ''
+title: ldap server
+description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: beta
 patch: 0
 service_container: ldap
-service_handle_field: ''
+service_handle_field: cn
 dedicated: false
 persistent: true
 immutable: false
 attach_post_build: false
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants: {}
+consumer_params:
+  type:
+    name: type
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          group: Group
+          ou: Organizational Unit
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  'parent_engine ':
+    name: 'parent_engine '
+    value: '_Engines_Builder(engine_name) '
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  cn:
+    name: cn
+    value: _Engines_Builder(engine_name)
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: cn
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: 
+service_actionators:
+  set_admin_password:
+    name: set_admin_password
+    label: Set LDAP Admin Password
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: current_password
+      value: 
+      mandatory: false
+      input:
+        label: Current Password
+        type: password
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: new_password
+      value: 
+      mandatory: false
+      input:
+        label: New Password
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: 

@@ -1,17 +1,17 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: syslog
+type_path: control
 accepts: []
-title: Syslog
+title: Control panel
 description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
-service_container: syslog
-service_handle_field: log_name
+service_container: control
+service_handle_field: control
 dedicated: false
-persistent: true
+persistent: false
 immutable: false
 attach_post_build: false
 attach_requires_restart: false

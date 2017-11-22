@@ -1,13 +1,13 @@
 ---
-type_path: dyndns
 publisher_namespace: EnginesSystem
+type_path: dyndns
 accepts: []
-author: Engines
-title: Dynamic dns
-description: Set IP address for Hosts on Dynamic addresses
+title: dyndns
+description: Maintains a DNS record so engines installation is always reachable without
+  needing to know current external ip
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: dyndns
 service_handle_field: hostname
@@ -16,79 +16,82 @@ persistent: false
 immutable: false
 attach_post_build: true
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
-consumer_params: {}
-type_consumer_params: {}
+consumer_params: 
 configurators:
   dyndns_settings:
     name: dyndns_settings
-    label: settings
-    description: Configure Dynamic Dns settings
-    no_save: 
-    params:
-      domain_name:
-        name: domain_name
-        value: ''
+    label: DynDns Account Settings
+    description: 
+    enable_logging: true
+    no_save: false
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: false
+      input:
         label: Domain name
-        field_type: text_field
-        select_collection: ''
-        tooltip: Domain name
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      provider:
-        name: provider
-        value: dyndns2
-        label: Provider
-        field_type: select
-        select_collection: '["dyn-dns", "no-ip"]'
-        tooltip: dyndns2
-        hint: " "
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      password:
-        name: password
-        value: 
-        label: DynDns User password
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: ''
-        placeholder: password
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-      login:
-        name: login
-        value: 
-        label: DynDns User Name
-        field_type: text_field
-        select_collection: ''
-        tooltip: " "
-        hint: username
-        placeholder: " "
-        comment: " "
-        regex_validator: ".*"
-        regex_invalid_message: wrong go back and try again
-        mandatory: true
-        ask_at_build_time: false
-        build_time_only: false
-        immutable: false
-service_actionators: {}
-constants: {}
+        type: string
+        title: 
+        comment: Domain name Configured with Dynamic DNS provider
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: provivder
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            no-ip: no-ip
+            dyndns2: Dyn DNS
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: login
+      value: 
+      mandatory: true
+      input:
+        label: Login
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: password
+      value: 
+      mandatory: false
+      input:
+        label: Password
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators: 
+constants: 
