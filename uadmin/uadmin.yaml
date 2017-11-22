@@ -572,8 +572,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  " create_email_group":
-    name: " create_email_group"
+  create_email_group:
+    name: create_email_group
     label: Create email group
     description: 
     return_type: json
