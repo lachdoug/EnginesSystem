@@ -12,7 +12,12 @@ release_level: rc
 patch: 0
 service_container: auth
 service_handle_field: kerberos
+dedicated: false
 persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
 target_environment_variables:
   kerberos:
     variable_name: kerberos
@@ -23,13 +28,23 @@ consumer_params:
     value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: true
+    build_time_only: false
     immutable: true
     input:
+      label: 
       type: string
       title: Key Name
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
       validation:
         pattern: "^[a-zA-Z]+$"
         message: letters only
+configurators: 
+service_actionators: 
 constants:
   backup_support:
     name: backup_support
