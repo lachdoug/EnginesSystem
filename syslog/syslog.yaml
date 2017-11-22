@@ -1,13 +1,12 @@
 ---
-type_path: syslog
 publisher_namespace: EnginesSystem
+type_path: syslog
 accepts: []
-author: Engines
 title: Syslog
-description: Log destination for engines and services
+description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
 service_container: syslog
 service_handle_field: log_name
@@ -16,60 +15,9 @@ persistent: true
 immutable: false
 attach_post_build: false
 attach_requires_restart: false
+soft_service: false
 target_environment_variables: 
-consumer_params:
-  log_name:
-    name: log_name
-    value: ''
-    label: ''
-    field_type: ''
-    select_collection: ''
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  log_facility:
-    name: log_facility
-    value: '7'
-    label: Facility
-    field_type: select
-    select_collection: "[0,1,2,3,4,5,6,7]"
-    tooltip: ''
-    hint: ''
-    placeholder: ''
-    comment: ''
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-  log_level:
-    name: log_level
-    value: '0'
-    label: log_level
-    field_type: select_single
-    select_collection: '["info", "warn", "error", "crtical"]'
-    tooltip: Set the level at which to log
-    hint: info|warn|error|crtical
-    placeholder: error
-    comment: " Set the level at which to log"
-    regex_validator: ''
-    regex_invalid_message: ''
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-type_consumer_params: {}
-configurators: {}
-service_actionators: {}
-constants:
-  backup_support:
-    name: backup_support
-    value: 'true'
+consumer_params: 
+configurators: 
+service_actionators: 
+constants: 
