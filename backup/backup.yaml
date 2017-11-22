@@ -46,7 +46,7 @@ consumer_params:
         message: 
   sources:
     name: sources
-    value: " _Engines_Builder(engine_persistent_services)"
+    value: _Engines_Builder(engine_persistent_services)
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
@@ -240,11 +240,11 @@ configurators:
     variables:
     - name: backup_email
       value: 
-      mandatory: false
+      mandatory: true
       input:
         label: 'backup_email '
         type: email
-        title: Ntoifcation Email
+        title: Notifcation email
         comment: 
         hint: 
         placeholder: 
