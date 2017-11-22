@@ -5,66 +5,149 @@ accepts:
 - ManagedEngine
 - ManagedService
 title: mysql server
+description: 
 major: 0
 minor: 0
-release_level: beta
+release_level: rc
 patch: 0
 service_container: mysql
 service_handle_field: database_name
+dedicated: false
 persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+target_environment_variables: 
 consumer_params:
   database_name:
     name: database_name
     value: _Engines_Builder(engine_name)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Database name
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   database_host:
     name: database_host
     value: _Engines_System(mysql_host)
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   db_username:
     name: db_username
     value: '_Engines_Builder(engine_name) '
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: DB User Name
       type: boolean
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   db_password:
     name: db_password
     value: _Engines_System(random(10))
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
+      label: 
       type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   collation:
     name: collation
     value: utf8_general_ci
     mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
     immutable: true
     input:
       label: Collattion
       type: select_with_input
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
       collection:
         items:
           utf8_general_ci: utf8_general_ci
           ascii: ascii
           utf8mb4_general_ci: utf8mb4_general_ci
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   full_access:
     name: full_access
     value: 'false'
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
     input:
       label: 'Full Database Server Access '
-      type: boolean
+      type: checkbox
+      title: 
       comment: 'Access to all databases includes the ability to delete '
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   db_master_pass:
     name: db_master_pass
     label: MySQL Master Password
+    description: 
     enable_logging: true
     no_save: true
     variables:
@@ -72,7 +155,19 @@ configurators:
       value: root password for MySQL
       mandatory: true
       input:
+        label: 
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators: 
 constants:
   rails_flavor:
     name: rails_flavor
