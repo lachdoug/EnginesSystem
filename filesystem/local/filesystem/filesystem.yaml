@@ -119,7 +119,7 @@ consumer_params:
     immutable: false
     input:
       label: Owner
-      type: boolean
+      type: string
       title: 
       comment: 
       hint: 
