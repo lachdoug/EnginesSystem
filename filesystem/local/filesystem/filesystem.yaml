@@ -18,6 +18,8 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: true
 soft_service: false
+shareable: false
+consumer_exportable: false
 target_environment_variables:
   engine_path:
     variable_name: engine_path
@@ -28,7 +30,7 @@ target_environment_variables:
 consumer_params:
   service_name:
     name: service_name
-    value: '_Engines_Builder(engine_name) '
+    value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
@@ -75,7 +77,7 @@ consumer_params:
     immutable: false
     input:
       label: Engine path
-      type: boolean
+      type: string
       title: 
       comment: 
       hint: 
