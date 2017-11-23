@@ -43,6 +43,26 @@ consumer_params:
       validation:
         pattern: "^[a-zA-Z]+$"
         message: letters only
+  owner:
+    name: owner
+    value: _Engines_Builder(cont_userid)
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: 
 service_actionators: 
 constants:
