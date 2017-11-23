@@ -47,9 +47,9 @@ consumer_params:
     name: owner
     value: _Engines_Builder(cont_userid)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: 
       type: hidden
