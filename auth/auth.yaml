@@ -18,6 +18,8 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
+shareable: false
+consumer_exportable: false
 target_environment_variables:
   kerberos:
     variable_name: kerberos
