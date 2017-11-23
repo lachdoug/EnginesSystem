@@ -18,8 +18,8 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: true
 soft_service: false
-shareable: false
-consumer_exportable: false
+shareable: true
+consumer_exportable: true
 target_environment_variables:
   engine_path:
     variable_name: engine_path
