@@ -18,6 +18,8 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
+shareable: false
+consumer_exportable: false
 target_environment_variables:
   kerberos:
     variable_name: kerberos
@@ -43,6 +45,26 @@ consumer_params:
       validation:
         pattern: "^[a-zA-Z]+$"
         message: letters only
+  owner:
+    name: owner
+    value: _Engines_Builder(cont_userid)
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: 
 service_actionators: 
 constants:

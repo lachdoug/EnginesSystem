@@ -22,7 +22,7 @@ target_environment_variables:
 consumer_params:
   hostname:
     name: hostname
-    value: " _Engines_Builder(engine_name)"
+    value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
@@ -42,9 +42,9 @@ consumer_params:
         message: 
   name:
     name: name
-    value: " _Engines_Builder(engine_name)"
+    value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
