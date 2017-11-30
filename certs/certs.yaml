@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: certs
-accepts:
-- ManagedEngine
-- ManagedService
 title: Certificate Management
 description: 
 major: 0
@@ -20,7 +17,11 @@ attach_requires_restart: false
 soft_service: false
 shareable: false
 consumer_exportable: false
-target_environment_variables: 
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   country:
     name: country
@@ -28,7 +29,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: 
       type: country
@@ -48,7 +49,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: State
       type: string
@@ -68,7 +69,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: Organization
       type: string
@@ -88,7 +89,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: person
       type: string
@@ -108,7 +109,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: cert_name
       type: string
@@ -125,10 +126,10 @@ consumer_params:
   domainname:
     name: domainname
     value: 
-    mandatory: false
+    mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: domainname
       type: string
@@ -148,7 +149,7 @@ consumer_params:
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: hostname
       type: string
@@ -168,7 +169,7 @@ consumer_params:
     mandatory: false
     ask_at_build_time: false
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: alt_names
       type: string
@@ -731,3 +732,7 @@ constants:
   backup_support:
     name: backup_support
     value: 'true'
+service_dependencies: []
+guises: []
+build_dependencies:
+- engines/servicebase
