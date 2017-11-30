@@ -18,6 +18,8 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
+shareable: false
+consumer_exportable: false
 target_environment_variables: 
 consumer_params:
   country:
@@ -658,6 +660,62 @@ service_actionators:
       mandatory: false
       input:
         label: Person
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  add_cert_to_wap:
+    name: add_cert_to_wap
+    label: Add certificate to Wap
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: StorePref
+      value: 
+      mandatory: false
+      input:
+        label: Store
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_name
+      value: 
+      mandatory: false
+      input:
+        label: Certificate name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: false
+      input:
+        label: domain name or FQDN to apply Certificate to
         type: string
         title: 
         comment: 
