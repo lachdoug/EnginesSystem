@@ -400,6 +400,38 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: cert_type
+      value: import
+      mandatory: false
+      input:
+        label: 
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: target
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: Target service
+        comment: 
+        hint: blank|service name|default
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_certs:
     name: list_certs
     label: List certificates
@@ -662,6 +694,22 @@ service_actionators:
       input:
         label: Person
         type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_type
+      value: user
+      mandatory: false
+      input:
+        label: 
+        type: hidden
         title: 
         comment: 
         hint: 
