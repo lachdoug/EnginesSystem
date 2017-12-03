@@ -306,10 +306,10 @@ configurators:
 service_actionators:
   fetch_cert:
     name: fetch_cert
-    label: Retrieve Cert
+    label: Retrieve certificate
     description: 
     return_type: file
-    return_file_name: certificate.crt
+    return_file_name: certificate.pem
     enable_logging: false
     variables:
     - name: cert_name
@@ -767,6 +767,46 @@ service_actionators:
         label: domain name or FQDN to apply Certificate to
         type: string
         title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  fetch_key:
+    name: fetch_key
+    label: Retrieve private key
+    description: 
+    return_type: file
+    return_file_name: privatekey.pem
+    enable_logging: true
+    variables:
+    - name: key_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Key name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: store
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Store
         comment: 
         hint: 
         placeholder: 
