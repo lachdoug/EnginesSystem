@@ -107,7 +107,7 @@ consumer_params:
     name: cert_name
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -728,9 +728,9 @@ service_actionators:
     return_file_name: 
     enable_logging: true
     variables:
-    - name: StorePref
+    - name: store
       value: 
-      mandatory: false
+      mandatory: true
       input:
         label: Store
         type: string
@@ -746,7 +746,7 @@ service_actionators:
           message: 
     - name: cert_name
       value: 
-      mandatory: false
+      mandatory: true
       input:
         label: Certificate name
         type: string
@@ -762,7 +762,7 @@ service_actionators:
           message: 
     - name: fqdn
       value: 
-      mandatory: false
+      mandatory: true
       input:
         label: domain name or FQDN to apply Certificate to
         type: string
@@ -807,6 +807,30 @@ service_actionators:
         label: 
         type: string
         title: Store
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_cert_from_wap:
+    name: rm_cert_from_wap
+    label: Remove certificate from wap
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: fqdn or domain
+        type: string
+        title: 
         comment: 
         hint: 
         placeholder: 
