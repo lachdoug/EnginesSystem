@@ -27,7 +27,7 @@ service_actionators:
     name: set_release
     label: Set Release
     description: 
-    return_type: none
+    return_type: plain_text
     return_file_name: 
     enable_logging: false
     variables:
@@ -36,7 +36,7 @@ service_actionators:
       mandatory: true
       input:
         label: 
-        type: select
+        type: select_with_input
         title: 
         comment: 
         hint: 
@@ -46,7 +46,7 @@ service_actionators:
             current: current
             master: master
             production: producton
-          include_blank: false
+          include_blank: true
         validation:
           pattern: 
           message: 
