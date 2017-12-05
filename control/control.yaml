@@ -36,16 +36,16 @@ service_actionators:
       mandatory: true
       input:
         label: 
-        type: select_with_input
+        type: select
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
           items:
-            current: ''
-            master: ''
-            production: ''
+            current: current
+            master: master
+            production: producton
           include_blank: false
         validation:
           pattern: 
