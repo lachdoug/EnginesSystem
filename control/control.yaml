@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: control
-accepts: []
 title: Control panel
 description: 
 major: 0
@@ -16,8 +15,42 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
-configurators: 
-service_actionators: 
-constants: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
+configurators: {}
+service_actionators:
+  set_release:
+    name: set_release
+    label: Set Release
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    variables:
+    - name: release
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            current: ''
+            master: ''
+            production: ''
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
