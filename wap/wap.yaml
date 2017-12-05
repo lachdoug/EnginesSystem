@@ -18,6 +18,8 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
+shareable: false
+consumer_exportable: false
 target_environment_variables: 
 consumer_params:
   fqdn:
@@ -29,7 +31,7 @@ consumer_params:
     immutable: false
     input:
       label: Fqdn
-      type: boolean
+      type: string
       title: www.mydomain.com
       comment: 
       hint: 
@@ -112,7 +114,7 @@ consumer_params:
     immutable: false
     input:
       label: Publish beyond LAN
-      type: boolean
+      type: checkbox_boolean
       title: 
       comment: 
       hint: 
@@ -152,7 +154,7 @@ consumer_params:
     immutable: false
     input:
       label: Use system auth
-      type: boolean
+      type: checkbox_boolean
       title: 
       comment: 
       hint: 
@@ -190,6 +192,22 @@ configurators:
     description: 
     enable_logging: false
     no_save: false
-    variables: []
+    variables:
+    - name: default_site
+      value: 
+      mandatory: true
+      input:
+        label: Default web site
+        type: url
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators: 
 constants: 

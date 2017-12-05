@@ -18,7 +18,24 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+target_environment_variables:
+  database_host:
+    variable_name: database_host
+    environment_variable_name: dbhost
+  database_name:
+    variable_name: database_name
+    environment_variable_name: dbname
+  db_username:
+    variable_name: db_username
+    environment_variable_name: dbuser
+  db_password:
+    variable_name: db_password
+    environment_variable_name: dbpasswd
+  collation:
+    variable_name: collation
+    environment_variable_name: dbcollation
 consumer_params:
   database_name:
     name: database_name

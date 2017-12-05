@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: certs
-accepts:
-- ManagedEngine
-- ManagedService
 title: Certificate Management
 description: 
 major: 0
@@ -18,7 +15,13 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   country:
     name: country
@@ -26,7 +29,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: 
       type: country
@@ -46,7 +49,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: State
       type: string
@@ -66,7 +69,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: Organization
       type: string
@@ -86,7 +89,7 @@ consumer_params:
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: person
       type: string
@@ -104,9 +107,9 @@ consumer_params:
     name: cert_name
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: cert_name
       type: string
@@ -123,10 +126,10 @@ consumer_params:
   domainname:
     name: domainname
     value: 
-    mandatory: false
+    mandatory: true
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: domainname
       type: string
@@ -146,7 +149,7 @@ consumer_params:
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: hostname
       type: string
@@ -166,7 +169,7 @@ consumer_params:
     mandatory: false
     ask_at_build_time: false
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: alt_names
       type: string
@@ -303,10 +306,10 @@ configurators:
 service_actionators:
   fetch_cert:
     name: fetch_cert
-    label: Retrieve Cert
+    label: Retrieve certificate
     description: 
     return_type: file
-    return_file_name: certificate.crt
+    return_file_name: certificate.pem
     enable_logging: false
     variables:
     - name: cert_name
@@ -390,6 +393,38 @@ service_actionators:
         title: 
         comment: 
         hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_type
+      value: import
+      mandatory: false
+      input:
+        label: 
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: target
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: Target service
+        comment: 
+        hint: blank|service name|default
         placeholder: 
         collection:
           items: {}
@@ -669,7 +704,147 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: cert_type
+      value: user
+      mandatory: false
+      input:
+        label: 
+        type: hidden
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  add_cert_to_wap:
+    name: add_cert_to_wap
+    label: Add certificate to Wap
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: store
+      value: 
+      mandatory: true
+      input:
+        label: Store
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_name
+      value: 
+      mandatory: true
+      input:
+        label: Certificate name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: domain name or FQDN to apply Certificate to
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  fetch_key:
+    name: fetch_key
+    label: Retrieve private key
+    description: 
+    return_type: file
+    return_file_name: privatekey.pem
+    enable_logging: true
+    variables:
+    - name: key_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Key name
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: store
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: Store
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_cert_from_wap:
+    name: rm_cert_from_wap
+    label: Remove certificate from wap
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    variables:
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: fqdn or domain
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
     value: 'true'
+service_dependencies: []
+guises: []
+build_dependencies:
+- engines/servicebase
