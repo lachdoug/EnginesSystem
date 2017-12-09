@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: uadmin
-accepts: []
 title: uadmin
 description: 
 major: 0
@@ -16,9 +15,13 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
-configurators: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
+configurators: {}
 service_actionators:
   add_email_to_user:
     name: add_email_to_user
@@ -27,6 +30,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_address
       value: 
@@ -67,6 +73,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -107,6 +116,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: given_name
       value: 
@@ -227,6 +239,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -251,6 +266,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: group_name
       value: 
@@ -275,6 +293,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   list_user_email_adresses:
     name: list_user_email_adresses
@@ -283,6 +304,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -307,6 +331,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   mod_user:
     name: mod_user
@@ -315,6 +342,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -339,6 +369,9 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -379,6 +412,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -416,9 +452,12 @@ service_actionators:
     name: user_details
     label: User details
     description: 
-    return_type: none
+    return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -443,6 +482,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: group_name
       value: 
@@ -467,6 +509,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -491,6 +536,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: uid
       value: 
@@ -547,6 +595,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   list_email_group_members:
     name: list_email_group_members
@@ -555,6 +606,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_group
       value: 
@@ -579,6 +633,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_group
       value: 
@@ -619,6 +676,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_group
       value: 
@@ -659,6 +719,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_group
       value: 
@@ -683,6 +746,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_group
       value: 
@@ -723,6 +789,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   all_email_adresses:
     name: all_email_adresses
@@ -731,6 +800,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   all_group_names:
     name: all_group_names
@@ -739,6 +811,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   whose_email:
     name: whose_email
@@ -747,6 +822,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: email_address
       value: 
@@ -764,4 +842,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
