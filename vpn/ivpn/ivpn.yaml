@@ -1,0 +1,611 @@
+---
+publisher_namespace: EnginesSystem
+type_path: vpn/ivpn
+title: Ipsec vpn
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: ipsec
+service_handle_field: vpn_name
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
+configurators:
+  enable_user_vpn:
+    name: enable_user_vpn
+    label: Add user VPN
+    description: 
+    enable_logging: true
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: enable_user_vpn
+      value: 'false'
+      mandatory: true
+      input:
+        label: 
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+service_actionators:
+  add_site_vpn:
+    name: add_site_vpn
+    label: add site vpn
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: remote_site
+      value: 
+      mandatory: true
+      input:
+        label: remote_endpoint
+        type: string
+        title: 
+        comment: 
+        hint: x.x.x.x
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: remote_lan
+      value: 
+      mandatory: true
+      input:
+        label: Remote  lan
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: remote_subnet
+      value: 
+      mandatory: true
+      input:
+        label: remote subnet
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: remote_id
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ike_version
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            ikev1: IKEv1
+            ikev2: IKv2
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: my_id
+      value: 
+      mandatory: false
+      input:
+        label: My ID
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: psk
+      value: _Engines_System(random(64))
+      mandatory: true
+      input:
+        label: Pre Shared Key
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: phase1_enc_al
+      value: 
+      mandatory: true
+      input:
+        label: Phase 1 Encryption Algorithm
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            aes256: AES256
+            aes128: AES128
+            aes192: AES192
+            3DES: 3DES
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: phase1_hash
+      value: 
+      mandatory: true
+      input:
+        label: Phase 1 Hash Algorithm
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            sha1: SHA1
+            sha256: SHA256
+            sha384: SHA384
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: phase1_dh_group
+      value: 
+      mandatory: true
+      input:
+        label: " DH Group"
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            dhgroup2: 2 (1024 bit)
+            dhgroup5: 5 (1563 bit)
+            dhgroup14: 14 (2048 bit)
+            dhgrop15: 15 (3072 bit)
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: 'disable_rekey '
+      value: 'false'
+      mandatory: false
+      input:
+        label: Disable rekey
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: respond_only
+      value: 'false'
+      mandatory: false
+      input:
+        label: 
+        type: boolean
+        title: Respond Only
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: nat_t
+      value: 'false'
+      mandatory: false
+      input:
+        label: Force Nat Traversal
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dpd
+      value: 'true'
+      mandatory: false
+      input:
+        label: Dead peer detection
+        type: boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dpd_delay
+      value: 
+      mandatory: false
+      input:
+        label: Dead Peer Detection Delay
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dpd_max
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: integer
+        title: Max failures
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dpd_action
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            restart: restart
+            clear: clear
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ike_life
+      value: '36000'
+      mandatory: false
+      input:
+        label: IKE key lifetime
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: phase2_enc_al
+      value: 
+      mandatory: true
+      input:
+        label: Phase 2 Encryption
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            aes: AES
+            3des: 3DES
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: phase2_hash
+      value: 
+      mandatory: true
+      input:
+        label: Phase 2 Hash Algorithm
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            sha1: SHA1
+            sha256: SHA256
+            sha384: SHA384
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: pfs
+      value: 'off'
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: PFS Group
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            'off': 'off'
+            '1': 1 (768 bit)
+            '2': 2 (1024 bit)
+            '5': 5 (1536 bit)
+            '14': 14 (2048 bit)
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: sa_life
+      value: '3600'
+      mandatory: false
+      input:
+        label: SA lifetime
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_vpn:
+    name: rm_vpn
+    label: Remove VPN
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  vpn_status:
+    name: vpn_status
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: optional lists all without
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  stop_vpn:
+    name: stop_vpn
+    label: Stop VPN
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  start_vpn:
+    name: start_vpn
+    label: Start Vpn
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  disable_vpn:
+    name: disable_vpn
+    label: Disable vpn
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: false
+      input:
+        label: VPN name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_vpns:
+    name: list_vpns
+    label: List VPNs
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+constants:
+  backup_support:
+    name: backup_support
+    value: 'true'
+service_dependencies: []
+guises: []
+build_dependencies: []
