@@ -68,7 +68,7 @@ service_actionators:
     name: clear_library_cache
     label: Clear library cache
     description: 
-    return_type: none
+    return_type: plain_text
     return_file_name: 
     enable_logging: false
     script_sudo:
