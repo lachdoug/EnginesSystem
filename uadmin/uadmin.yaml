@@ -93,7 +93,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: group
+    - name: group_name
       value: 
       mandatory: true
       input:
