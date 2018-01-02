@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: dyndns
-accepts: []
 title: dyndns
 description: Maintains a DNS record so engines installation is always reachable without
   needing to know current external ip
@@ -17,8 +16,12 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
 configurators:
   dyndns_settings:
     name: dyndns_settings
@@ -26,6 +29,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: domain_name
       value: 
@@ -43,7 +52,7 @@ configurators:
         validation:
           pattern: 
           message: 
-    - name: provivder
+    - name: provider
       value: 
       mandatory: true
       input:
@@ -93,5 +102,8 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators: 
-constants: 
+service_actionators: {}
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
