@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: ldap
-accepts: []
 title: ldap server
 description: 
 major: 0
@@ -16,7 +15,11 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
 consumer_params:
   type:
     name: type
@@ -64,7 +67,7 @@ consumer_params:
     name: cn
     value: _Engines_Builder(engine_name)
     mandatory: false
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -80,7 +83,7 @@ consumer_params:
       validation:
         pattern: 
         message: 
-configurators: 
+configurators: {}
 service_actionators:
   set_admin_password:
     name: set_admin_password
@@ -89,6 +92,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: current_password
       value: 
@@ -122,4 +128,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
