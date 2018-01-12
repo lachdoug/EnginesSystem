@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: smtp
-accepts: []
 title: Smtp internal outbound relay
 description: 
 major: 0
@@ -16,8 +15,12 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
 configurators:
   smarthost:
     name: smarthost
@@ -25,6 +28,12 @@ configurators:
     description: 'Configure Smarthost settings '
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: smart_host_port
       value: '25'
@@ -115,6 +124,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: deliver_local
       value: 'false'
@@ -148,6 +163,83 @@ configurators:
         validation:
           pattern: 
           message: 
+  notifications_email:
+    name: notifications_email
+    label: Notifications email
+    description: 
+    enable_logging: true
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: notifications_email
+      value: 
+      mandatory: false
+      input:
+        label: Destination for emails sent to system admin
+        type: email
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: postmaster_email
+      value: 
+      mandatory: false
+      input:
+        label: 'Postmasters email '
+        type: email
+        title: 
+        comment: defaults to notifications email
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: webmaster_email
+      value: 
+      mandatory: false
+      input:
+        label: Webmaster email address
+        type: email
+        title: 
+        comment: defaults to notifications email
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: hostmaster_email
+      value: 
+      mandatory: false
+      input:
+        label: Hostmaster email
+        type: email
+        title: 
+        comment: defaults to notifications email
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   show_queue:
     name: show_queue
@@ -156,6 +248,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   flush_queue:
     name: flush_queue
@@ -164,6 +259,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   rm_email:
     name: rm_email
@@ -172,5 +270,11 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables: []
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
