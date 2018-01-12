@@ -229,7 +229,7 @@ configurators:
       mandatory: false
       input:
         label: Hostmaster email
-        type: boolean
+        type: email
         title: 
         comment: defaults to notifications email
         hint: 
