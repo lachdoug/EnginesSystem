@@ -7,7 +7,7 @@ major: 0
 minor: 0
 release_level: beta
 patch: 0
-service_container: schedule
+service_container: cron
 service_handle_field: title
 dedicated: false
 persistent: true
