@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: schedule
-accepts:
-- ManagedEngine
-- ManagedService
 title: schedule
 description: 
 major: 0
@@ -18,7 +15,13 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   action_type:
     name: action_type
@@ -102,6 +105,9 @@ consumer_params:
       validation:
         pattern: 
         message: 
-configurators: 
-service_actionators: 
-constants: 
+configurators: {}
+service_actionators: {}
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
