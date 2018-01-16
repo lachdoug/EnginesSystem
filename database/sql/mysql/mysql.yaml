@@ -42,7 +42,7 @@ consumer_params:
     name: database_name
     value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -82,7 +82,7 @@ consumer_params:
     name: db_username
     value: '_Engines_Builder(engine_name) '
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -122,7 +122,7 @@ consumer_params:
     name: collation
     value: utf8_general_ci
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -145,7 +145,7 @@ consumer_params:
     name: full_access
     value: 'false'
     mandatory: false
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: false
     input:
