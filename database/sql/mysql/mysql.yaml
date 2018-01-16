@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: database/sql/mysql
-accepts:
-- ManagedEngine
-- ManagedService
 title: mysql server
 description: 
 major: 0
@@ -20,6 +17,7 @@ attach_requires_restart: false
 soft_service: false
 shareable: false
 consumer_exportable: false
+consumerless: false
 target_environment_variables:
   database_host:
     variable_name: database_host
@@ -36,6 +34,9 @@ target_environment_variables:
   collation:
     variable_name: collation
     environment_variable_name: dbcollation
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   database_name:
     name: database_name
@@ -167,6 +168,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: true
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: db_master_pass
       value: root password for MySQL
@@ -184,7 +191,7 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators: 
+service_actionators: {}
 constants:
   rails_flavor:
     name: rails_flavor
@@ -195,3 +202,6 @@ constants:
   db_flavor:
     name: db_flavor
     value: mysql2
+service_dependencies: []
+guises: []
+build_dependencies: []
