@@ -133,7 +133,7 @@ configurators:
     variables:
     - name: deliver_local
       value: 'false'
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: boolean
