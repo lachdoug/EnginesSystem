@@ -190,6 +190,12 @@ configurators:
     description: 
     enable_logging: false
     no_save: true
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: cert_name
       value: 
@@ -309,8 +315,11 @@ service_actionators:
     label: Retrieve certificate
     description: 
     return_type: file
-    return_file_name: certificate.pem
+    return_file_name: Engines_Builder(action_val(fetch_cert,cert_name)).pem
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: cert_name
       value: 
@@ -351,6 +360,9 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: certificate
       value: 
@@ -439,6 +451,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   remove_cert:
     name: remove_cert
@@ -447,6 +462,9 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: cert_name
       value: 
@@ -487,6 +505,9 @@ service_actionators:
     return_type: file
     return_file_name: enginesCA.crt
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   set_default:
     name: set_default
@@ -495,6 +516,9 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: target
       value: default
@@ -551,6 +575,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   create_certificate:
     name: create_certificate
@@ -559,6 +586,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: country
       value: 
@@ -705,11 +735,27 @@ service_actionators:
           pattern: 
           message: 
     - name: cert_type
-      value: user
+      value: generated
       mandatory: false
       input:
         label: 
         type: hidden
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: wild
+      value: 'false'
+      mandatory: false
+      input:
+        label: Wild card
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -727,6 +773,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: store
       value: 
@@ -783,6 +832,9 @@ service_actionators:
     return_type: file
     return_file_name: privatekey.pem
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: key_name
       value: 
@@ -823,6 +875,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: fqdn
       value: 
