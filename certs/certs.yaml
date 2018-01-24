@@ -183,6 +183,26 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  install_target:
+    name: install_target
+    value: Install target
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
@@ -428,7 +448,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: target
+    - name: install_target
       value: 
       mandatory: false
       input:
@@ -520,7 +540,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: target
+    - name: install_target
       value: default
       mandatory: true
       input:
