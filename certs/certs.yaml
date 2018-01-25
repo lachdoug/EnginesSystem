@@ -800,18 +800,21 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: Store
-        type: string
+        label: Certificate type
+        type: select
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            generated: System generated
+            imported: Imported
+            user: User generated
           include_blank: false
         validation:
           pattern: 
@@ -824,7 +827,7 @@ service_actionators:
         type: string
         title: 
         comment: 
-        hint: 
+        hint: "{services|apps|/engine_name/}cert_name"
         placeholder: 
         collection:
           items: {}
