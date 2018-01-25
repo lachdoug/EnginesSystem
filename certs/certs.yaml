@@ -696,22 +696,6 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: cert_name
-      value: 
-      mandatory: false
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
     - name: domainname
       value: 
       mandatory: true
@@ -897,18 +881,19 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
-        type: string
-        title: Store
+        type: select
+        title: 
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            user: User generated
           include_blank: false
         validation:
           pattern: 
