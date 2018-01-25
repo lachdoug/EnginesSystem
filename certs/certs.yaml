@@ -925,6 +925,17 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  deployed_certs:
+    name: deployed_certs
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants:
   backup_support:
     name: backup_support
