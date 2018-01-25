@@ -357,15 +357,34 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
+      input:
+        label: Certificate type
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            generated: System generated
+            imported: Imported
+            user: User generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: store
+      value: 
+      mandatory: false
       input:
         label: Store
         type: string
         title: 
         comment: 
-        hint: 'imported|container type/name '
+        hint: 
         placeholder: 
         collection:
           items: {}
