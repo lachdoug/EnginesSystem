@@ -940,7 +940,7 @@ service_actionators:
     variables: []
   remove_live_cert:
     name: remove_live_cert
-    label: Remove Lve Cert
+    label: Remove live Cert
     description: 
     return_type: json
     return_file_name: 
@@ -991,6 +991,87 @@ service_actionators:
         type: string
         title: 
         comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  cert_details:
+    name: cert_details
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: cert_location
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            live: Certificate in use
+            user: User generated
+            imported: Imported
+            generated: System generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: Certificate common name or fqdn
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_type
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: boolean
+        title: Consumer type
+        comment: required for generated or live certs
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            service: Service
+            app: App
+          include_blank: true
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_name
+      value: 
+      mandatory: false
+      input:
+        label: Consumer name
+        type: string
+        title: 
+        comment: app or service name
         hint: 
         placeholder: 
         collection:
