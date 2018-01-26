@@ -1051,7 +1051,7 @@ service_actionators:
       mandatory: false
       input:
         label: 
-        type: boolean
+        type: select
         title: Consumer type
         comment: required for generated or live certs
         hint: 
