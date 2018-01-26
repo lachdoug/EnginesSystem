@@ -494,9 +494,9 @@ service_actionators:
       language: 
       content: 
     variables: []
-  remove_cert:
-    name: remove_cert
-    label: Remove Certificate
+  remove_cert_from_store:
+    name: remove_cert_from_store
+    label: Remove Certificate from Store
     description: 
     return_type: none
     return_file_name: 
@@ -505,11 +505,11 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_name
+    - name: fqdn
       value: 
       mandatory: true
       input:
-        label: Certificate name
+        label: Certificate common name /
         type: string
         title: 
         comment: 
@@ -521,18 +521,20 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: Store
-        type: string
+        label: Certificate type
+        type: select
         title: 
         comment: 
-        hint: imported|container_type/name
+        hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            user: User generated
+            imported: Imported
           include_blank: false
         validation:
           pattern: 
@@ -936,6 +938,67 @@ service_actionators:
       language: 
       content: 
     variables: []
+  remove_live_cert:
+    name: remove_live_cert
+    label: Remove Lve Cert
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: consumer_type
+      value: 
+      mandatory: true
+      input:
+        label: Consumer type
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            service: Service
+            app: App
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_name
+      value: 
+      mandatory: true
+      input:
+        label: Consumer name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: Certificate common name or fqdn
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
