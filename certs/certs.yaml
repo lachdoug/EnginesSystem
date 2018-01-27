@@ -183,6 +183,26 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  install_target:
+    name: install_target
+    value: Install target
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
@@ -190,6 +210,12 @@ configurators:
     description: 
     enable_logging: false
     no_save: true
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: cert_name
       value: 
@@ -309,8 +335,11 @@ service_actionators:
     label: Retrieve certificate
     description: 
     return_type: file
-    return_file_name: certificate.pem
+    return_file_name: Engines_Builder(action_val(fetch_cert,cert_name)).pem
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: cert_name
       value: 
@@ -328,15 +357,34 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
+      input:
+        label: Certificate type
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            generated: System generated
+            imported: Imported
+            user: User generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: store
+      value: 
+      mandatory: false
       input:
         label: Store
         type: string
         title: 
         comment: 
-        hint: 'imported|container type/name '
+        hint: 
         placeholder: 
         collection:
           items: {}
@@ -351,6 +399,9 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: certificate
       value: 
@@ -416,7 +467,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: target
+    - name: install_target
       value: 
       mandatory: false
       input:
@@ -439,20 +490,26 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
-  remove_cert:
-    name: remove_cert
-    label: Remove Certificate
+  remove_cert_from_store:
+    name: remove_cert_from_store
+    label: Remove Certificate from Store
     description: 
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
-    - name: cert_name
+    - name: fqdn
       value: 
       mandatory: true
       input:
-        label: Certificate name
+        label: Certificate common name /
         type: string
         title: 
         comment: 
@@ -464,18 +521,20 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: Store
-        type: string
+        label: Certificate type
+        type: select
         title: 
         comment: 
-        hint: imported|container_type/name
+        hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            user: User generated
+            imported: Imported
           include_blank: false
         validation:
           pattern: 
@@ -487,6 +546,9 @@ service_actionators:
     return_type: file
     return_file_name: enginesCA.crt
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   set_default:
     name: set_default
@@ -495,8 +557,11 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
-    - name: target
+    - name: install_target
       value: default
       mandatory: true
       input:
@@ -504,7 +569,7 @@ service_actionators:
         type: string
         title: 
         comment: 
-        hint: default|service
+        hint: services|system_services|apps/container_name | all
         placeholder: 
         collection:
           items: {}
@@ -528,18 +593,21 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: Store
-        type: string
+        label: Certificate type
+        type: select
         title: 
         comment: 
         hint: 'imported| ctype/cname/  '
         placeholder: 
         collection:
-          items: {}
+          items:
+            generated: System generated
+            imported: Imported
+            user: User generated
           include_blank: false
         validation:
           pattern: 
@@ -551,6 +619,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   create_certificate:
     name: create_certificate
@@ -559,6 +630,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: country
       value: 
@@ -613,22 +687,6 @@ service_actionators:
       mandatory: false
       input:
         label: City
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: cert_name
-      value: 
-      mandatory: false
-      input:
-        label: 
         type: string
         title: 
         comment: 
@@ -705,11 +763,27 @@ service_actionators:
           pattern: 
           message: 
     - name: cert_type
-      value: user
+      value: generated
       mandatory: false
       input:
         label: 
         type: hidden
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: wild
+      value: 'false'
+      mandatory: false
+      input:
+        label: Wild card
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -727,19 +801,25 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
-    - name: store
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: Store
-        type: string
+        label: Certificate type
+        type: select
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            generated: System generated
+            imported: Imported
+            user: User generated
           include_blank: false
         validation:
           pattern: 
@@ -752,7 +832,7 @@ service_actionators:
         type: string
         title: 
         comment: 
-        hint: 
+        hint: "{services|apps|/engine_name/}cert_name"
         placeholder: 
         collection:
           items: {}
@@ -783,6 +863,9 @@ service_actionators:
     return_type: file
     return_file_name: privatekey.pem
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: key_name
       value: 
@@ -800,18 +883,19 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: cert_type
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
-        type: string
-        title: Store
+        type: select
+        title: 
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            user: User generated
           include_blank: false
         validation:
           pattern: 
@@ -823,6 +907,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: fqdn
       value: 
@@ -832,6 +919,159 @@ service_actionators:
         type: string
         title: 
         comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  deployed_certs:
+    name: deployed_certs
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  remove_live_cert:
+    name: remove_live_cert
+    label: Remove live Cert
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: consumer_type
+      value: 
+      mandatory: true
+      input:
+        label: Consumer type
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            service: Service
+            app: App
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_name
+      value: 
+      mandatory: true
+      input:
+        label: Consumer name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: Certificate common name or fqdn
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  cert_details:
+    name: cert_details
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: cert_location
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            live: Certificate in use
+            user: User generated
+            imported: Imported
+            generated: System generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: fqdn
+      value: 
+      mandatory: true
+      input:
+        label: Certificate common name or fqdn
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_type
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: Consumer type
+        comment: required for generated or live certs
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            service: Service
+            app: App
+          include_blank: true
+        validation:
+          pattern: 
+          message: 
+    - name: consumer_name
+      value: 
+      mandatory: false
+      input:
+        label: Consumer name
+        type: string
+        title: 
+        comment: app or service name
         hint: 
         placeholder: 
         collection:
