@@ -27,7 +27,7 @@ consumer_params:
     name: action_type
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -69,7 +69,7 @@ consumer_params:
     name: title
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -105,8 +105,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  notication_address:
-    name: notication_address
+  notification_address:
+    name: notification_address
     value: default
     mandatory: false
     ask_at_build_time: false
@@ -142,9 +142,9 @@ configurators:
     variables:
     - name: notification_address
       value: 
-      mandatory: true
+      mandatory: false
       input:
-        label: 
+        label: Default notification email address
         type: email
         title: 
         comment: 
