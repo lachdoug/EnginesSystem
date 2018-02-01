@@ -83,7 +83,7 @@ consumer_params:
         items: {}
         include_blank: false
       validation:
-        pattern: 
+        pattern: "[a-zA-Z0-9]*"
         message: 
   when:
     name: when
