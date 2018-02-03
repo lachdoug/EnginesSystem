@@ -103,26 +103,6 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  cert_name:
-    name: cert_name
-    value: 
-    mandatory: true
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: cert_name
-      type: string
-      title: Certificate name
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
   domain_name:
     name: domain_name
     value: 
