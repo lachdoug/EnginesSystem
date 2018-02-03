@@ -103,28 +103,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  cert_name:
-    name: cert_name
-    value: 
-    mandatory: true
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: cert_name
-      type: string
-      title: Certificate name
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  domain_name:
-    name: domain_name
+  common_name:
+    name: common_name
     value: 
     mandatory: true
     ask_at_build_time: true
@@ -134,26 +114,6 @@ consumer_params:
       label: Domain name
       type: string
       title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  hostname:
-    name: hostname
-    value: 
-    mandatory: false
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: hostname
-      type: string
-      title: Hostname
       comment: 
       hint: 
       placeholder: 
@@ -341,7 +301,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_name
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -505,7 +465,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: fqdn
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -577,7 +537,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: cert_name
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -698,14 +658,14 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: domain_name
+    - name: common_name
       value: 
       mandatory: true
       input:
         label: 
         type: string
-        title: Domain name
-        comment: 
+        title: Common name
+        comment: usually the fqdn
         hint: 
         placeholder: 
         collection:
@@ -824,7 +784,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: cert_name
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -867,7 +827,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: key_name
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -983,7 +943,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: fqdn
+    - name: common_name
       value: 
       mandatory: true
       input:
@@ -1030,7 +990,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: fqdn
+    - name: common_name
       value: 
       mandatory: true
       input:
