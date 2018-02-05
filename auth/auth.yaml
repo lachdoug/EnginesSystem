@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: auth
-accepts:
-- ManagedEngine
-- ManagedService
 title: Authentication ticket service
 description: Kerberos implementation for engines
 major: 0
@@ -20,10 +17,14 @@ attach_requires_restart: false
 soft_service: false
 shareable: false
 consumer_exportable: false
+consumerless: false
 target_environment_variables:
   kerberos:
     variable_name: kerberos
     environment_variable_name: K_KEY
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   kerberos:
     name: kerberos
@@ -47,7 +48,7 @@ consumer_params:
         message: letters only
   owner:
     name: owner
-    value: _Engines_Builder(cont_userid)
+    value: _Engines_Builder(cont_user_id)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
@@ -65,9 +66,12 @@ consumer_params:
       validation:
         pattern: 
         message: 
-configurators: 
-service_actionators: 
+configurators: {}
+service_actionators: {}
 constants:
   backup_support:
     name: backup_support
     value: 'true'
+service_dependencies: []
+guises: []
+build_dependencies: []
