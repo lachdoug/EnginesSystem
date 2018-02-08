@@ -145,21 +145,23 @@ consumer_params:
         message: 
   install_target:
     name: install_target
-    value: Install target
+    value: 
     mandatory: false
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
-    immutable: true
+    immutable: false
     input:
       label: 
-      type: string
+      type: select
       title: 
       comment: 
       hint: 
       placeholder: 
       collection:
-        items: {}
-        include_blank: false
+        items:
+          default: Install as engine name
+          wap: Use for https request on 443
+        include_blank: true
       validation:
         pattern: 
         message: 
@@ -568,6 +570,22 @@ service_actionators:
             generated: System generated
             imported: Imported
             user: User generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_src
+      value: 
+      mandatory: false
+      input:
+        label: Cert source
+        type: string
+        title: 
+        comment: conainer_type(s)/container_name/
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
           include_blank: false
         validation:
           pattern: 
