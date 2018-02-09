@@ -362,7 +362,7 @@ service_actionators:
       mandatory: false
       input:
         label: 
-        type: boolean
+        type: string
         title: Owner
         comment: required for generated certs
         hint: 
