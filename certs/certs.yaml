@@ -713,7 +713,7 @@ service_actionators:
           message: 
     - name: hostname
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: string
