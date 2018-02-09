@@ -897,41 +897,6 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: owner_type
-      value: 
-      mandatory: false
-      input:
-        label: 
-        type: select
-        title: 
-        comment: required for generated certs
-        hint: 
-        placeholder: 
-        collection:
-          items:
-            system_service: System Service
-            service: Service
-            app: Application
-          include_blank: true
-        validation:
-          pattern: 
-          message: 
-    - name: owner
-      value: 
-      mandatory: false
-      input:
-        label: Owner
-        type: string
-        title: 
-        comment: required for generated certs
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
   rm_cert_from_wap:
     name: rm_cert_from_wap
     label: Remove certificate from wap
