@@ -338,14 +338,33 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: owner_type
       value: 
       mandatory: false
       input:
-        label: Store
-        type: string
+        label: Owner type
+        type: select
         title: 
-        comment: 
+        comment: required for generated certs
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system_service: System service
+            service: Service
+            app: Application
+          include_blank: true
+        validation:
+          pattern: 
+          message: 
+    - name: owner
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: boolean
+        title: Owner
+        comment: required for generated certs
         hint: 
         placeholder: 
         collection:
@@ -874,6 +893,41 @@ service_actionators:
         collection:
           items:
             user: User generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: owner_type
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: required for generated certs
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system_service: System Service
+            service: Service
+            app: Application
+          include_blank: true
+        validation:
+          pattern: 
+          message: 
+    - name: owner
+      value: 
+      mandatory: false
+      input:
+        label: Owner
+        type: string
+        title: 
+        comment: required for generated certs
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
           include_blank: false
         validation:
           pattern: 
