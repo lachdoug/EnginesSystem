@@ -128,6 +128,44 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  set_debug_level:
+    name: set_debug_level
+    label: Set Debug Level
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: debug_level
+      value: '0'
+      mandatory: false
+      input:
+        label: Debug Level Integer
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  get_debug_level:
+    name: get_debug_level
+    label: Show debug level
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants: {}
 service_dependencies: []
 guises: []
