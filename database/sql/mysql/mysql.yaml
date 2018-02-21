@@ -16,7 +16,7 @@ attach_post_build: false
 attach_requires_restart: false
 soft_service: false
 shareable: false
-consumer_exportable: false
+consumer_exportable: true
 consumerless: false
 target_environment_variables:
   database_host:
