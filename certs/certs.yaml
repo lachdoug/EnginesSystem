@@ -145,21 +145,23 @@ consumer_params:
         message: 
   install_target:
     name: install_target
-    value: Install target
+    value: 
     mandatory: false
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
-    immutable: true
+    immutable: false
     input:
       label: 
-      type: string
+      type: select
       title: 
       comment: 
       hint: 
       placeholder: 
       collection:
-        items: {}
-        include_blank: false
+        items:
+          default: Install as engine name
+          wap: Use for https request on 443
+        include_blank: true
       validation:
         pattern: 
         message: 
@@ -336,14 +338,33 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: store
+    - name: owner_type
       value: 
       mandatory: false
       input:
-        label: Store
-        type: string
+        label: Owner type
+        type: select
         title: 
-        comment: 
+        comment: required for generated certs
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system_service: System service
+            service: Service
+            app: Application
+          include_blank: true
+        validation:
+          pattern: 
+          message: 
+    - name: owner
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: Owner
+        comment: required for generated certs
         hint: 
         placeholder: 
         collection:
@@ -572,6 +593,22 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: cert_src
+      value: 
+      mandatory: false
+      input:
+        label: Cert source
+        type: string
+        title: 
+        comment: conainer_type(s)/container_name/
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_services_defaults:
     name: list_services_defaults
     label: List services default certificates
@@ -676,7 +713,7 @@ service_actionators:
           message: 
     - name: hostname
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: string
