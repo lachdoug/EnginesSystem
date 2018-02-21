@@ -1,8 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: ftp
-accepts:
-- filesystem/local/filesystem
 title: ftp server
 description: 
 major: 0
@@ -17,7 +15,12 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- filesystem/local/filesystem
 consumer_params:
   folder:
     name: folder
@@ -101,14 +104,14 @@ consumer_params:
         message: 
   rw_access:
     name: rw_access
-    value: 'false'
+    value: 'true'
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
     input:
       label: Write access
-      type: boolean
+      type: checkbox_boolean
       title: 
       comment: 'Write access includes the ability to delete '
       hint: 'Allow ftp service to write files '
@@ -139,7 +142,7 @@ consumer_params:
       validation:
         pattern: 
         message: 
-configurators: 
+configurators: {}
 service_actionators:
   active_users:
     name: active_users
@@ -148,5 +151,11 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
