@@ -1,121 +1,161 @@
 ---
-type_path: filesystem/service/ftp
 publisher_namespace: EnginesSystem
-accepts:
-- Volume
-author: Engines
-title: FTP Access Service
-description: Provides FTP access to Persistant File Storage
+type_path: filesystem/service/ftp
+title: ftp server
+description: 
 major: 0
 minor: 0
-release_level: Alpha
+release_level: alpha
 patch: 0
-service_container: ftp
+service_container: ftpd
 service_handle_field: username
 dedicated: false
 persistent: true
 immutable: false
 attach_post_build: true
 attach_requires_restart: false
-target_environment_variables: 
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- filesystem/local/filesystem
 consumer_params:
   folder:
     name: folder
     value: "/"
-    label: folder
-    field_type: text_field
-    select_collection: ''
-    tooltip: 'Folder with in volume '
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
-    immutable: true
+    immutable: false
+    input:
+      label: Top level directorty
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   volume:
     name: volume
     value: _Engines_Environment(volume_name)
-    label: volume
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
+    input:
+      label: Volume name
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   username:
     name: username
-    value: _Engines_Builder(engine_name)
-    label: User Name
-    field_type: text_field
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
+    value: _Engines_System(service_account())
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
+    input:
+      label: User Name
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   password:
     name: password
-    value: _Engines_System(random(8))
-    label: password
-    field_type: password_with_confirmation
-    select_collection: ''
-    tooltip: " "
-    hint: " "
-    placeholder: " "
-    comment: " "
-    regex_validator: ".*"
-    regex_invalid_message: 
+    value: _Engines_Builder(service_password(8))
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
-    immutable: true
+    immutable: false
+    input:
+      label: 
+      type: password_with_confirmation
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   rw_access:
     name: rw_access
-    value: '0'
-    label: RW Access
-    field_type: select_single
-    select_collection: "[true, false]"
-    tooltip: Allow ftp service to write files
-    hint: true|false
-    placeholder: true|false
-    comment: Write access includes the ability to delete
-    regex_validator: true|false
-    regex_invalid_message: 
+    value: 'true'
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
+    input:
+      label: Write access
+      type: checkbox_boolean
+      title: 
+      comment: 'Write access includes the ability to delete '
+      hint: 'Allow ftp service to write files '
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
   ftp_gid:
     name: ftp_gid
     value: _Engines_Builder(data_gid)
-    label: ftp_gid
-    field_type: text_field
-    select_collection: ''
-    tooltip: auto set
-    hint: a number
-    placeholder: true|false
-    comment: 'group access '
-    regex_validator: "[0-9]."
-    regex_invalid_message: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: true
-type_consumer_params: {}
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: {}
-service_actionators: {}
+service_actionators:
+  active_users:
+    name: active_users
+    label: List users logged on
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
