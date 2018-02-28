@@ -92,7 +92,7 @@ consumer_params:
         message: 
   service_name:
     name: service_name
-    value: 
+    value: _Engines_Builder(engine_name)
     mandatory: false
     ask_at_build_time: false
     build_time_only: false
@@ -157,7 +157,7 @@ consumer_params:
         message: 
   access_dn:
     name: access_dn
-    value: cn=_EnginesBuilder(engine_name),ou=hosts,ou=Engines,dc=engines,dc=internal
+    value: cn=_Engines_Builder(engine_name),ou=_Engines_Builder(ctype).,ou=hosts,ou=Engines,dc=engines,dc=internal
     mandatory: false
     ask_at_build_time: false
     build_time_only: false
@@ -177,14 +177,14 @@ consumer_params:
         message: 
   ldap_password:
     name: ldap_password
-    value: _EnginesSystem(random(8))
+    value: _Engines_System(random(8))
     mandatory: false
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
       label: 
-      type: password_with_confirmation
+      type: password
       title: 
       comment: 
       hint: 
