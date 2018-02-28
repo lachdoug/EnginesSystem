@@ -72,7 +72,7 @@ consumer_params:
         message: 
   read_access:
     name: read_access
-    value: 
+    value: none
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
@@ -95,7 +95,7 @@ consumer_params:
         message: 
   write_access:
     name: write_access
-    value: 
+    value: none
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
