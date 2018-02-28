@@ -31,7 +31,7 @@ consumer_params:
     name: type
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -73,8 +73,8 @@ consumer_params:
   read_access:
     name: read_access
     value: 
-    mandatory: true
-    ask_at_build_time: false
+    mandatory: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -89,15 +89,15 @@ consumer_params:
           all: by all
           authenticated: authenticated
           private: private
-        include_blank: false
+        include_blank: true
       validation:
         pattern: 
         message: 
   write_access:
     name: write_access
     value: 
-    mandatory: true
-    ask_at_build_time: false
+    mandatory: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -111,14 +111,14 @@ consumer_params:
         items:
           none: None
           authentticated: Authenticated
-        include_blank: false
+        include_blank: true
       validation:
         pattern: 
         message: 
   access_dn:
     name: access_dn
     value: cn=_Engines_Builder(engine_name),ou=_Engines_Builder(ctype).,ou=hosts,ou=Engines,dc=engines,dc=internal
-    mandatory: true
+    mandatory: false
     ask_at_build_time: true
     build_time_only: false
     immutable: true
