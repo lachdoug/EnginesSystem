@@ -8,7 +8,7 @@ minor: 0
 release_level: beta
 patch: 0
 service_container: ldap
-service_handle_field: cn
+service_handle_field: service_name
 dedicated: false
 persistent: true
 immutable: false
@@ -72,7 +72,7 @@ consumer_params:
         message: 
   read_access:
     name: read_access
-    value: none
+    value: all
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
@@ -110,7 +110,7 @@ consumer_params:
       collection:
         items:
           none: None
-          authentticated: Authenticated
+          authenticated: Authenticated
         include_blank: true
       validation:
         pattern: 
@@ -145,6 +145,26 @@ consumer_params:
     input:
       label: 
       type: password
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  service_name:
+    name: service_name
+    value: _Engines_Fields(cn)__Engines_Fields(type)
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
       title: 
       comment: 
       hint: 
