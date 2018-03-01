@@ -136,7 +136,7 @@ configurators:
       mandatory: false
       input:
         label: 
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
