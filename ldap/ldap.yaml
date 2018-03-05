@@ -16,7 +16,7 @@ attach_post_build: false
 attach_requires_restart: false
 soft_service: false
 shareable: false
-consumer_exportable: false
+consumer_exportable: true
 consumerless: false
 target_environment_variables:
   ldap_password:
@@ -25,7 +25,9 @@ target_environment_variables:
   access_dn:
     variable_name: access_dn
     environment_variable_name: ldap_dn
-accepts: []
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   type:
     name: type
@@ -258,7 +260,10 @@ service_actionators:
       language: 
       content: 
     variables: []
-constants: {}
+constants:
+  LDAP_HOST:
+    name: LDAP_HOST
+    value: ldap.engines.internal
 service_dependencies: []
 guises: []
 build_dependencies: []
