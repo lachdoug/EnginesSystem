@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: wap
-accepts:
-- ManagedEngine
-- ManagedService
 title: wap
 description: 
 major: 0
@@ -20,7 +17,11 @@ attach_requires_restart: false
 soft_service: false
 shareable: false
 consumer_exportable: false
-target_environment_variables: 
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   fqdn:
     name: fqdn
@@ -192,15 +193,21 @@ configurators:
     description: 
     enable_logging: false
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: default_site
       value: 
       mandatory: true
       input:
         label: Default web site
-        type: url
+        type: string
         title: 
-        comment: 
+        comment: hostname only no http(s)
         hint: 
         placeholder: 
         collection:
@@ -209,5 +216,8 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators: 
-constants: 
+service_actionators: {}
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
