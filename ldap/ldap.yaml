@@ -157,8 +157,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  service_n:
-    name: service_n
+  service_name:
+    name: service_name
     value: _Engines_Fields(cn)__Engines_Fields(type)
     mandatory: true
     ask_at_build_time: true
