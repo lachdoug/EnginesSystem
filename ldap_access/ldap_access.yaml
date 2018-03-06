@@ -1,0 +1,201 @@
+---
+publisher_namespace: EnginesSystem
+type_path: ldap_access
+title: ldap access
+description: 
+major: 0
+minor: 0
+release_level: beta
+patch: 0
+service_container: ldap
+service_handle_field: service_name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: true
+consumerless: false
+target_environment_variables:
+  ldap_password:
+    variable_name: ldap_password
+    environment_variable_name: ldap_password
+  access_dn:
+    variable_name: access_dn
+    environment_variable_name: ldap_dn
+accepts:
+- ManagedEngine
+- ManagedService
+consumer_params:
+  access_dn:
+    name: access_dn
+    value: uid=_Engines_Builder(engine_name),ou=_Engines_Builder(ctype).,ou=hosts,ou=Engines,dc=engines,dc=internal
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  ldap_password:
+    name: ldap_password
+    value: _Engines_System(random(8))
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: password
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  service_name:
+    name: service_name
+    value: _Engines_Builder(engine_name)
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  type:
+    name: type
+    value: access
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: {}
+service_actionators:
+  set_admin_password:
+    name: set_admin_password
+    label: Set LDAP Admin Password
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: current_password
+      value: 
+      mandatory: false
+      input:
+        label: Current Password
+        type: password
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: new_password
+      value: 
+      mandatory: false
+      input:
+        label: New Password
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  set_debug_level:
+    name: set_debug_level
+    label: Set Debug Level
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: debug_level
+      value: '0'
+      mandatory: false
+      input:
+        label: Debug Level Integer
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  get_debug_level:
+    name: get_debug_level
+    label: Show debug level
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+constants:
+  LDAP_HOST:
+    name: LDAP_HOST
+    value: ldap.engines.internal
+service_dependencies: []
+guises: []
+build_dependencies: []
