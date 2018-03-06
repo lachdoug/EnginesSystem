@@ -31,7 +31,7 @@ accepts:
 consumer_params:
   access_dn:
     name: access_dn
-    value: uid=_Engines_Builder(engine_name),ou=_Engines_Builder(ctype).,ou=hosts,ou=Engines,dc=engines,dc=internal
+    value: uid=_Engines_Builder(engine_name),ou=hosts,ou=Engines,dc=engines,dc=internal
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
