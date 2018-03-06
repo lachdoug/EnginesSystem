@@ -47,7 +47,6 @@ consumer_params:
         items:
           group: Group
           ou: Organizational Unit
-          access: Ldap Access
         include_blank: false
       validation:
         pattern: 
@@ -114,46 +113,6 @@ consumer_params:
           none: None
           authenticated: Authenticated
         include_blank: true
-      validation:
-        pattern: 
-        message: 
-  access_dn:
-    name: access_dn
-    value: uid=_Engines_Builder(engine_name),ou=_Engines_Builder(ctype).,ou=hosts,ou=Engines,dc=engines,dc=internal
-    mandatory: false
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: 
-      type: hidden
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  ldap_password:
-    name: ldap_password
-    value: _Engines_System(random(8))
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: 
-      type: password
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
       validation:
         pattern: 
         message: 
