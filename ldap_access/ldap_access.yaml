@@ -1,7 +1,7 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: ldap
-title: ldap server
+type_path: ldap_access
+title: ldap access
 description: 
 major: 0
 minor: 0
@@ -18,44 +18,28 @@ soft_service: false
 shareable: false
 consumer_exportable: true
 consumerless: false
-target_environment_variables: {}
+target_environment_variables:
+  ldap_password:
+    variable_name: ldap_password
+    environment_variable_name: ldap_password
+  access_dn:
+    variable_name: access_dn
+    environment_variable_name: ldap_dn
 accepts:
 - ManagedEngine
 - ManagedService
 consumer_params:
-  type:
-    name: type
-    value: 
-    mandatory: true
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: 
-      type: select
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items:
-          group: Group
-          ou: Organizational Unit
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  cn:
-    name: cn
-    value: _Engines_Builder(engine_name)
+  access_dn:
+    name: access_dn
+    value: uid=_Engines_Builder(engine_name),ou=hosts,ou=Engines,dc=engines,dc=internal
     mandatory: false
     ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
       label: 
-      type: string
-      title: cn
+      type: hidden
+      title: 
       comment: 
       hint: 
       placeholder: 
@@ -65,54 +49,29 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  read_access:
-    name: read_access
-    value: all
+  ldap_password:
+    name: ldap_password
+    value: _Engines_System(random(8))
     mandatory: false
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
-    immutable: true
+    immutable: false
     input:
-      label: Read access
-      type: select_with_input
+      label: 
+      type: password
       title: 
-      comment: self always has read access
+      comment: 
       hint: 
       placeholder: 
       collection:
-        items:
-          all: by all
-          authenticated: authenticated
-          private: private
-        include_blank: true
-      validation:
-        pattern: 
-        message: 
-  write_access:
-    name: write_access
-    value: none
-    mandatory: false
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: Write access
-      type: select_with_input
-      title: 
-      comment: self and admin always has write access
-      hint: 
-      placeholder: 
-      collection:
-        items:
-          none: None
-          authenticated: Authenticated
-        include_blank: true
+        items: {}
+        include_blank: false
       validation:
         pattern: 
         message: 
   service_name:
     name: service_name
-    value: _Engines_Fields(cn)__Engines_Fields(type)
+    value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
@@ -120,6 +79,26 @@ consumer_params:
     input:
       label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  type:
+    name: type
+    value: access
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: hidden
       title: 
       comment: 
       hint: 
