@@ -18,13 +18,7 @@ soft_service: false
 shareable: false
 consumer_exportable: true
 consumerless: false
-target_environment_variables:
-  ldap_password:
-    variable_name: ldap_password
-    environment_variable_name: ldap_password
-  access_dn:
-    variable_name: access_dn
-    environment_variable_name: ldap_dn
+target_environment_variables: {}
 accepts:
 - ManagedEngine
 - ManagedService
