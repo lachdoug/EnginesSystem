@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: avahi
-accepts:
-- ManagedEngine
-- ManagedService
 title: avahi
 description: Provides zeroconf support
 major: 0
@@ -18,13 +15,19 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: true
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   hostname:
     name: hostname
     value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -44,7 +47,7 @@ consumer_params:
     name: name
     value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
     immutable: true
     input:
@@ -67,6 +70,12 @@ configurators:
     description: 
     enable_logging: false
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: 'default_mdns_domain '
       value: engines.local
@@ -92,6 +101,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   list_servces:
     name: list_servces
@@ -100,5 +112,11 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
