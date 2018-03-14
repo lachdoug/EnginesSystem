@@ -1,0 +1,83 @@
+---
+publisher_namespace: EnginesSystem
+type_path: settings
+title: 
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: settings
+service_handle_field: 
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
+configurators: {}
+service_actionators:
+  list_wifi_nets:
+    name: list_wifi_nets
+    label: Available Wifi networks
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  join_wifi_net:
+    name: join_wifi_net
+    label: Join Wifi network
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: SSID
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: PSK
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: password
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
