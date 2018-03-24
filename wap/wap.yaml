@@ -154,7 +154,7 @@ consumer_params:
     build_time_only: false
     immutable: false
     input:
-      label: Use system auth
+      label: Use system auth via ldap
       type: checkbox_boolean
       title: 
       comment: 
