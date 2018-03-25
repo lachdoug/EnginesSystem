@@ -53,8 +53,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  release:
-    name: release
+  which_release:
+    name: which_release
     label: Current release
     description: 
     return_type: plain_text
