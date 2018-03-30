@@ -76,8 +76,11 @@ service_actionators:
     return_file_name: 
     enable_logging: false
     script_sudo:
-      language: 
-      content: 
+      language: sh
+      content: "#!/bin/sh\r\nn=0\r\necho -n '{\"principles\":['\r\nfor princ in `kadmin.local
+        -q listprincs|grep -v \"Authenticating as principal\"`\r\n do  \r\n   if test
+        $n -ne 0\r\n    then\r\n     echo   -n ',\"'$princ'\"'\r\n    else\r\n      echo
+        -n '\"'$princ'\"'\r\n    fi\r\n    n=1  \r\n done\r\n \r\n echo ']}'\r\n "
     variables: []
   list_policies:
     name: list_policies
@@ -88,12 +91,17 @@ service_actionators:
     enable_logging: false
     script_sudo:
       language: 
-      content: 
+      content: "#!/bin/sh\r\nn=0\r\necho -n '{\"principles\":['\r\nfor princ in `kadmin.local
+        -q listprincs|grep -v \"Authenticating as principal\"`\r\n do  \r\n   if test
+        $n -ne 0\r\n    then\r\n     echo   -n ',\"'$princ'\"'\r\n    else\r\n      echo
+        -n '\"'$princ'\"'\r\n    fi\r\n    n=1  \r\n done\r\n \r\n echo ']}'\r\n "
     variables: []
 constants:
   backup_support:
     name: backup_support
     value: 'true'
-service_dependencies: []
+service_dependencies:
+- dns
 guises: []
-build_dependencies: []
+build_dependencies:
+- "../../01.BaseImages/02.servicebase/"

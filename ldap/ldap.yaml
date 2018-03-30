@@ -18,7 +18,10 @@ soft_service: false
 shareable: false
 consumer_exportable: true
 consumerless: false
-target_environment_variables: {}
+target_environment_variables:
+  cn:
+    variable_name: cn
+    environment_variable_name: ldap_cn
 accepts:
 - ManagedEngine
 - ManagedService
