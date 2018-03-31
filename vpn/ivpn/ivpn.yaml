@@ -614,10 +614,10 @@ service_actionators:
       content: "#!/bin/sh\r\n\r\n/home/engine/scripts/engine/build_secrets.sh\r\n"
     variables:
     - name: vpn_name
-      value: Username
+      value: 
       mandatory: true
       input:
-        label: 
+        label: Username
         type: string
         title: 
         comment: 
@@ -630,10 +630,10 @@ service_actionators:
           pattern: "^[a-zA-Z]+$"
           message: 
     - name: password
-      value: Password
+      value: 
       mandatory: true
       input:
-        label: 
+        label: Password
         type: password_with_confirmation
         title: 
         comment: 
