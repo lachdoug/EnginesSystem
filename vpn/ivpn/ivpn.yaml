@@ -602,6 +602,157 @@ service_actionators:
       language: 
       content: 
     variables: []
+  add_user_vpn:
+    name: add_user_vpn
+    label: Add VPN user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    script_sudo:
+      language: sh
+      content: "#!/bin/sh\r\n\r\n/home/engine/scripts/engine/build_secrets.sh\r\n"
+    variables:
+    - name: vpn_name
+      value: Username
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
+          message: 
+    - name: password
+      value: Password
+      mandatory: true
+      input:
+        label: 
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  disable_user_vpn:
+    name: disable_user_vpn
+    label: Disable User
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: sh
+      content: "#!/bin/sh\r\n/home/engine/scripts/engine/build_secrets.sh\r\n"
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
+          message: 
+  list_vpn_users:
+    name: list_vpn_users
+    label: List VPN users
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  rm_user_vpn:
+    name: rm_user_vpn
+    label: Remove VPN user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: Username
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
+          message: 
+  set_vpn_user_pass:
+    name: set_vpn_user_pass
+    label: Set VPN user password
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
+          message: 
+    - name: password
+      value: 
+      mandatory: false
+      input:
+        label: Password
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
