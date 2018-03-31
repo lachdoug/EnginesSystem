@@ -725,7 +725,7 @@ service_actionators:
       value: 
       mandatory: true
       input:
-        label: 
+        label: Username
         type: string
         title: 
         comment: 
@@ -752,6 +752,33 @@ service_actionators:
           include_blank: false
         validation:
           pattern: 
+          message: 
+  enable_vpn_user:
+    name: enable_vpn_user
+    label: Enable VPN user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: Username
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
           message: 
 constants:
   backup_support:
