@@ -602,8 +602,8 @@ service_actionators:
       language: 
       content: 
     variables: []
-  add_user_vpn:
-    name: add_user_vpn
+  add_vpn_user:
+    name: add_vpn_user
     label: Add VPN user
     description: 
     return_type: json
@@ -645,8 +645,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  disable_user_vpn:
-    name: disable_user_vpn
+  disable_vpn_user:
+    name: disable_vpn_user
     label: Disable User
     description: 
     return_type: json
@@ -683,8 +683,8 @@ service_actionators:
       language: 
       content: 
     variables: []
-  rm_user_vpn:
-    name: rm_user_vpn
+  rm_vpn_user:
+    name: rm_vpn_user
     label: Remove VPN user
     description: 
     return_type: json
