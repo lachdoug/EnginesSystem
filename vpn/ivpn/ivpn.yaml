@@ -173,9 +173,9 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            aes256: AES256
             aes128: AES128
             aes192: AES192
+            aes256: AES256
             3DES: 3DES
           include_blank: false
         validation:
@@ -212,20 +212,21 @@ service_actionators:
         placeholder: 
         collection:
           items:
+            dhgroup5: 5 (1536 bit)
             dhgroup2: 2 (1024 bit)
-            dhgroup5: 5 (1563 bit)
             dhgroup14: 14 (2048 bit)
-            dhgroup15: 16 (4096 bit)
+            dhgroup15: 15 (3072 bit)
+            dhgroup16: 16 (4096 bit)
           include_blank: false
         validation:
           pattern: 
           message: 
-    - name: 'rekey '
+    - name: rekey
       value: 'no'
       mandatory: false
       input:
         label: Disable rekey
-        type: select_with_input
+        type: select
         title: 
         comment: 
         hint: 
@@ -242,9 +243,9 @@ service_actionators:
       value: start
       mandatory: false
       input:
-        label: 
+        label: Start
         type: select
-        title: Respond Only
+        title: Respond only or start
         comment: 
         hint: 
         placeholder: 
@@ -377,7 +378,7 @@ service_actionators:
           pattern: 
           message: 
     - name: pfs
-      value: 'off'
+      value: '5'
       mandatory: false
       input:
         label: 
@@ -388,10 +389,10 @@ service_actionators:
         placeholder: 
         collection:
           items:
+            '5': 5 (1536 bit)
             'off': 'off'
             '1': 1 (768 bit)
             '2': 2 (1024 bit)
-            '5': 5 (1536 bit)
             '14': 14 (2048 bit)
             '15': 15 (3076 bit)
             '16': 16 (4096 bit)
