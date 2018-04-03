@@ -92,8 +92,8 @@ consumer_params:
   type:
     name: type
     value: access
-    mandatory: false
-    ask_at_build_time: false
+    mandatory: true
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
