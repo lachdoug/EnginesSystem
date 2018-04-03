@@ -52,8 +52,8 @@ configurators:
           pattern: 
           message: 
 service_actionators:
-  add_site_vpn:
-    name: add_site_vpn
+  add_site2site_vpn:
+    name: add_site2site_vpn
     label: add site vpn
     description: 
     return_type: json
@@ -83,27 +83,11 @@ service_actionators:
       value: 
       mandatory: true
       input:
-        label: remote_endpoint
+        label: remote endpoint
         type: string
         title: 
         comment: 
         hint: x.x.x.x
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: remote_lan
-      value: 
-      mandatory: true
-      input:
-        label: Remote  lan
-        type: string
-        title: 
-        comment: 
-        hint: 
         placeholder: 
         collection:
           items: {}
@@ -144,7 +128,7 @@ service_actionators:
           pattern: 
           message: 
     - name: ike_version
-      value: 
+      value: '2'
       mandatory: false
       input:
         label: 
@@ -157,22 +141,6 @@ service_actionators:
           items:
             ikev1: IKEv1
             ikev2: IKv2
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: my_id
-      value: 
-      mandatory: false
-      input:
-        label: My ID
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
           include_blank: false
         validation:
           pattern: 
@@ -193,7 +161,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: phase1_enc_al
+    - name: phase1_enc
       value: 
       mandatory: true
       input:
@@ -205,9 +173,9 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            aes256: AES256
             aes128: AES128
             aes192: AES192
+            aes256: AES256
             3DES: 3DES
           include_blank: false
         validation:
@@ -232,7 +200,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: phase1_dh_group
+    - name: phase1_dh
       value: 
       mandatory: true
       input:
@@ -244,58 +212,47 @@ service_actionators:
         placeholder: 
         collection:
           items:
+            dhgroup5: 5 (1536 bit)
             dhgroup2: 2 (1024 bit)
-            dhgroup5: 5 (1563 bit)
             dhgroup14: 14 (2048 bit)
-            dhgrop15: 15 (3072 bit)
+            dhgroup15: 15 (3072 bit)
+            dhgroup16: 16 (4096 bit)
           include_blank: false
         validation:
           pattern: 
           message: 
-    - name: 'disable_rekey '
-      value: 'false'
+    - name: rekey
+      value: 'no'
       mandatory: false
       input:
         label: Disable rekey
-        type: boolean
+        type: select
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            'no': 'No'
+            'yes': 'Yes'
           include_blank: false
         validation:
           pattern: 
           message: 
     - name: respond_only
-      value: 'false'
+      value: start
       mandatory: false
       input:
-        label: 
-        type: boolean
-        title: Respond Only
+        label: Start
+        type: select
+        title: Respond only or start
         comment: 
         hint: 
         placeholder: 
         collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: nat_t
-      value: 'false'
-      mandatory: false
-      input:
-        label: Force Nat Traversal
-        type: boolean
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
+          items:
+            start: Start
+            add: Respond
           include_blank: false
         validation:
           pattern: 
@@ -305,7 +262,7 @@ service_actionators:
       mandatory: false
       input:
         label: Dead peer detection
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -317,7 +274,7 @@ service_actionators:
           pattern: 
           message: 
     - name: dpd_delay
-      value: 
+      value: '10'
       mandatory: false
       input:
         label: Dead Peer Detection Delay
@@ -332,7 +289,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: dpd_max
+    - name: dpd_timeout
       value: 
       mandatory: false
       input:
@@ -367,7 +324,7 @@ service_actionators:
           pattern: 
           message: 
     - name: ike_life
-      value: '36000'
+      value: '3600'
       mandatory: false
       input:
         label: IKE key lifetime
@@ -382,7 +339,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: phase2_enc_al
+    - name: phase2_enc
       value: 
       mandatory: true
       input:
@@ -394,8 +351,9 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            aes: AES
+            aes128: AES 128
             3des: 3DES
+            aes256: AES  256
           include_blank: false
         validation:
           pattern: 
@@ -420,7 +378,7 @@ service_actionators:
           pattern: 
           message: 
     - name: pfs
-      value: 'off'
+      value: '5'
       mandatory: false
       input:
         label: 
@@ -431,17 +389,19 @@ service_actionators:
         placeholder: 
         collection:
           items:
+            '5': 5 (1536 bit)
             'off': 'off'
             '1': 1 (768 bit)
             '2': 2 (1024 bit)
-            '5': 5 (1536 bit)
             '14': 14 (2048 bit)
+            '15': 15 (3076 bit)
+            '16': 16 (4096 bit)
           include_blank: false
         validation:
           pattern: 
           message: 
     - name: sa_life
-      value: '3600'
+      value: '28800'
       mandatory: false
       input:
         label: SA lifetime
@@ -456,8 +416,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  rm_vpn:
-    name: rm_vpn
+  rm_site2site_vpn:
+    name: rm_site2site_vpn
     label: Remove VPN
     description: 
     return_type: none
@@ -483,8 +443,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  vpn_status:
-    name: vpn_status
+  get_site2site_vpn:
+    name: get_site2site_vpn
     label: 
     description: 
     return_type: json
@@ -510,8 +470,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  stop_vpn:
-    name: stop_vpn
+  stop_site2site_vpn:
+    name: stop_site2site_vpn
     label: Stop VPN
     description: 
     return_type: none
@@ -537,8 +497,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  start_vpn:
-    name: start_vpn
+  start_site2site_vpn:
+    name: start_site2site_vpn
     label: Start Vpn
     description: 
     return_type: json
@@ -564,8 +524,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  disable_vpn:
-    name: disable_vpn
+  disable_site2site_vpn:
+    name: disable_site2site_vpn
     label: Disable vpn
     description: 
     return_type: json
@@ -591,8 +551,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  list_vpns:
-    name: list_vpns
+  list_site2site_vpns:
+    name: list_site2site_vpns
     label: List VPNs
     description: 
     return_type: json
@@ -602,8 +562,8 @@ service_actionators:
       language: 
       content: 
     variables: []
-  add_user_vpn:
-    name: add_user_vpn
+  add_vpn_user:
+    name: add_vpn_user
     label: Add VPN user
     description: 
     return_type: json
@@ -614,10 +574,10 @@ service_actionators:
       content: "#!/bin/sh\r\n\r\n/home/engine/scripts/engine/build_secrets.sh\r\n"
     variables:
     - name: vpn_name
-      value: Username
+      value: 
       mandatory: true
       input:
-        label: 
+        label: Username
         type: string
         title: 
         comment: 
@@ -630,10 +590,10 @@ service_actionators:
           pattern: "^[a-zA-Z]+$"
           message: 
     - name: password
-      value: Password
+      value: 
       mandatory: true
       input:
-        label: 
+        label: Password
         type: password_with_confirmation
         title: 
         comment: 
@@ -645,8 +605,8 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  disable_user_vpn:
-    name: disable_user_vpn
+  disable_vpn_user:
+    name: disable_vpn_user
     label: Disable User
     description: 
     return_type: json
@@ -660,7 +620,7 @@ service_actionators:
       value: 
       mandatory: false
       input:
-        label: 
+        label: Username
         type: string
         title: 
         comment: 
@@ -683,8 +643,8 @@ service_actionators:
       language: 
       content: 
     variables: []
-  rm_user_vpn:
-    name: rm_user_vpn
+  rm_vpn_user:
+    name: rm_vpn_user
     label: Remove VPN user
     description: 
     return_type: json
@@ -725,7 +685,7 @@ service_actionators:
       value: 
       mandatory: true
       input:
-        label: 
+        label: Username
         type: string
         title: 
         comment: 
@@ -753,6 +713,66 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  enable_vpn_user:
+    name: enable_vpn_user
+    label: Enable VPN user
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: true
+      input:
+        label: Username
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "^[a-zA-Z]+$"
+          message: 
+  vpn_status:
+    name: vpn_status
+    label: VPN Status
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  spd_entries:
+    name: spd_entries
+    label: Security Policies
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  sad_entries:
+    name: sad_entries
+    label: Security Associations
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants:
   backup_support:
     name: backup_support
