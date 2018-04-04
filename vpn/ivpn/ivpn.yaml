@@ -772,6 +772,33 @@ service_actionators:
       language: 
       content: 
     variables: []
+  enable_site2site_vpn:
+    name: enable_site2site_vpn
+    label: Enable site 2 site VPN
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
