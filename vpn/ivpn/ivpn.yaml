@@ -139,8 +139,8 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            ikev1: IKEv1
-            ikev2: IKv2
+            '1': IKEv1
+            '2': IKEv2
           include_blank: false
         validation:
           pattern: 
@@ -212,11 +212,11 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            dhgroup5: 5 (1536 bit)
-            dhgroup2: 2 (1024 bit)
-            dhgroup14: 14 (2048 bit)
-            dhgroup15: 15 (3072 bit)
-            dhgroup16: 16 (4096 bit)
+            modp1536: 5 (1536 bit)
+            modp1024: 2 (1024 bit)
+            modp2048: 14 (2048 bit)
+            modp3072: 15 (3072 bit)
+            modp4096: 16 (4096 bit)
           include_blank: false
         validation:
           pattern: 
@@ -378,7 +378,7 @@ service_actionators:
           pattern: 
           message: 
     - name: pfs
-      value: '5'
+      value: modp1536
       mandatory: false
       input:
         label: 
@@ -389,13 +389,12 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            '5': 5 (1536 bit)
+            modp1536: 5 (1536 bit)
             'off': 'off'
-            '1': 1 (768 bit)
-            '2': 2 (1024 bit)
-            '14': 14 (2048 bit)
-            '15': 15 (3076 bit)
-            '16': 16 (4096 bit)
+            modp1024: 2 (1024 bit)
+            modp2048: 14 (2048 bit)
+            modp3072: 15 (3076 bit)
+            modp4096: 16 (4096 bit)
           include_blank: false
         validation:
           pattern: 
@@ -773,6 +772,33 @@ service_actionators:
       language: 
       content: 
     variables: []
+  enable_site2site_vpn:
+    name: enable_site2site_vpn
+    label: Enable site 2 site VPN
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: vpn_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
