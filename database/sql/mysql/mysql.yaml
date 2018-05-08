@@ -80,7 +80,7 @@ consumer_params:
         message: 
   db_username:
     name: db_username
-    value: '_Engines_Builder(engine_name) '
+    value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
@@ -150,13 +150,16 @@ consumer_params:
     immutable: false
     input:
       label: 'Full Database Server Access '
-      type: checkbox
+      type: select
       title: 
       comment: 'Access to all databases includes the ability to delete '
       hint: 
       placeholder: 
       collection:
-        items: {}
+        items:
+          'true': Full access to all db
+          'false': access to this db
+          grant: Grsnt access rights
         include_blank: false
       validation:
         pattern: 
