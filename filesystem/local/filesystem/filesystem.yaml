@@ -91,7 +91,7 @@ consumer_params:
         message: 
   permissions:
     name: permissions
-    value: ro
+    value: rw
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
