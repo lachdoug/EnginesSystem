@@ -1,0 +1,142 @@
+---
+publisher_namespace: EnginesSystem
+type_path: ldap_ou
+title: ldap ou
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: ldap_ou
+service_handle_field: service_name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: true
+consumerless: false
+target_environment_variables:
+  ou:
+    variable_name: ou
+    environment_variable_name: ldap_ou
+accepts:
+- ManagedEngine
+- ManagedService
+consumer_params:
+  type:
+    name: type
+    value: ou
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: hidden
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  ou:
+    name: ou
+    value: 
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  read_access:
+    name: read_access
+    value: all
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: read access
+      type: select_with_input
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          all: by all
+          authenticated: authenticated
+          private: private
+        include_blank: true
+      validation:
+        pattern: 
+        message: 
+  write_access:
+    name: write_access
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: select_with_input
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          none: ''
+          authenticated: Authenticated
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  service_name:
+    name: service_name
+    value: ou_Engines_Field(cn)
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: {}
+service_actionators: {}
+constants:
+  LDAP_HOST:
+    name: LDAP_HOST
+    value: ldap.engines.internal
+service_dependencies: []
+guises: []
+build_dependencies: []
