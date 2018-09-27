@@ -19,8 +19,8 @@ shareable: false
 consumer_exportable: true
 consumerless: false
 target_environment_variables:
-  ou:
-    variable_name: ou
+  cn:
+    variable_name: cn
     environment_variable_name: ldap_ou
 accepts:
 - ManagedEngine
@@ -46,8 +46,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  ou:
-    name: ou
+  cn:
+    name: cn
     value: 
     mandatory: true
     ask_at_build_time: true
