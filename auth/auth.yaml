@@ -19,16 +19,16 @@ shareable: false
 consumer_exportable: false
 consumerless: false
 target_environment_variables:
-  kerberos:
-    variable_name: kerberos
+  prefix:
+    variable_name: prefix
     environment_variable_name: K_KEY
 accepts:
 - ManagedEngine
 - ManagedService
 consumer_params:
-  kerberos:
-    name: kerberos
-    value: _Engines_Builder(engine_name)
+  prefix:
+    name: prefix
+    value: host
     mandatory: true
     ask_at_build_time: true
     build_time_only: false

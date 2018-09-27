@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: dhcpd
-accepts: []
 title: Dhcpd
 description: 
 major: 0
@@ -16,8 +15,12 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
 configurators:
   dhcpd_settings:
     name: dhcpd_settings
@@ -25,6 +28,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: domain_name
       value: Engines_System(default_domain)
@@ -123,7 +132,7 @@ configurators:
           pattern: 
           message: 
     - name: 'dns_server1 '
-      value: Engines_System(engines_ip)
+      value: _Engines_System(engines_ip)
       mandatory: true
       input:
         label: DNS Server 1
@@ -178,5 +187,11 @@ service_actionators:
     return_type: none
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
