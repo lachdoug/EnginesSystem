@@ -19,8 +19,8 @@ shareable: false
 consumer_exportable: true
 consumerless: false
 target_environment_variables:
-  type:
-    variable_name: type
+  cn:
+    variable_name: cn
     environment_variable_name: group_cn
 accepts:
 - ManagedEngine
@@ -113,7 +113,7 @@ consumer_params:
         message: 
   service_name:
     name: service_name
-    value: _Engines_Field(cn)__Engine_Fields(type)
+    value: group_Engines_Field(cn)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
