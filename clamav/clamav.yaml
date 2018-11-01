@@ -1,0 +1,29 @@
+---
+publisher_namespace: EnginesSystem
+type_path: clamav
+title: 
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: clamav
+service_handle_field: 
+dedicated: false
+persistent: false
+immutable: false
+attach_post_build: false
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: true
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
+configurators: {}
+service_actionators: {}
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
