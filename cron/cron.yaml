@@ -114,14 +114,16 @@ consumer_params:
     immutable: false
     input:
       label: 
-      type: email
+      type: select_with_input
       title: 
       comment: 'not present or ''default'' for default, none for silent, log for log,
         email address for email '
       hint: 
       placeholder: 
       collection:
-        items: {}
+        items:
+          none: No notification
+          default: System default
         include_blank: false
       validation:
         pattern: 
