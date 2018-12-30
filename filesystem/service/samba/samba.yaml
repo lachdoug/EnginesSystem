@@ -1,0 +1,111 @@
+---
+publisher_namespace: EnginesSystem
+type_path: filesystem/service/samba
+title: 
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: samba
+service_handle_field: 
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: false
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params:
+  'service_name ':
+    name: 'service_name '
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  owner:
+    name: owner
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  volume_service:
+    name: volume_service
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  access:
+    name: access
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          '0': read only
+          '1': write access
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: {}
+service_actionators: {}
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
