@@ -10,7 +10,7 @@ patch: 0
 service_container: samba
 service_handle_field: 
 dedicated: false
-persistent: true
+persistent: false
 immutable: false
 attach_post_build: true
 attach_requires_restart: false
