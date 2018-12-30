@@ -21,8 +21,8 @@ consumerless: false
 target_environment_variables: {}
 accepts: []
 consumer_params:
-  'service_name ':
-    name: 'service_name '
+  service_name:
+    name: service_name
     value: 
     mandatory: true
     ask_at_build_time: true
@@ -81,8 +81,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  access:
-    name: access
+  ro_access:
+    name: ro_access
     value: 
     mandatory: true
     ask_at_build_time: false
@@ -97,8 +97,8 @@ consumer_params:
       placeholder: 
       collection:
         items:
-          '0': read only
-          '1': write access
+          'yes': read only
+          'no': write access
         include_blank: false
       validation:
         pattern: 
