@@ -25,7 +25,7 @@ consumer_params:
     name: 'service_name '
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -45,7 +45,7 @@ consumer_params:
     name: owner
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -65,7 +65,7 @@ consumer_params:
     name: volume_service
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
