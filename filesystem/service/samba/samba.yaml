@@ -8,7 +8,7 @@ minor: 0
 release_level: alpha
 patch: 0
 service_container: samba
-service_handle_field: 
+service_handle_field: service_name
 dedicated: false
 persistent: false
 immutable: false
