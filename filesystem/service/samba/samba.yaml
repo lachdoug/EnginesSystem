@@ -43,9 +43,9 @@ consumer_params:
         message: 
   owner:
     name: owner
-    value: 
+    value: _Engines_Environment(CONTAINER_NAME)
     mandatory: true
-    ask_at_build_time: true
+    ask_at_build_time: false
     build_time_only: false
     immutable: true
     input:
@@ -103,8 +103,97 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  group:
+    name: group
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  user:
+    name: user
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  guest:
+    name: guest
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: Allow guest access
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          'yes': 'Yes'
+          'no': 'No'
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: {}
-service_actionators: {}
+service_actionators:
+  set_debug_level:
+    name: set_debug_level
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: debug_level
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
