@@ -1,13 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: backup
-accepts:
-- ManagedEngine
-- ManagedService
-- filesystem/local/filesystem
-- database/sql/mysql
-- database/sql/pgsql
-- database/nosql/mongo
 title: Backup System
 description: 
 major: 0
@@ -22,7 +15,17 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
+- filesystem/local/filesystem
+- database/sql/mysql
+- database/sql/pgsql
+- database/nosql/mongo
 consumer_params:
   src_type:
     name: src_type
@@ -82,7 +85,7 @@ consumer_params:
         items: {}
         include_blank: false
       validation:
-        pattern: ".[@].*"
+        pattern: 
         message: 'Please enter a valid email address   '
   dest_proto:
     name: dest_proto
@@ -237,6 +240,12 @@ configurators:
     description: 'Backup notification email '
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: backup_email
       value: 
@@ -260,6 +269,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: include_logs
       value: 'true'
@@ -349,6 +364,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: dest_pass
       value: 
@@ -442,6 +463,9 @@ service_actionators:
     return_type: file
     return_file_name: backup_key.pub
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   download_private_key:
     name: download_private_key
@@ -450,6 +474,9 @@ service_actionators:
     return_type: file
     return_file_name: backup_key.priv
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables: []
   show_backup_password:
     name: show_backup_password
@@ -458,6 +485,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables: []
   restore:
     name: restore
@@ -466,6 +496,9 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: type
       value: 
@@ -544,6 +577,9 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: backup_password
       value: 
@@ -600,6 +636,9 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: disabled
       value: 
@@ -640,6 +679,9 @@ service_actionators:
     return_type: plain_text
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: backup_name
       value: 
@@ -664,6 +706,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables: []
   status:
     name: status
@@ -672,6 +717,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   backup_logs:
     name: backup_logs
@@ -680,6 +728,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: 'backup_name '
       value: 
@@ -713,4 +764,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-constants: 
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
