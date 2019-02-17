@@ -1,9 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: database/nosql/mongo
-accepts:
-- ManagedEngine
-- ManagedService
 title: Mongo database server
 description: 
 major: 0
@@ -18,6 +15,9 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
 target_environment_variables:
   db_password:
     variable_name: db_password
@@ -31,6 +31,9 @@ target_environment_variables:
   database_host:
     variable_name: database_host
     environment_variable_name: dbhost
+accepts:
+- ManagedEngine
+- ManagedService
 consumer_params:
   db_password:
     name: db_password
@@ -56,7 +59,7 @@ consumer_params:
     name: db_username
     value: '_Engines_Builder(engine_name) '
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -76,12 +79,12 @@ consumer_params:
     name: database_name
     value: _Engines_Builder(engine_name)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
       label: Database name
-      type: boolean
+      type: string
       title: 
       comment: 
       hint: 
@@ -119,6 +122,12 @@ configurators:
     description: 
     enable_logging: false
     no_save: true
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: db_master_pass
       value: 
@@ -136,7 +145,7 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators: 
+service_actionators: {}
 constants:
   backup_support:
     name: backup_support
@@ -144,3 +153,6 @@ constants:
   rails_flavor:
     name: rails_flavor
     value: mongodb
+service_dependencies: []
+guises: []
+build_dependencies: []
