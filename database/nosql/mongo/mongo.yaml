@@ -7,7 +7,7 @@ major: 0
 minor: 0
 release_level: beta
 patch: 0
-service_container: mongo
+service_container: mongod
 service_handle_field: database_name
 dedicated: false
 persistent: true
