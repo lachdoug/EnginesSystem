@@ -27,7 +27,7 @@ target_environment_variables:
     environment_variable_name: dbname
   db_username:
     variable_name: db_username
-    environment_variable_name: dbname
+    environment_variable_name: db_username
   database_host:
     variable_name: database_host
     environment_variable_name: dbhost
@@ -57,7 +57,7 @@ consumer_params:
         message: 
   db_username:
     name: db_username
-    value: '_Engines_Builder(engine_name) '
+    value: _Engines_Builder(engine_name)
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
