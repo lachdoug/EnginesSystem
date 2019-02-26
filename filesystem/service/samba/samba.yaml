@@ -1,16 +1,16 @@
 ---
 publisher_namespace: EnginesSystem
-type_path: filesystem/service/ftp
-title: ftp server
+type_path: filesystem/service/samba
+title: 
 description: 
 major: 0
 minor: 0
 release_level: alpha
 patch: 0
-service_container: ftp
-service_handle_field: username
+service_container: samba
+service_handle_field: service_name
 dedicated: false
-persistent: true
+persistent: false
 immutable: false
 attach_post_build: true
 attach_requires_restart: false
@@ -19,58 +19,17 @@ shareable: false
 consumer_exportable: false
 consumerless: false
 target_environment_variables: {}
-accepts:
-- filesystem/local/filesystem
+accepts: []
 consumer_params:
-  folder:
-    name: folder
-    value: "/"
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Top level directorty
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  volume:
-    name: volume
-    value: _Engines_Environment(volume_name)
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-    input:
-      label: Volume name
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  username:
-    name: username
-    value: _Engines_System(service_account())
+  service_name:
+    name: service_name
+    value: 
     mandatory: true
     ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
-      label: User Name
+      label: 
       type: string
       title: 
       comment: 
@@ -82,53 +41,75 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  password:
-    name: password
-    value: _Engines_Builder(service_password(8))
+  owner:
+    name: owner
+    value: _Engines_Environment(CONTAINER_NAME)
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  volume_service:
+    name: volume_service
+    value: 
+    mandatory: true
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  ro_access:
+    name: ro_access
+    value: 
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
     immutable: false
     input:
       label: 
-      type: password_with_confirmation
+      type: select
       title: 
       comment: 
       hint: 
       placeholder: 
       collection:
-        items: {}
+        items:
+          'yes': read only
+          'no': write access
         include_blank: false
       validation:
         pattern: 
         message: 
-  rw_access:
-    name: rw_access
-    value: 'true'
-    mandatory: true
-    ask_at_build_time: false
+  group:
+    name: group
+    value: 
+    mandatory: false
+    ask_at_build_time: true
     build_time_only: false
-    immutable: true
-    input:
-      label: Write access
-      type: checkbox_boolean
-      title: 
-      comment: 'Write access includes the ability to delete '
-      hint: 'Allow ftp service to write files '
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  ftp_gid:
-    name: ftp_gid
-    value: _Engines_Builder(data_gid)
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
+    immutable: false
     input:
       label: 
       type: string
@@ -138,23 +119,81 @@ consumer_params:
       placeholder: 
       collection:
         items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  user:
+    name: user
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  guest:
+    name: guest
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: Allow guest access
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          'yes': 'Yes'
+          'no': 'No'
         include_blank: false
       validation:
         pattern: 
         message: 
 configurators: {}
 service_actionators:
-  active_users:
-    name: active_users
-    label: List users logged on
+  set_debug_level:
+    name: set_debug_level
+    label: 
     description: 
-    return_type: json
+    return_type: plain_text
     return_file_name: 
     enable_logging: false
     script_sudo:
       language: 
       content: 
-    variables: []
+    variables:
+    - name: debug_level
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []

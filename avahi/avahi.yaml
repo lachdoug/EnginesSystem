@@ -105,8 +105,8 @@ service_actionators:
       language: 
       content: 
     variables: []
-  list_servces:
-    name: list_servces
+  list_services:
+    name: list_services
     label: 'List Services '
     description: 
     return_type: none

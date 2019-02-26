@@ -842,6 +842,47 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  which_branch:
+    name: which_branch
+    label: Branch
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  set_branch:
+    name: set_branch
+    label: Set Branch
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: branch
+      value: 
+      mandatory: true
+      input:
+        label: Branch
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            master: master
+            current: current
+            production: production
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
