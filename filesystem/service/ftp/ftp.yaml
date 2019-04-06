@@ -148,6 +148,87 @@ service_actionators:
     name: active_users
     label: List users logged on
     description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  set_user_key:
+    name: set_user_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: sh
+      content: "#!/bin/sh\r\n\r\necho $user_key > /etc/sftp/authorized_keys/$username"
+    variables:
+    - name: username
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: user_key
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  remove_user_key:
+    name: remove_user_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: php
+      content: "#!/bin/sh\r\n\r\nrm /etc/sftp/authorized_keys/$username"
+    variables:
+    - name: username
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_user_keys:
+    name: list_user_keys
+    label: 
+    description: 
     return_type: json
     return_file_name: 
     enable_logging: false
@@ -155,6 +236,33 @@ service_actionators:
       language: 
       content: 
     variables: []
+  get_user_key:
+    name: get_user_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: username
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
