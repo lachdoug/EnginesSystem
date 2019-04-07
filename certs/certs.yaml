@@ -609,6 +609,7 @@ service_actionators:
             generated: System generated
             imported: Imported
             user: User generated
+            external_ca: Signed CSR
           include_blank: false
         validation:
           pattern: 
