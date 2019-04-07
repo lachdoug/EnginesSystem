@@ -1409,11 +1409,13 @@ service_actionators:
         hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            default: system default
+            wap: services/wap
           include_blank: false
         validation:
           pattern: 
-          message: 
+          message: default
 constants:
   backup_support:
     name: backup_support
