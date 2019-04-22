@@ -353,7 +353,8 @@ configurators:
         collection:
           items:
             nightly: Nightly
-            weekly: monthly
+            weekly: Weekly
+            monthly: Monthy
           include_blank: false
         validation:
           pattern: 
@@ -732,7 +733,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: 'backup_name '
+    - name: backup_name
       value: 
       mandatory: false
       input:
@@ -755,6 +756,114 @@ service_actionators:
         label: 
         type: date
         title: Date
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_backup_ssh_key:
+    name: rm_backup_ssh_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  list_backup_ssh_keys:
+    name: list_backup_ssh_keys
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  upload_ssh_key:
+    name: upload_ssh_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: host
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: private
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: public
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  generate_ssh_key:
+    name: generate_ssh_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: host
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
         comment: 
         hint: 
         placeholder: 
