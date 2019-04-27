@@ -8,7 +8,7 @@ minor: 0
 release_level: alpha
 patch: 0
 service_container: homes
-service_handle_field: home_name
+service_handle_field: home_type
 dedicated: false
 persistent: true
 immutable: true
