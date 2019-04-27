@@ -91,12 +91,12 @@ consumer_params:
     name: service_name
     value: _Engines_Field(home_type)_Engines_Field(access)
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
       label: 
-      type: string
+      type: hidden
       title: 
       comment: 
       hint: 
