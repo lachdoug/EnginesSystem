@@ -1,0 +1,76 @@
+---
+publisher_namespace: EnginesSystem
+type_path: homes
+title: homes
+description: 
+major: 0
+minor: 0
+release_level: alpha
+patch: 0
+service_container: homes
+service_handle_field: home_name
+dedicated: false
+persistent: true
+immutable: true
+attach_post_build: true
+attach_requires_restart: true
+soft_service: false
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts:
+- ManagedEngine
+- ManagedService
+consumer_params:
+  home_type:
+    name: home_type
+    value: 
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: select
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          all: All Homes
+          seperate: Individual Homes
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  homes:
+    name: homes
+    value: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: true
+    immutable: false
+    input:
+      label: List of users homes
+      type: text
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+configurators: {}
+service_actionators: {}
+constants:
+  backup_support:
+    name: backup_support
+    value: 'false'
+service_dependencies: []
+guises: []
+build_dependencies: []
