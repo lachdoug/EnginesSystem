@@ -25,9 +25,9 @@ accepts:
 consumer_params:
   home_type:
     name: home_type
-    value: 
+    value: all
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
