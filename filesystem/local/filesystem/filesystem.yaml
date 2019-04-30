@@ -151,13 +151,13 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  fw_user:
-    name: fw_user
+  fw_uid:
+    name: fw_uid
     value: _Engines_Builder(cont_user_id)
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
-    immutable: false
+    immutable: true
     input:
       label: 
       type: string
