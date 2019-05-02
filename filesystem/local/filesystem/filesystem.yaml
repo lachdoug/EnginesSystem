@@ -151,8 +151,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  fw_uid:
-    name: fw_uid
+  fw_user:
+    name: fw_user
     value: _Engines_Builder(cont_user_id)
     mandatory: true
     ask_at_build_time: false
