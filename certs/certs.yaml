@@ -354,6 +354,7 @@ service_actionators:
             generated: System generated
             imported: Imported
             user: User generated
+            external_ca: From CSR
           include_blank: false
         validation:
           pattern: 
@@ -1079,6 +1080,7 @@ service_actionators:
             user: User generated
             imported: Imported
             generated: System generated
+            external_ca: From CSR
           include_blank: false
         validation:
           pattern: 
