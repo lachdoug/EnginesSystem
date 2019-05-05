@@ -1491,8 +1491,9 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            import: Imported
+            imported: Imported
             generated: Generated
+            external_ca: From CSR
           include_blank: false
         validation:
           pattern: 
