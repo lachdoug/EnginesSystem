@@ -317,7 +317,7 @@ service_actionators:
     label: Retrieve certificate
     description: 
     return_type: file
-    return_file_name: Engines_Builder(action_val(fetch_cert,cert_name)).pem
+    return_file_name: _Engines_Builder(action_val(fetch_cert,cert_name)).pem
     enable_logging: false
     script_sudo:
       language: 
@@ -1459,7 +1459,7 @@ service_actionators:
     label: 
     description: 
     return_type: file
-    return_file_name: cert.pkcs12
+    return_file_name: _Engines_Builder(action_val(export_pkcs12,common_name)).pem
     enable_logging: false
     script_sudo:
       language: 
