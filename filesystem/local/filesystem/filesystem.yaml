@@ -151,8 +151,91 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  fw_user:
+    name: fw_user
+    value: _Engines_Builder(cont_user_id)
+    mandatory: true
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: {}
-service_actionators: {}
+service_actionators:
+  set_home_access_level:
+    name: set_home_access_level
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: home
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: access_level
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            '6650': private
+            '6660': group read
+            '6666': public read
+            '6677': public write
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: dir
+      value: "/"
+      mandatory: false
+      input:
+        label: Directory
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support

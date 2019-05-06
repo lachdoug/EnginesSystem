@@ -404,6 +404,7 @@ configurators:
             local: local
             s3: AWS S3 bucket
             smbfs: smbfs
+            sftp: sftp
           include_blank: false
         validation:
           pattern: 
@@ -873,6 +874,17 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  view_ssh_key:
+    name: view_ssh_key
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants: {}
 service_dependencies: []
 guises: []
