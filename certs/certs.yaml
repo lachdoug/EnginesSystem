@@ -354,6 +354,7 @@ service_actionators:
             generated: System generated
             imported: Imported
             user: User generated
+            external_ca: From CSR
           include_blank: false
         validation:
           pattern: 
@@ -457,7 +458,7 @@ service_actionators:
       mandatory: false
       input:
         label: 
-        type: boolean
+        type: hidden
         title: 
         comment: 
         hint: 
@@ -563,7 +564,7 @@ service_actionators:
       content: 
     variables:
     - name: install_target
-      value: default
+      value: all
       mandatory: true
       input:
         label: Target
@@ -812,6 +813,41 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: usage
+      value: server
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            server: Server Identification
+            client: Client Identification
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: CA
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   add_cert_to_wap:
     name: add_cert_to_wap
     label: Add certificate to Wap
@@ -1044,6 +1080,7 @@ service_actionators:
             user: User generated
             imported: Imported
             generated: System generated
+            external_ca: From CSR
           include_blank: false
         validation:
           pattern: 
@@ -1400,7 +1437,7 @@ service_actionators:
           pattern: 
           message: 
     - name: install_target
-      value: 
+      value: all
       mandatory: false
       input:
         label: 
@@ -1411,12 +1448,74 @@ service_actionators:
         placeholder: 
         collection:
           items:
-            default: system default
+            all: system default
             wap: services/wap
           include_blank: false
         validation:
           pattern: 
-          message: default
+          message: 
+  export_pkcs12:
+    name: export_pkcs12
+    label: 
+    description: 
+    return_type: file
+    return_file_name: _Engines_Builder(action_val(export_pkcs12,common_name)).pem
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: common_name
+      value: 
+      mandatory: true
+      input:
+        label: Domain Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: cert_type
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            imported: Imported
+            generated: Generated
+            external_ca: From CSR
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: export_password
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support

@@ -41,6 +41,7 @@ consumer_params:
         items:
           command: Run Command
           web: Get a URL
+          action: run an action
         include_blank: false
       validation:
         pattern: 
