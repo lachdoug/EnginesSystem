@@ -240,125 +240,6 @@ configurators:
         validation:
           pattern: 
           message: 
-  create_domain_dkim:
-    name: create_domain_dkim
-    label: 
-    description: 
-    enable_logging: false
-    no_save: false
-    set_script_sudo:
-      language: 
-      content: 
-    read_script_sudo:
-      language: 
-      content: 
-    variables:
-    - name: domain_name
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-  rm_domain_dkim:
-    name: rm_domain_dkim
-    label: 
-    description: 
-    enable_logging: false
-    no_save: false
-    set_script_sudo:
-      language: 
-      content: 
-    read_script_sudo:
-      language: 
-      content: 
-    variables:
-    - name: domain_name
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-  import_domain_dkim:
-    name: import_domain_dkim
-    label: 
-    description: 
-    enable_logging: false
-    no_save: false
-    set_script_sudo:
-      language: 
-      content: 
-    read_script_sudo:
-      language: 
-      content: 
-    variables:
-    - name: domain_name
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: private
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: text
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: public
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: text
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
 service_actionators:
   show_queue:
     name: show_queue
@@ -447,6 +328,119 @@ service_actionators:
       language: 
       content: 
     variables: []
+  create_domain_dkim:
+    name: create_domain_dkim
+    label: 
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  rm_domain_dkim:
+    name: rm_domain_dkim
+    label: 
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  import_domain_dkim:
+    name: import_domain_dkim
+    label: 
+    description: 
+    return_type: none
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: private
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: public
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
