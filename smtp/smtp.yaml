@@ -240,91 +240,16 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators:
-  show_queue:
-    name: show_queue
-    label: Show mail queue
-    description: 
-    return_type: json
-    return_file_name: 
-    enable_logging: false
-    script_sudo:
-      language: 
-      content: 
-    variables: []
-  flush_queue:
-    name: flush_queue
-    label: Flush mail queue
-    description: 
-    return_type: json
-    return_file_name: 
-    enable_logging: false
-    script_sudo:
-      language: 
-      content: 
-    variables: []
-  rm_email:
-    name: rm_email
-    label: Remove email from queue
-    description: 
-    return_type: json
-    return_file_name: 
-    enable_logging: true
-    script_sudo:
-      language: 
-      content: 
-    variables:
-    - name: queue_id
-      value: 
-      mandatory: false
-      input:
-        label: Queue id
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
   create_domain_dkim:
     name: create_domain_dkim
     label: 
     description: 
-    return_type: none
-    return_file_name: 
     enable_logging: false
-    script_sudo:
+    no_save: false
+    set_script_sudo:
       language: 
       content: 
-    variables:
-    - name: domain_name
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-  domain_dkim_text:
-    name: domain_dkim_text
-    label: 
-    description: 
-    return_type: plain_text
-    return_file_name: 
-    enable_logging: false
-    script_sudo:
+    read_script_sudo:
       language: 
       content: 
     variables:
@@ -348,10 +273,12 @@ service_actionators:
     name: rm_domain_dkim
     label: 
     description: 
-    return_type: none
-    return_file_name: 
     enable_logging: false
-    script_sudo:
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
       language: 
       content: 
     variables:
@@ -371,25 +298,16 @@ service_actionators:
         validation:
           pattern: 
           message: 
-  domains_dkim_list:
-    name: domains_dkim_list
-    label: 
-    description: 
-    return_type: json
-    return_file_name: 
-    enable_logging: false
-    script_sudo:
-      language: 
-      content: 
-    variables: []
   import_domain_dkim:
     name: import_domain_dkim
     label: 
     description: 
-    return_type: none
-    return_file_name: 
     enable_logging: false
-    script_sudo:
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
       language: 
       content: 
     variables:
@@ -441,6 +359,94 @@ service_actionators:
         validation:
           pattern: 
           message: 
+service_actionators:
+  show_queue:
+    name: show_queue
+    label: Show mail queue
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  flush_queue:
+    name: flush_queue
+    label: Flush mail queue
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  rm_email:
+    name: rm_email
+    label: Remove email from queue
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: true
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: queue_id
+      value: 
+      mandatory: false
+      input:
+        label: Queue id
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  domain_dkim_text:
+    name: domain_dkim_text
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  domains_dkim_list:
+    name: domains_dkim_list
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants: {}
 service_dependencies: []
 guises: []
