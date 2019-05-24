@@ -332,7 +332,7 @@ service_actionators:
     name: create_domain_dkim
     label: 
     description: 
-    return_type: none
+    return_type: json
     return_file_name: 
     enable_logging: false
     script_sudo:
@@ -386,7 +386,7 @@ service_actionators:
     name: import_domain_dkim
     label: 
     description: 
-    return_type: none
+    return_type: json
     return_file_name: 
     enable_logging: false
     script_sudo:
@@ -441,6 +441,28 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  clear_deffered_queue:
+    name: clear_deffered_queue
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  clear_complete_queue:
+    name: clear_complete_queue
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants: {}
 service_dependencies: []
 guises: []
