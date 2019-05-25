@@ -1,7 +1,6 @@
 ---
 publisher_namespace: EnginesSystem
 type_path: email
-accepts: []
 title: Email server
 description: 
 major: 0
@@ -16,8 +15,12 @@ immutable: false
 attach_post_build: true
 attach_requires_restart: false
 soft_service: false
-target_environment_variables: 
-consumer_params: 
+shareable: false
+consumer_exportable: false
+consumerless: false
+target_environment_variables: {}
+accepts: []
+consumer_params: {}
 configurators:
   default_domain:
     name: default_domain
@@ -25,6 +28,12 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: default_domain
       value: 
@@ -48,13 +57,19 @@ configurators:
     description: 
     enable_logging: true
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: zen_spamhaus_org
       value: 'false'
       mandatory: false
       input:
         label: 
-        type: boolean
+        type: checkbox_boolean
         title: zen.spamhaus.org
         comment: 
         hint: 
@@ -70,7 +85,7 @@ configurators:
       mandatory: false
       input:
         label: bl.spamcop.net
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -86,7 +101,7 @@ configurators:
       mandatory: false
       input:
         label: cbl.abuseat.org
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -102,7 +117,7 @@ configurators:
       mandatory: false
       input:
         label: dnsbl.njabl.org
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -118,7 +133,7 @@ configurators:
       mandatory: false
       input:
         label: dnsbl.sorbs.net
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -129,12 +144,12 @@ configurators:
         validation:
           pattern: 
           message: 
-    - name: dsn_rfc-ignorant_org
+    - name: dsn_rfc_gnorant_org
       value: 'false'
       mandatory: false
       input:
         label: dsn.rfc-ignorant.org
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -151,13 +166,19 @@ configurators:
     description: 
     enable_logging: false
     no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
     variables:
     - name: enable_grey_listing
       value: 'false'
       mandatory: false
       input:
         label: Enable grey listing
-        type: boolean
+        type: checkbox_boolean
         title: 
         comment: 
         hint: 
@@ -216,6 +237,93 @@ configurators:
         validation:
           pattern: 
           message: 
+  enforce_spf:
+    name: enforce_spf
+    label: 
+    description: 
+    enable_logging: false
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: enforce_spf
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: checkbox_boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  enforce_dkim:
+    name: enforce_dkim
+    label: 
+    description: 
+    enable_logging: false
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: enforce_dkim
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: checkbox_boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  hostname_checks:
+    name: hostname_checks
+    label: 
+    description: 
+    enable_logging: false
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: hostname_checks
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: checkbox_boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   list_domains:
     name: list_domains
@@ -224,6 +332,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   add_domain:
     name: add_domain
@@ -232,6 +343,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: domain_name
       value: 
@@ -256,6 +370,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: domain_name
       value: 
@@ -280,6 +397,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   flush_queue:
     name: flush_queue
@@ -288,6 +408,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: false
+    script_sudo:
+      language: 
+      content: 
     variables: []
   rm_email:
     name: rm_email
@@ -296,6 +419,9 @@ service_actionators:
     return_type: json
     return_file_name: 
     enable_logging: true
+    script_sudo:
+      language: 
+      content: 
     variables:
     - name: queue_id
       value: 
@@ -313,4 +439,29 @@ service_actionators:
         validation:
           pattern: 
           message: 
-constants: 
+  clear_complete_queue:
+    name: clear_complete_queue
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  clear_deffered_queue:
+    name: clear_deffered_queue
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+constants: {}
+service_dependencies: []
+guises: []
+build_dependencies: []
