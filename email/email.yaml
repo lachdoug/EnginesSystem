@@ -266,6 +266,24 @@ configurators:
         validation:
           pattern: 
           message: 
+    - name: action
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            tag: Tag
+            reject: Reject
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   enforce_dkim:
     name: enforce_dkim
     label: 
