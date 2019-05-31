@@ -252,7 +252,7 @@ configurators:
     variables:
     - name: enforce_spf
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: checkbox_boolean
@@ -310,7 +310,7 @@ configurators:
     variables:
     - name: hostname_checks
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: checkbox_boolean
