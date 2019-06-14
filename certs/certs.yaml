@@ -1512,6 +1512,7 @@ service_actionators:
             imported: Imported
             generated: Generated
             external_ca: From CSR
+            user: User
           include_blank: false
         validation:
           pattern: 
