@@ -485,6 +485,22 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: optional_cn
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_certs:
     name: list_certs
     label: List certificates
