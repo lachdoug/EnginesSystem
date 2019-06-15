@@ -1544,7 +1544,7 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_name
+    - name: common_name
       value: 
       mandatory: true
       input:
