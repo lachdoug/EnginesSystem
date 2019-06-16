@@ -185,6 +185,26 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  ca_name:
+    name: ca_name
+    value: system
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
@@ -847,7 +867,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: CA
+    - name: ca_name
       value: 
       mandatory: true
       input:
@@ -1591,6 +1611,167 @@ service_actionators:
           include_blank: false
         validation:
           pattern: 
+          message: 
+  list_ca:
+    name: list_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  rm_ca:
+    name: rm_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  create_ca:
+    name: create_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: CA Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: domain_name
+      value: 
+      mandatory: false
+      input:
+        label: Common Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: person
+      value: 
+      mandatory: false
+      input:
+        label: Person
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: organisation
+      value: 
+      mandatory: false
+      input:
+        label: Organization
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: city
+      value: 
+      mandatory: false
+      input:
+        label: City
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: state
+      value: 
+      mandatory: false
+      input:
+        label: State
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: country
+      value: 
+      mandatory: false
+      input:
+        label: Country 2 letter
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "[a-zA-Z][a-zA-Z]"
           message: 
 constants:
   backup_support:
