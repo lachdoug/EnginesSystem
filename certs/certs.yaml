@@ -1100,11 +1100,11 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_location
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: 
+        label: Certificate type
         type: select
         title: 
         comment: 
@@ -1137,13 +1137,13 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: consumer_type
+    - name: owner_type
       value: 
       mandatory: false
       input:
         label: 
         type: select
-        title: Consumer type
+        title: Owner type
         comment: required for generated or live certs
         hint: 
         placeholder: 
@@ -1155,11 +1155,11 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: consumer_name
+    - name: owner_name
       value: 
       mandatory: false
       input:
-        label: Consumer name
+        label: Owner name
         type: string
         title: 
         comment: app or service name
@@ -1772,6 +1772,60 @@ service_actionators:
           include_blank: false
         validation:
           pattern: "[a-zA-Z][a-zA-Z]"
+          message: 
+  fetch_ca:
+    name: fetch_ca
+    label: 
+    description: 
+    return_type: file
+    return_file_name: ca_file.pem
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  ca_details:
+    name: ca_details
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
           message: 
 constants:
   backup_support:
