@@ -205,6 +205,29 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  cert_usage:
+    name: cert_usage
+    value: server
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: select_multiple
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          server: Server
+          client: Client
+          ca: CA
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
@@ -414,6 +437,23 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   import_cert:
     name: import_cert
     label: Import certificate
@@ -573,6 +613,23 @@ service_actionators:
           items:
             user: User generated
             imported: Imported
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -871,7 +928,7 @@ service_actionators:
       value: 
       mandatory: true
       input:
-        label: 
+        label: CA
         type: select_with_input
         title: 
         comment: 
@@ -986,6 +1043,23 @@ service_actionators:
         collection:
           items:
             user: User generated
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -1167,6 +1241,23 @@ service_actionators:
         placeholder: 
         collection:
           items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -1553,6 +1644,23 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   email_user_pkcs12:
     name: email_user_pkcs12
     label: 
@@ -1608,6 +1716,23 @@ service_actionators:
         placeholder: 
         collection:
           items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -1827,6 +1952,17 @@ service_actionators:
         validation:
           pattern: 
           message: 
+  ca_certs:
+    name: ca_certs
+    label: List certs signed by CA
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants:
   backup_support:
     name: backup_support
