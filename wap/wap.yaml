@@ -207,6 +207,27 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  ca_name:
+    name: ca_name
+    value: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: Signing CA Name
+      type: select_with_input
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          system: System
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   default_site:
     name: default_site
