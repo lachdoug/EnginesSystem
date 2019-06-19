@@ -906,7 +906,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: usage
+    - name: cert_usage
       value: server
       mandatory: false
       input:
@@ -1737,6 +1737,22 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: message
+      value: 
+      mandatory: false
+      input:
+        label: Email message body
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_ca:
     name: list_ca
     label: 
@@ -1962,7 +1978,93 @@ service_actionators:
     script_sudo:
       language: 
       content: 
-    variables: []
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  view_ca_crl:
+    name: view_ca_crl
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  verify_cert:
+    name: verify_cert
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: certificate
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants:
   backup_support:
     name: backup_support
