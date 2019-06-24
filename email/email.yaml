@@ -252,7 +252,7 @@ configurators:
     variables:
     - name: enforce_spf
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: checkbox_boolean
@@ -262,6 +262,24 @@ configurators:
         placeholder: 
         collection:
           items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: action
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: select
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            tag: Tag
+            reject: Reject
           include_blank: false
         validation:
           pattern: 
@@ -310,7 +328,7 @@ configurators:
     variables:
     - name: hostname_checks
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: checkbox_boolean

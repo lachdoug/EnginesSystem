@@ -185,6 +185,49 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  ca_name:
+    name: ca_name
+    value: system
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  cert_usage:
+    name: cert_usage
+    value: server
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: select_multiple
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items:
+          server: Server
+          client: Client
+          ca: CA
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   system_ca:
     name: system_ca
@@ -394,6 +437,23 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   import_cert:
     name: import_cert
     label: Import certificate
@@ -485,6 +545,22 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: optional_cn
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_certs:
     name: list_certs
     label: List certificates
@@ -537,6 +613,23 @@ service_actionators:
           items:
             user: User generated
             imported: Imported
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -813,7 +906,7 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: usage
+    - name: cert_usage
       value: server
       mandatory: false
       input:
@@ -831,11 +924,11 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: CA
+    - name: ca_name
       value: 
       mandatory: true
       input:
-        label: 
+        label: CA
         type: select_with_input
         title: 
         comment: 
@@ -954,6 +1047,23 @@ service_actionators:
         validation:
           pattern: 
           message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   rm_cert_from_wap:
     name: rm_cert_from_wap
     label: Remove certificate from wap
@@ -1064,11 +1174,11 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_location
+    - name: cert_type
       value: 
       mandatory: true
       input:
-        label: 
+        label: Certificate type
         type: select
         title: 
         comment: 
@@ -1101,13 +1211,13 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: consumer_type
+    - name: owner_type
       value: 
       mandatory: false
       input:
         label: 
         type: select
-        title: Consumer type
+        title: Owner type
         comment: required for generated or live certs
         hint: 
         placeholder: 
@@ -1119,11 +1229,11 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: consumer_name
+    - name: owner_name
       value: 
       mandatory: false
       input:
-        label: Consumer name
+        label: Owner name
         type: string
         title: 
         comment: app or service name
@@ -1131,6 +1241,23 @@ service_actionators:
         placeholder: 
         collection:
           items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
           include_blank: false
         validation:
           pattern: 
@@ -1496,6 +1623,7 @@ service_actionators:
             imported: Imported
             generated: Generated
             external_ca: From CSR
+            user: User
           include_blank: false
         validation:
           pattern: 
@@ -1506,6 +1634,454 @@ service_actionators:
       input:
         label: 
         type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  email_user_pkcs12:
+    name: email_user_pkcs12
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: common_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: email_address
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: export_password
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: password_with_confirmation
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: ca_name
+      value: 
+      mandatory: false
+      input:
+        label: CA
+        type: select_with_input
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items:
+            system: System
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: message
+      value: 
+      mandatory: false
+      input:
+        label: Email message body
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  list_ca:
+    name: list_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
+  rm_ca:
+    name: rm_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  create_ca:
+    name: create_ca
+    label: 
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: CA Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: domain_name
+      value: 
+      mandatory: false
+      input:
+        label: Common Name
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: person
+      value: 
+      mandatory: false
+      input:
+        label: Person
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: organisation
+      value: 
+      mandatory: false
+      input:
+        label: Organization
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: city
+      value: 
+      mandatory: false
+      input:
+        label: City
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: state
+      value: 
+      mandatory: false
+      input:
+        label: State
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: country
+      value: 
+      mandatory: false
+      input:
+        label: Country 2 letter
+        type: string
+        title: Defaults to value System CA
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: "[a-zA-Z][a-zA-Z]"
+          message: 
+  fetch_ca:
+    name: fetch_ca
+    label: 
+    description: 
+    return_type: file
+    return_file_name: ca_file.pem
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  ca_details:
+    name: ca_details
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  ca_certs:
+    name: ca_certs
+    label: List certs signed by CA
+    description: 
+    return_type: json
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  view_ca_crl:
+    name: view_ca_crl
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  verify_cert:
+    name: verify_cert
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: certificate
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: text
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+  regenerate_crl:
+    name: regenerate_crl
+    label: 
+    description: 
+    return_type: plain_text
+    return_file_name: 
+    enable_logging: false
+    script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: ca_name
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
         title: 
         comment: 
         hint: 
