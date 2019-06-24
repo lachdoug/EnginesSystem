@@ -660,17 +660,16 @@ service_actionators:
       value: 
       mandatory: true
       input:
-        label: Certificate type
-        type: select
+        label: CA name
+        type: select_with_input
         title: 
         comment: 
-        hint: 'imported| ctype/cname/  '
+        hint: 
         placeholder: 
         collection:
           items:
-            generated: System generated
+            system: System generated
             imported: Imported
-            user: User generated
             external_ca: Signed CSR
           include_blank: false
         validation:
@@ -954,21 +953,21 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_type
+    - name: ca_name
       value: 
       mandatory: true
       input:
         label: Certificate type
-        type: select
+        type: select_with_input
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
           items:
-            generated: System generated
+            system: System generated
             imported: Imported
-            user: User generated
+            external_ca: Signed CSR
           include_blank: false
         validation:
           pattern: 
