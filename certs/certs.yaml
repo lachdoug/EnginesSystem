@@ -762,7 +762,7 @@ service_actionators:
         validation:
           pattern: "[a-zA-Z][a-zA-Z]"
           message: Two letters only
-    - name: State
+    - name: state
       value: 
       mandatory: false
       input:
