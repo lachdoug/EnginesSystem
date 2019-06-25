@@ -403,7 +403,6 @@ configurators:
             ftp: ftp
             local: local
             s3: AWS S3 bucket
-            smbfs: smbfs
             sftp: sftp
           include_blank: false
         validation:
