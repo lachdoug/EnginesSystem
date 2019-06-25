@@ -884,7 +884,23 @@ service_actionators:
     script_sudo:
       language: 
       content: 
-    variables: []
+    variables:
+    - name: key_host
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
