@@ -196,6 +196,9 @@ constants:
   LDAP_HOST:
     name: LDAP_HOST
     value: ldap.engines.internal
+  backup_support:
+    name: backup_support
+    value: 'true'
 service_dependencies: []
 guises: []
 build_dependencies: []
