@@ -656,18 +656,21 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: install_target
-      value: all
+    - name: ca_name
+      value: 
       mandatory: true
       input:
-        label: Target
-        type: string
+        label: CA name
+        type: select_with_input
         title: 
         comment: 
-        hint: services|system_services|apps/container_name | all
+        hint: 
         placeholder: 
         collection:
-          items: {}
+          items:
+            system: System generated
+            imported: Imported
+            external_ca: Signed CSR
           include_blank: false
         validation:
           pattern: 
@@ -688,34 +691,32 @@ service_actionators:
         validation:
           pattern: 
           message: 
-    - name: cert_type
-      value: 
+    - name: install_target_type
+      value: all
       mandatory: true
       input:
-        label: Certificate type
+        label: Target Type
         type: select
         title: 
         comment: 
-        hint: 'imported| ctype/cname/  '
+        hint: services|system_services|apps/container_name | all
         placeholder: 
         collection:
           items:
-            generated: System generated
-            imported: Imported
-            user: User generated
-            external_ca: Signed CSR
+            service: Service
+            app: Application
           include_blank: false
         validation:
           pattern: 
           message: 
-    - name: cert_src
+    - name: install_target_name
       value: 
       mandatory: false
       input:
-        label: Cert source
+        label: Target Name
         type: string
         title: 
-        comment: conainer_type(s)/container_name/
+        comment: 
         hint: 
         placeholder: 
         collection:
@@ -952,21 +953,21 @@ service_actionators:
       language: 
       content: 
     variables:
-    - name: cert_type
+    - name: ca_name
       value: 
       mandatory: true
       input:
         label: Certificate type
-        type: select
+        type: select_with_input
         title: 
         comment: 
         hint: 
         placeholder: 
         collection:
           items:
-            generated: System generated
+            system: System generated
             imported: Imported
-            user: User generated
+            external_ca: Signed CSR
           include_blank: false
         validation:
           pattern: 
