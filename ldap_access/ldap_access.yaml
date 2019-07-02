@@ -109,6 +109,26 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  group_membership:
+    name: group_membership
+    value: 
+    mandatory: false
+    ask_at_build_time: true
+    build_time_only: false
+    immutable: false
+    input:
+      label: list of groups dn
+      type: text
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators: {}
 service_actionators:
   set_admin_password:
