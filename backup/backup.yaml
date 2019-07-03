@@ -233,6 +233,26 @@ consumer_params:
       validation:
         pattern: 
         message: 
+  key_name:
+    name: key_name
+    value: 
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: false
+    input:
+      label: 
+      type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
 configurators:
   backup_notification_email:
     name: backup_notification_email
@@ -403,7 +423,6 @@ configurators:
             ftp: ftp
             local: local
             s3: AWS S3 bucket
-            smbfs: smbfs
             sftp: sftp
           include_blank: false
         validation:
@@ -448,6 +467,22 @@ configurators:
         label: 
         type: string
         title: Destination folder
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
+    - name: key_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
         comment: 
         hint: 
         placeholder: 
@@ -884,7 +919,23 @@ service_actionators:
     script_sudo:
       language: 
       content: 
-    variables: []
+    variables:
+    - name: key_host
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 constants: {}
 service_dependencies: []
 guises: []
