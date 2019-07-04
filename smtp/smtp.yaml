@@ -240,6 +240,35 @@ configurators:
         validation:
           pattern: 
           message: 
+  max_send_size:
+    name: max_send_size
+    label: Maximum outbound email size (bytes)
+    description: 
+    enable_logging: false
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: max_size
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   show_queue:
     name: show_queue
