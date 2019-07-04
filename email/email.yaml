@@ -342,6 +342,35 @@ configurators:
         validation:
           pattern: 
           message: 
+  max_accept_size:
+    name: max_accept_size
+    label: Maximum inbound message size (bytes)
+    description: 
+    enable_logging: false
+    no_save: false
+    set_script_sudo:
+      language: 
+      content: 
+    read_script_sudo:
+      language: 
+      content: 
+    variables:
+    - name: max_size
+      value: 
+      mandatory: true
+      input:
+        label: 
+        type: integer
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
 service_actionators:
   list_domains:
     name: list_domains
