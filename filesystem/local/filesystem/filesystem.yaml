@@ -113,7 +113,7 @@ consumer_params:
         message: 
   user:
     name: user
-    value: _Engines_Builder(data_uid)
+    value: _Engines_Builder(cont_user_id)
     mandatory: true
     ask_at_build_time: false
     build_time_only: false
@@ -161,6 +161,26 @@ consumer_params:
     input:
       label: 
       type: string
+      title: 
+      comment: 
+      hint: 
+      placeholder: 
+      collection:
+        items: {}
+        include_blank: false
+      validation:
+        pattern: 
+        message: 
+  exclude_from_backup:
+    name: exclude_from_backup
+    value: 'false'
+    mandatory: false
+    ask_at_build_time: false
+    build_time_only: false
+    immutable: true
+    input:
+      label: 
+      type: checkbox_boolean
       title: 
       comment: 
       hint: 
