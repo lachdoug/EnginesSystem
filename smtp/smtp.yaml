@@ -118,6 +118,22 @@ configurators:
         validation:
           pattern: 
           message: 
+    - name: enabled
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: checkbox_boolean
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   default_domain:
     name: default_domain
     label: Default Domain
