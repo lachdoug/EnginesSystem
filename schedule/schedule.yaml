@@ -27,7 +27,7 @@ consumer_params:
     name: action_type
     value: schedule
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -49,8 +49,8 @@ consumer_params:
   cron_job:
     name: cron_job
     value: 
-    mandatory: true
-    ask_at_build_time: false
+    mandatory: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: false
     input:
@@ -70,7 +70,7 @@ consumer_params:
     name: tiltle
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
