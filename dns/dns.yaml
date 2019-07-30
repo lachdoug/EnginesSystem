@@ -147,7 +147,7 @@ service_actionators:
     variables:
     - name: domain_name
       value: 
-      mandatory: true
+      mandatory: false
       input:
         label: 
         type: string
