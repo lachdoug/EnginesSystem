@@ -66,8 +66,8 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  tiltle:
-    name: tiltle
+  title:
+    name: title
     value: 
     mandatory: true
     ask_at_build_time: true
