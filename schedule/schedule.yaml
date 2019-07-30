@@ -41,6 +41,7 @@ consumer_params:
         items:
           schedule: Schedule
           action: Action
+          command: Command
         include_blank: false
       validation:
         pattern: 
@@ -54,9 +55,9 @@ consumer_params:
     immutable: false
     input:
       label: The action
-      type: boolean
+      type: string
       title: 
-      comment: 
+      comment: 'sh command | url | action '
       hint: 
       placeholder: 
       collection:
