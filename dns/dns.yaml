@@ -115,7 +115,7 @@ configurators:
         validation:
           pattern: 
           message: 
-    - name: dns_server
+    - name: dns_server2
       value: 
       mandatory: false
       input:
@@ -136,20 +136,40 @@ service_actionators:
     name: list_records
     label: List Records
     description: 
-    return_type: json
+    return_type: plain_text
     return_file_name: 
+    timeout: ''
     enable_logging: false
+    background: false
     script_sudo:
       language: 
       content: 
-    variables: []
+    variables:
+    - name: domain_name
+      value: 
+      mandatory: false
+      input:
+        label: 
+        type: string
+        title: 
+        comment: 
+        hint: 
+        placeholder: 
+        collection:
+          items: {}
+          include_blank: false
+        validation:
+          pattern: 
+          message: 
   list_domains:
     name: list_domains
     label: List Domains
     description: 
     return_type: json
     return_file_name: 
+    timeout: ''
     enable_logging: false
+    background: false
     script_sudo:
       language: 
       content: 
@@ -160,7 +180,9 @@ service_actionators:
     description: Used by system when external or lan ip changes
     return_type: none
     return_file_name: 
+    timeout: ''
     enable_logging: false
+    background: false
     script_sudo:
       language: 
       content: 

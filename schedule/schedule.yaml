@@ -27,7 +27,7 @@ consumer_params:
     name: action_type
     value: schedule
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
@@ -41,6 +41,7 @@ consumer_params:
         items:
           schedule: Schedule
           action: Action
+          command: Command
         include_blank: false
       validation:
         pattern: 
@@ -48,15 +49,15 @@ consumer_params:
   cron_job:
     name: cron_job
     value: 
-    mandatory: true
-    ask_at_build_time: false
+    mandatory: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: false
     input:
       label: The action
-      type: boolean
+      type: string
       title: 
-      comment: 
+      comment: 'sh command | url | action '
       hint: 
       placeholder: 
       collection:
@@ -65,11 +66,11 @@ consumer_params:
       validation:
         pattern: 
         message: 
-  tiltle:
-    name: tiltle
+  title:
+    name: title
     value: 
     mandatory: true
-    ask_at_build_time: false
+    ask_at_build_time: true
     build_time_only: false
     immutable: true
     input:
