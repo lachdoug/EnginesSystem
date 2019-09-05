@@ -267,7 +267,7 @@ configurators:
       language: 
       content: 
     variables:
-    - name: backup_email
+    - name: backup_reports_email
       value: 
       mandatory: true
       input:
