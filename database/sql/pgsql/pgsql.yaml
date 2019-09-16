@@ -7,7 +7,7 @@ major: 0
 minor: 0
 release_level: beta
 patch: 0
-service_container: psql
+service_container: pgsqld
 service_handle_field: database_name
 dedicated: false
 persistent: true
@@ -19,8 +19,8 @@ shareable: false
 consumer_exportable: false
 consumerless: false
 target_environment_variables:
-  'database_host ':
-    variable_name: 'database_host '
+  database_host:
+    variable_name: database_host
     environment_variable_name: dbhost
   database_name:
     variable_name: database_name
