@@ -15,7 +15,7 @@ immutable: false
 attach_post_build: false
 attach_requires_restart: false
 soft_service: false
-shareable: false
+shareable: true
 consumer_exportable: true
 consumerless: false
 target_environment_variables:
@@ -194,7 +194,20 @@ configurators:
         validation:
           pattern: 
           message: 
-service_actionators: {}
+service_actionators:
+  aaa:
+    name: aaa
+    label: 
+    description: 
+    return_type: none
+    return_file_name: 
+    timeout: ''
+    enable_logging: false
+    background: false
+    script_sudo:
+      language: 
+      content: 
+    variables: []
 constants:
   rails_flavor:
     name: rails_flavor

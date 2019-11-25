@@ -217,7 +217,7 @@ constants:
     value: postgres
   db_flavor:
     name: db_flavor
-    value: postgres
+    value: pgsql
 service_dependencies: []
 guises: []
 build_dependencies: []
