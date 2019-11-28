@@ -195,11 +195,11 @@ configurators:
           pattern: 
           message: 
 service_actionators:
-  aaa:
-    name: aaa
-    label: 
+  repair_all:
+    name: repair_all
+    label: Reapir database
     description: 
-    return_type: none
+    return_type: plain_text
     return_file_name: 
     timeout: ''
     enable_logging: false
