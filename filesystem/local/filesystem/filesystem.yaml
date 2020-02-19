@@ -1,7 +1,7 @@
 ---
 :publisher_namespace: EnginesSystem
 :type_path: filesystem/local/filesystem
-:title: ''
+:title: Volume Manager
 :description: ''
 :service_container: volmgr
 :service_handle_field: service_name
