@@ -1,265 +1,115 @@
 ---
-publisher_namespace: EnginesSystem
-type_path: filesystem/local/filesystem
-title: 
-description: 
-major: 0
-minor: 0
-release_level: alpha
-patch: 0
-service_container: volmgr
-service_handle_field: service_name
-dedicated: false
-persistent: true
-immutable: false
-attach_post_build: true
-attach_requires_restart: true
-soft_service: false
-shareable: true
-consumer_exportable: true
-consumerless: false
-target_environment_variables:
-  engine_path:
-    variable_name: engine_path
-    environment_variable_name: VOLDIR
-  service_name:
-    variable_name: service_name
-    environment_variable_name: volume_name
-accepts:
+:publisher_namespace: EnginesSystem
+:type_path: filesystem/local/filesystem
+:title: ''
+:description: ''
+:service_container: volmgr
+:service_handle_field: service_name
+:dedicated: false
+:persistent: true
+:immutable: false
+:attach_post_build: true
+:attach_requires_restart: true
+:soft_service: false
+:shareable: true
+:consumer_exportable: true
+:consumerless: false
+:target_environment_variables:
+  :engine_path:
+    :variable_name: engine_path
+    :environment_variable_name: VOLDIR
+  :service_name:
+    :variable_name: service_name
+    :environment_variable_name: volume_name
+:accepts:
 - ManagedEngine
 - ManagedService
-consumer_params:
-  service_name:
-    name: service_name
-    value: _Engines_Builder(engine_name)
-    mandatory: true
-    ask_at_build_time: true
-    build_time_only: false
-    immutable: true
-    input:
-      label: Service tag name
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  volume_src:
-    name: volume_src
-    value: 
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Volume source path
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  engine_path:
-    name: engine_path
-    value: 
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Engine path
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  permissions:
-    name: permissions
-    value: rw
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: 
-      type: select
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items:
-          ro: Read only
-          rw: Write access
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  user:
-    name: user
-    value: _Engines_Builder(cont_user_id)
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Owner
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  group:
-    name: group
-    value: _Engines_Builder(data_gid)
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: false
-    input:
-      label: Group
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  fw_user:
-    name: fw_user
-    value: _Engines_Builder(cont_user_id)
-    mandatory: true
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-    input:
-      label: 
-      type: string
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-  exclude_from_backup:
-    name: exclude_from_backup
-    value: 'false'
-    mandatory: false
-    ask_at_build_time: false
-    build_time_only: false
-    immutable: true
-    input:
-      label: 
-      type: checkbox_boolean
-      title: 
-      comment: 
-      hint: 
-      placeholder: 
-      collection:
-        items: {}
-        include_blank: false
-      validation:
-        pattern: 
-        message: 
-configurators: {}
-service_actionators:
-  set_home_access_level:
-    name: set_home_access_level
-    label: 
-    description: 
-    return_type: json
-    return_file_name: 
-    enable_logging: false
-    script_sudo:
-      language: 
-      content: 
-    variables:
-    - name: home
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: access_level
-      value: 
-      mandatory: true
-      input:
-        label: 
-        type: select
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items:
-            '6650': private
-            '6660': group read
-            '6666': public read
-            '6677': public write
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-    - name: dir
-      value: "/"
-      mandatory: false
-      input:
-        label: Directory
-        type: string
-        title: 
-        comment: 
-        hint: 
-        placeholder: 
-        collection:
-          items: {}
-          include_blank: false
-        validation:
-          pattern: 
-          message: 
-constants:
-  backup_support:
-    name: backup_support
-    value: 'true'
-service_dependencies: []
-guises: []
-build_dependencies: []
+:consumer_params:
+  :service_name:
+    :name: service_name
+    :value: _Engines_Builder(engine_name)
+    :mandatory: true
+    :immutable: true
+    :ask_at_build_time: true
+    :input:
+      :type: string
+      :label: Service tag name
+  :volume_src:
+    :name: volume_src
+    :input:
+      :type: string
+      :label: Volume source path
+  :engine_path:
+    :name: engine_path
+    :mandatory: true
+    :input:
+      :type: string
+      :label: Engine path
+  :permissions:
+    :name: permissions
+    :value: rw
+    :mandatory: true
+    :input:
+      :type: select
+      :collection:
+        :items:
+          :ro: Read only
+          :rw: Write access
+  :user:
+    :name: user
+    :value: _Engines_Builder(cont_user_id)
+    :mandatory: true
+    :input:
+      :type: string
+      :label: Owner
+  :group:
+    :name: group
+    :value: _Engines_Builder(data_gid)
+    :mandatory: true
+    :input:
+      :type: string
+      :label: Group
+  :fw_user:
+    :name: fw_user
+    :value: _Engines_Builder(cont_user_id)
+    :mandatory: true
+    :immutable: true
+    :input:
+      :type: string
+  :exclude_from_backup:
+    :name: exclude_from_backup
+    :value: 'false'
+    :input:
+      :type: checkbox_boolean
+:configurators: 
+:service_actionators:
+  :set_home_access_level:
+    :name: set_home_access_level
+    :return_type: json
+    :variables:
+    - :name: home
+      :mandatory: true
+      :input:
+        :type: string
+    - :name: access_level
+      :mandatory: true
+      :input:
+        :type: select
+        :collection:
+          :items:
+            :6650: private
+            :6660: group read
+            :6666: public read
+            :6677: public write
+    - :name: dir
+      :value: "/"
+      :input:
+        :type: string
+        :label: Directory
+:constants:
+  :backup_support:
+    :name: backup_support
+    :value: 'true'
+:service_dependencies: []
+:build_dependencies: []
+:guises: []
