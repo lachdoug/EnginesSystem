@@ -1,30 +1,30 @@
 ---
-:publisher_namespace: EnginesSystem
-:type_path: filesystem/local/filesystem
-:title: Volume Manager1
-:description: ''
-:service_container: volmgr
-:service_handle_field: service_name
-:dedicated: false
-:persistent: true
-:immutable: false
-:attach_post_build: true
-:attach_requires_restart: true
-:soft_service: false
-:shareable: true
-:consumer_exportable: true
-:consumerless: false
-:target_environment_variables:
+publisher_namespace: EnginesSystem
+type_path: filesystem/local/filesystem
+title: Volume Manager
+description: ''
+service_container: volmgr
+service_handle_field: service_name
+dedicated: false
+persistent: true
+immutable: false
+attach_post_build: true
+attach_requires_restart: true
+soft_service: false
+shareable: true
+consumer_exportable: true
+consumerless: false
+target_environment_variables:
   :engine_path:
     :variable_name: engine_path
     :environment_variable_name: VOLDIR
   :service_name:
     :variable_name: service_name
     :environment_variable_name: volume_name
-:accepts:
+accepts:
 - ManagedEngine
 - ManagedService
-:consumer_params:
+consumer_params:
   :service_name:
     :name: service_name
     :value: _Engines_Builder(engine_name)
@@ -81,8 +81,8 @@
     :value: 'false'
     :input:
       :type: checkbox_boolean
-:configurators: 
-:service_actionators:
+configurators: 
+service_actionators:
   :set_home_access_level:
     :name: set_home_access_level
     :return_type: json
@@ -106,10 +106,10 @@
       :input:
         :type: string
         :label: Directory
-:constants:
+constants:
   :backup_support:
     :name: backup_support
     :value: 'true'
-:service_dependencies: []
-:build_dependencies: []
-:guises: []
+service_dependencies: []
+build_dependencies: []
+guises: []
